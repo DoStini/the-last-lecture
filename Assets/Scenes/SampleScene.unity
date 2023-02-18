@@ -1648,9 +1648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b3c3ebe0655cb1aa66cc4a4648a7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 4
+  weight: 2
   type: 0
-  baseCapacity: 0
+  baseCapacity: 15
 --- !u!65 &851676766
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2072,7 +2072,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 958481660}
   speedFactor: 6
-  gravityFactor: 16
+  gravityFactor: 2.03
+  player: {fileID: 958481663}
 --- !u!143 &958481660
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2153,6 +2154,7 @@ MonoBehaviour:
   baseSpeed: 0
   maxWeight: 0
   backpack: {fileID: 958481662}
+  weapon: {fileID: 2040898409}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,7 +3642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 8
   type: 1
-  baseCapacity: 0
+  baseCapacity: 7
 --- !u!65 &1809328709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3829,9 +3831,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b3c3ebe0655cb1aa66cc4a4648a7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 4
+  weight: 2
   type: 0
-  baseCapacity: 0
+  baseCapacity: 15
 --- !u!1 &1974588259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,8 +4136,9 @@ GameObject:
   - component: {fileID: 2040898406}
   - component: {fileID: 2040898408}
   - component: {fileID: 2040898407}
+  - component: {fileID: 2040898409}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4206,6 +4209,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040898405}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2040898409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040898405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51b8419268cda966b3333453ed1b7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
+  ammo: 0
+  stockType: 0
 --- !u!1 &2095679983
 GameObject:
   m_ObjectHideFlags: 0

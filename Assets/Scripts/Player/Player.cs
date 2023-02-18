@@ -7,6 +7,7 @@ public class Player : Character
 {
     [SerializeField] public uint maxWeight;
     [SerializeField] public Backpack backpack;
+    [SerializeField] public Weapon weapon;
 
     private void Start()
     {
@@ -22,6 +23,25 @@ public class Player : Character
         }
     }
 
+    public void HandleReload()
+    {
+        if (weapon is not FiringWeapon firingWeapon)
+        {
+            return;
+        }
+
+        Stock stock = backpack.FindStock(firingWeapon.stockType);
+
+        if (stock is null)
+        {
+            Debug.Log("No stocks remaining");
+            return;
+        }
+
+        backpack.RemovePickableItem(stock);
+        firingWeapon.Reload(stock);
+    }
+    
     private void HandlePickable(GameObject pickableGameObject)
     {
         var pickableItem = pickableGameObject.GetComponent<PickableItem>();

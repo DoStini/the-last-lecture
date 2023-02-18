@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Backpack : MonoBehaviour
@@ -8,6 +8,15 @@ public class Backpack : MonoBehaviour
     private uint _weight;
 
     private readonly List<PickableItem> _items = new();
+
+    public Stock FindStock(Stock.Type type)
+    {
+        var stocks = _items.AsQueryable();
+
+        Stock stock = stocks.OfType<Stock>().FirstOrDefault(stock => stock.type == type);
+
+        return default(Stock) ? null : stock;
+    }
 
     public bool AddPickableItem(PickableItem item)
     {

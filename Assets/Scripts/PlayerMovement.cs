@@ -10,8 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speedFactor = 6f;
     [SerializeField] public float gravityFactor = 9.8f;
 
+    [SerializeField] public Player player;
+
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
+    private InputAction _reloadAction;
     private float _vSpeed;
     private float _lookAngle;
     private Vector2 _actionDirection = Vector2.zero;
@@ -32,11 +35,15 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveAction = _playerActions.Player.Move;
         _moveAction.Enable();
+
+        _reloadAction = _playerActions.Player.Reload;
+        _reloadAction.Enable();
     }
 
     private void OnDisable()
     {
         _moveAction.Disable();
+        _reloadAction.Disable();
     }
     
     // Update is called once per frame
@@ -44,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _actionDirection = _moveAction.ReadValue<Vector2>().normalized;
         transform.rotation = Quaternion.Euler(0f, _lookAngle,0f);
+
+        if (_reloadAction.WasPerformedThisFrame())
+        {
+            player.HandleReload();
+        }
     }
 
 
