@@ -7,7 +7,7 @@ public class Backpack : MonoBehaviour
     [SerializeField] public uint maxWeight;
     private uint _weight;
 
-    private List<PickableItem> _items;
+    private readonly List<PickableItem> _items = new();
 
     public bool AddPickableItem(PickableItem item)
     {
@@ -35,6 +35,6 @@ public class Backpack : MonoBehaviour
     
     void Start()
     {
-        _weight = maxWeight;
+        _weight = 0;
     }
 }
