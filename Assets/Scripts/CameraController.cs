@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player;
-    
-    [Range(1, 20)]
-    public float height = 15f;
+    [SerializeField] public GameObject player;
+    [Range(1, 20)] public float height = 15f;
  
     void FollowPlayer()
     {

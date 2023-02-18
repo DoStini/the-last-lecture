@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
-    public float speedFactor = 6f;
-    public float gravityFactor = 9.8f;
+    [SerializeField] public CharacterController controller;
+    [SerializeField] public float speedFactor = 6f;
+    [SerializeField] public float gravityFactor = 9.8f;
 
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _actionDirection = _moveAction.ReadValue<Vector2>().normalized;
+        transform.rotation = Quaternion.Euler(0f, _lookAngle,0f);
     }
 
 
@@ -56,14 +57,12 @@ public class PlayerMovement : MonoBehaviour
         {
             _vSpeed -= gravityFactor * Time.fixedDeltaTime;
         }
-        
-        if (_actionDirection.magnitude >= 0.1f || _vSpeed != 0)
-        {
-            _actionDirection = speedFactor * Time.fixedDeltaTime * _actionDirection;
-            var moveDirection = new Vector3(_actionDirection.x, _vSpeed, _actionDirection.y);
-            controller.Move(moveDirection);
-        }
 
-        transform.rotation = Quaternion.Euler(0f, _lookAngle,0f);
+        var moveDirection =
+            Time.fixedDeltaTime *
+            new Vector3(
+                speedFactor * _actionDirection.x, _vSpeed, speedFactor * _actionDirection.y);
+        
+        controller.Move(moveDirection);
     }
 }

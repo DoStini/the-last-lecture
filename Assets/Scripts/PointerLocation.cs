@@ -12,9 +12,9 @@ public class PointerLocationUpdate : UnityEvent<Vector3>
 
 public class PointerLocation : MonoBehaviour
 {
-    public PointerLocationUpdate pointerEvent;
-    public LayerMask pointerLayers;
-    public Camera cam;
+    [SerializeField] public PointerLocationUpdate pointerEvent;
+    [SerializeField] public LayerMask pointerLayers;
+    [SerializeField] public Camera cam;
 
     private void LateUpdate()
     {
