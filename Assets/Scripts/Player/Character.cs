@@ -58,8 +58,8 @@ public class Character : MonoBehaviour
             _currentSpeed = minSpeed;
         }
     }
-    
-    private void Start()
+
+    protected void Init()
     {
         _currentHealth = baseHealth;
         _currentSpeed = baseSpeed;
