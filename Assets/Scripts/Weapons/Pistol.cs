@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class MeleeWeapon : Weapon
+public class Pistol : FiringWeapon
 {
-    public float range;
     protected override bool _Attack(Vector3 direction)
     {
         return false;

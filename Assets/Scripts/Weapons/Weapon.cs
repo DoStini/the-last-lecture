@@ -4,7 +4,21 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] public int damage;
+    public int damage;
+    public float attackInterval;
+    public LayerMask mask;
 
-    public abstract void attack();
+    private float _lastAttack;
+
+    public virtual void Attack(Vector3 direction)
+    {
+        if (!(_lastAttack + attackInterval < Time.time)) return;
+        
+        if (_Attack(direction))
+        {
+            _lastAttack = Time.time;
+        }
+    }
+
+    protected abstract bool _Attack(Vector3 direction);
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] public uint maxWeight;
-    [SerializeField] public Backpack backpack;
-    [SerializeField] public Weapon weapon;
+    public uint maxWeight;
+    public Backpack backpack;
+    public Weapon weapon;
 
     private void Start()
     {
