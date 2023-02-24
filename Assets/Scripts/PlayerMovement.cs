@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
     private InputAction _reloadAction;
+    private InputAction _shootAction;
     private float _vSpeed;
     private float _lookAngle;
     private Vector2 _actionDirection = Vector2.zero;
@@ -38,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
         _reloadAction = _playerActions.Player.Reload;
         _reloadAction.Enable();
+
+        _shootAction = _playerActions.Player.Fire;
+        _shootAction.
+        _shootAction.Enable();
     }
 
     private void OnDisable()
@@ -56,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         {
             player.HandleReload();
         }
+        
+        if (_shootAction.ReadValue<>())
     }
 
 
