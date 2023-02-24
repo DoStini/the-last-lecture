@@ -3,12 +3,11 @@ using UnityEngine;
 
 public abstract class FiringWeapon : Weapon
 {
-    // HAVE GUN TIP TO KNOW WHERE THE BULLETS COME FROM
     public uint ammo;
     public Stock.Type stockType;
     public Transform bulletSpawnPoint;
 
-    private bool _bulletSpread;
+    private bool _bulletSpread = false;
     private Vector3 _bulletSpreadVariance = new Vector3(0.1f, 0.1f, 0.1f);
     [SerializeField] private ParticleSystem shootingParticleSystem;
     [SerializeField] private ParticleSystem impactParticleSystem;

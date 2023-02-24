@@ -41,6 +41,14 @@ public class Player : Character
         backpack.RemovePickableItem(stock);
         firingWeapon.Reload(stock);
     }
+
+    public void HandleAttack(Vector3 direction, int holdTime)
+    {
+        if (!ReferenceEquals(weapon, null))
+        {
+            weapon.Attack(direction, holdTime);
+        }
+    }
     
     private void HandlePickable(GameObject pickableGameObject)
     {
