@@ -9,16 +9,9 @@ public class WaypointsAndFollowMovementStrategy : MovementStrategy
 
     private int _currentWaypoint = 0;
 
-    [SerializeField] private Player target;
-    [SerializeField] private float range;
-
     public override void Move(NavMeshAgent agent)
     {   
-        if (PlayerInRange(agent))
-        {
-            agent.SetDestination(target.transform.position);
-            return;
-        }
+        if (FollowPlayer(agent)) return;
 
         agent.SetDestination(waypoints[_currentWaypoint].position);
 
@@ -26,10 +19,5 @@ public class WaypointsAndFollowMovementStrategy : MovementStrategy
 
         _currentWaypoint = (_currentWaypoint + 1) % waypoints.Count;
         agent.SetDestination(waypoints[_currentWaypoint].position);
-    }
-
-    private bool PlayerInRange(NavMeshAgent agent)
-    {
-        return Vector3.Distance(target.transform.position, agent.transform.position) < range;
     }
 }
