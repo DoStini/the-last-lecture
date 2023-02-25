@@ -10,8 +10,6 @@ public abstract class FiringWeapon : Weapon
     private bool _bulletSpread = true;
     private Vector3 _bulletSpreadVariance = new Vector3(0.1f, 0.1f, 0.1f);
     [SerializeField] private ParticleSystem shootingParticleSystem;
-    [SerializeField] private ParticleSystem impactParticleSystem;
-    [SerializeField] private TrailRenderer bulletTrail;
     [SerializeField] private float bulletSpeed = 100;
     [SerializeField] private ObjectPool impactPool;
     [SerializeField] private ObjectPool trailPool;
@@ -83,11 +81,14 @@ public abstract class FiringWeapon : Weapon
         trail.transform.position = hitPoint;
         if (madeImpact)
         {
-            Instantiate(impactParticleSystem, hitPoint, Quaternion.LookRotation(hitNormal));
+            impactPool.GetAndActivate((impactParticleSystem =>
+            {
+                impactParticleSystem.transform.position = hitPoint;
+                impactParticleSystem.transform.rotation = Quaternion.LookRotation(hitNormal);
+            }));
         }
 
         yield return new WaitForSeconds(trail.time);
-
         trailPool.Release(trail.gameObject);
     }
 }
