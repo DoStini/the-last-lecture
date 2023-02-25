@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WaypointsAndFollowMovementStrategy : MovementStrategy
+public class WaypointsMovementStrategy : MovementStrategy
 {
     [SerializeField] private List<Transform> waypoints;
 

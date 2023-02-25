@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class RandomAndFollowMovementStrategy : MovementStrategy
+public class RandomMovementStrategy : MovementStrategy
 {
     [SerializeField] private float interval;
     [SerializeField] private float directionScale;
