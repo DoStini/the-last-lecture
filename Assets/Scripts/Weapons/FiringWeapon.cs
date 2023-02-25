@@ -13,6 +13,9 @@ public abstract class FiringWeapon : Weapon
     [SerializeField] private ParticleSystem impactParticleSystem;
     [SerializeField] private TrailRenderer bulletTrail;
     [SerializeField] private float bulletSpeed = 100;
+    [SerializeField] private ObjectPool impactPool;
+    [SerializeField] private ObjectPool trailPool;
+
 
     public void Reload(Stock stock)
     {
@@ -47,7 +50,11 @@ public abstract class FiringWeapon : Weapon
         Vector3 direction = GetDirection(pointerLocation);
 
         Vector3 position = bulletSpawnPoint.position;
-        TrailRenderer trail = Instantiate(bulletTrail, position, Quaternion.identity);
+        TrailRenderer trail = trailPool.GetAndActivate((obj =>
+        {
+            obj.transform.position = position;
+            obj.transform.rotation = Quaternion.identity;
+        })).GetComponent<TrailRenderer>();
         
         StartCoroutine(Physics.Raycast(
             position, direction,
@@ -79,6 +86,8 @@ public abstract class FiringWeapon : Weapon
             Instantiate(impactParticleSystem, hitPoint, Quaternion.LookRotation(hitNormal));
         }
 
-        Destroy(trail.gameObject, trail.time);
+        yield return new WaitForSeconds(trail.time);
+
+        trailPool.Release(trail.gameObject);
     }
 }

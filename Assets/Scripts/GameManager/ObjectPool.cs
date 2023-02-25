@@ -17,7 +17,7 @@ public class ObjectPool : MonoBehaviour
 
         for (int i = 0; i < amountToPool; i++)
         {
-            var tmp = Instantiate(objectToPool);
+            var tmp = Instantiate(objectToPool, gameObject.transform);
             tmp.SetActive(false);
             _pooledObjects.AddLast(tmp);
         }
@@ -26,11 +26,11 @@ public class ObjectPool : MonoBehaviour
     public GameObject GetAndActivate(Action<GameObject> instantiate)
     {
         GameObject obj = _pooledObjects.First.Value;
-        instantiate(gameObject);
+        instantiate(obj);
         
         _pooledObjects.RemoveFirst();
         _pooledObjects.AddLast(obj);
-        gameObject.SetActive(true);
+        obj.SetActive(true);
 
         return obj;
     }
@@ -44,6 +44,8 @@ public class ObjectPool : MonoBehaviour
             _pooledObjects.Remove(node);
             _pooledObjects.AddLast(toRelease);
             toRelease.SetActive(false);
+
+            break;
         }
     }
 }
