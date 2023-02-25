@@ -42,11 +42,11 @@ public class Player : Character
         firingWeapon.Reload(stock);
     }
 
-    public void HandleAttack(Vector3 direction, int holdTime)
+    public void HandleAttack(Vector3 pointerLocation, int holdTime)
     {
         if (!ReferenceEquals(weapon, null))
         {
-            weapon.Attack(direction, holdTime);
+            weapon.Attack(pointerLocation, holdTime);
         }
     }
     

@@ -75,9 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (_shootHeld)
         {
             var playerPosition = transform.position;
-            var attackDirection = new Vector3(_pointerLocation.x - playerPosition.x,
-                _pointerLocation.y - playerPosition.y, _pointerLocation.z - playerPosition.z);
-            player.HandleAttack(attackDirection, _holdTime);
+            player.HandleAttack(_pointerLocation, _holdTime);
             _holdTime++;
         }
         else

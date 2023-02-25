@@ -7,7 +7,7 @@ public abstract class FiringWeapon : Weapon
     public Stock.Type stockType;
     public Transform bulletSpawnPoint;
 
-    private bool _bulletSpread = false;
+    private bool _bulletSpread = true;
     private Vector3 _bulletSpreadVariance = new Vector3(0.1f, 0.1f, 0.1f);
     [SerializeField] private ParticleSystem shootingParticleSystem;
     [SerializeField] private ParticleSystem impactParticleSystem;
@@ -19,8 +19,9 @@ public abstract class FiringWeapon : Weapon
         ammo = stock.baseCapacity;
     }
 
-    private Vector3 GetDirection(Vector3 direction)
+    private Vector3 GetDirection(Vector3 pointerLocation)
     {
+        Vector3 direction = pointerLocation - bulletSpawnPoint.position;
         if (!_bulletSpread) return direction;
 
         direction += new Vector3(
@@ -34,7 +35,7 @@ public abstract class FiringWeapon : Weapon
         return direction;
     }
     
-    protected override bool _Attack(Vector3 direction)
+    protected override bool _Attack(Vector3 pointerLocation)
     {
         if (ammo == 0)
         {
@@ -43,7 +44,7 @@ public abstract class FiringWeapon : Weapon
 
         ammo--;
         shootingParticleSystem.Play();
-        direction = GetDirection(new Vector3(direction.x, direction.y, direction.z));
+        Vector3 direction = GetDirection(pointerLocation);
 
         Vector3 position = bulletSpawnPoint.position;
         TrailRenderer trail = Instantiate(bulletTrail, position, Quaternion.identity);
@@ -52,7 +53,7 @@ public abstract class FiringWeapon : Weapon
             position, direction,
             out RaycastHit hit, float.MaxValue, mask)
             ? SpawnTrail(trail, hit.point, hit.normal, true)
-            : SpawnTrail(trail, bulletSpawnPoint.position + GetDirection(direction) * 100, Vector3.zero, false));
+            : SpawnTrail(trail, bulletSpawnPoint.position + direction * 100, Vector3.zero, false));
 
         return true;
     }
