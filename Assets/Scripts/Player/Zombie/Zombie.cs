@@ -14,6 +14,6 @@ public class Zombie : Character
 
     private void Update()
     {
-        movementStrategy.Move(_navMeshAgent);
+        movementStrategy.Move();
     }
 }

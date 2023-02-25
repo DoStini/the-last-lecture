@@ -9,19 +9,48 @@ public abstract class MovementStrategy : MonoBehaviour
 {
     [SerializeField] private Player target;
     [SerializeField] private float viewRange;
+    [SerializeField] private float minRange;
+    [SerializeField] protected NavMeshAgent agent;
 
-    public abstract void Move(NavMeshAgent agent);
+    private float _originalSpeed;
 
-    private bool PlayerInViewRange(NavMeshAgent agent)
+    protected void _Start()
     {
-        return Vector3.Distance(target.transform.position, agent.transform.position) < viewRange;
+        _originalSpeed = agent.speed;
     }
 
-    protected bool FollowPlayer(NavMeshAgent agent)
-    {
-        if (!PlayerInViewRange(agent)) return false;
+    public abstract void Move();
 
+    private bool PlayerInMinRange(float distance)
+    {
+        return distance < minRange;
+    }
+
+    private bool PlayerInViewRange(float distance)
+    {
+        return distance < viewRange;
+    }
+
+    protected bool FollowPlayer()
+    {
+        float distance = Vector3.Distance(target.transform.position, agent.transform.position);
+        agent.isStopped = false;
+
+        if (!PlayerInViewRange(distance)) return false;
         agent.SetDestination(target.transform.position);
+
+        if (!PlayerInMinRange(distance)) return true;
+
+        agent.isStopped = true;
+        RotateTowardsTarget();
+
         return true;
+    }
+
+    private void RotateTowardsTarget()
+    {
+        Quaternion rotation = Quaternion.LookRotation(target.transform.position - agent.transform.position);
+        agent.transform.rotation =
+            Quaternion.RotateTowards(agent.transform.rotation, rotation, Time.deltaTime * agent.angularSpeed);
     }
 }

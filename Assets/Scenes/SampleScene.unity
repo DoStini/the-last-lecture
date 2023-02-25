@@ -325,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395944981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0.18, z: 1.25}
+  m_LocalPosition: {x: 0.2, y: 0.18, z: 1.72}
   m_LocalScale: {x: 3.2611, y: 0.657328, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1269,7 +1269,6 @@ GameObject:
   - component: {fileID: 1104710842}
   - component: {fileID: 1104710845}
   - component: {fileID: 1104710844}
-  - component: {fileID: 1104710843}
   - component: {fileID: 1104710846}
   m_Layer: 6
   m_Name: PlayerModel
@@ -1294,20 +1293,6 @@ Transform:
   m_Father: {fileID: 958481658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1104710843
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104710841}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1104710844
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1383,7 +1368,6 @@ GameObject:
   - component: {fileID: 1138653618}
   - component: {fileID: 1138653617}
   - component: {fileID: 1138653616}
-  - component: {fileID: 1138653615}
   - component: {fileID: 1138653614}
   - component: {fileID: 1138653621}
   - component: {fileID: 1138653613}
@@ -1414,7 +1398,7 @@ MonoBehaviour:
   minSpeed: 0
   baseHealth: 30
   baseSpeed: 0
-  movementStrategy: {fileID: 1138653622}
+  movementStrategy: {fileID: 1138653620}
 --- !u!136 &1138653614
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1429,20 +1413,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
---- !u!136 &1138653615
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138653612}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1138653616
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1538,7 +1508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 958481663}
-  range: 5
+  viewRange: 6
+  minRange: 3
+  agent: {fileID: 1138653621}
   waypoints:
   - {fileID: 1712395390}
   - {fileID: 1228922255}
@@ -1563,7 +1535,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &1138653622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,7 +1549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 958481663}
-  range: 5
+  viewRange: 6
+  minRange: 3
+  agent: {fileID: 1138653621}
   interval: 2
   directionScale: 5
 --- !u!1 &1228922254

@@ -14,12 +14,13 @@ public class RandomMovementStrategy : MovementStrategy
 
     private void Start()
     {
+        _Start();
         _lastTime = Time.time;
     }
 
-    public override void Move(NavMeshAgent agent)
+    public override void Move()
     {
-        if (FollowPlayer(agent)) return;
+        if (FollowPlayer()) return;
 
         if (Time.time < _lastTime + interval) return;
 

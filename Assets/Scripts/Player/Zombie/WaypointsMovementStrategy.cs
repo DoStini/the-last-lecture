@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -9,9 +10,14 @@ public class WaypointsMovementStrategy : MovementStrategy
 
     private int _currentWaypoint = 0;
 
-    public override void Move(NavMeshAgent agent)
+    private void Start()
+    {
+        _Start();
+    }
+
+    public override void Move()
     {   
-        if (FollowPlayer(agent)) return;
+        if (FollowPlayer()) return;
 
         agent.SetDestination(waypoints[_currentWaypoint].position);
 
