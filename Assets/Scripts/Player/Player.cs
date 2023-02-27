@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] public uint maxWeight;
-    [SerializeField] public Backpack backpack;
-    [SerializeField] public Weapon weapon;
+    public uint maxWeight;
+    public Backpack backpack;
+    public Weapon weapon;
 
     private void Start()
     {
@@ -40,6 +40,14 @@ public class Player : Character
 
         backpack.RemovePickableItem(stock);
         firingWeapon.Reload(stock);
+    }
+
+    public void HandleAttack(Vector3 pointerLocation, int holdTime)
+    {
+        if (!ReferenceEquals(weapon, null))
+        {
+            weapon.Attack(pointerLocation, holdTime);
+        }
     }
     
     private void HandlePickable(GameObject pickableGameObject)

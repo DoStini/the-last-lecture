@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
-    [SerializeField] public float range;
-    public override void attack()
+    public float range;
+    protected override bool _Attack(Vector3 pointerLocation)
     {
+        return false;
     }
 }

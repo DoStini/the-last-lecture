@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] public int maxHealth;
-    [SerializeField] public float maxSpeed;
-    [SerializeField] public float minSpeed;
+    public int maxHealth;
+    public float maxSpeed;
+    public float minSpeed;
     
-    [SerializeField] public int baseHealth;
-    [SerializeField] public float baseSpeed;
+    public int baseHealth;
+    public float baseSpeed;
 
     private int _currentHealth;
     private float _currentSpeed;
