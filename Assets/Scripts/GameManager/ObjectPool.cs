@@ -23,6 +23,9 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
+    /**
+     * Always returns an object, even if it is in use. No new objects created
+     */
     public GameObject GetAndActivate(Action<GameObject> instantiate)
     {
         GameObject obj = _pooledObjects.First.Value;
