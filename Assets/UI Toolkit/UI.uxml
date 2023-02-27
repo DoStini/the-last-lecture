@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Inventory.uss?fileID=7433441132597879392&amp;guid=5470c963cd17040daa829925b644f919&amp;type=3#Inventory" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: flex-end;">
+        <ui:VisualElement name="SlotsContainer" style="height: auto; width: auto; flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; background-color: rgba(248, 118, 9, 0.48); margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%; flex-direction: row; flex-wrap: wrap; align-items: flex-start;">
+            <ui:VisualElement class="slot" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; justify-content: space-around; margin-left: 5%; margin-right: 5%; margin-bottom: 2%; flex-grow: 0;">
+            <ui:VisualElement style="background-color: rgb(106, 255, 4); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 3%; padding-right: 3%; padding-top: 3%; padding-bottom: 3%;" />
+            <ui:VisualElement style="background-color: rgb(106, 255, 4); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 3%; padding-right: 3%; padding-top: 3%; padding-bottom: 3%;" />
+            <ui:VisualElement style="background-color: rgb(106, 255, 4); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 3%; padding-right: 3%; padding-top: 3%; padding-bottom: 3%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
