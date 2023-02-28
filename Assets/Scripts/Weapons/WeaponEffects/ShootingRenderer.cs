@@ -46,12 +46,11 @@ public class ShootingRenderer : MonoBehaviour
         }
         
         trail.transform.position = hitPoint;
-        if (madeImpact)
+        if (madeImpact && impactLayers == (impactLayers | (1 << hit.collider.gameObject.layer)))
         {
             impactPool.GetAndActivate((impactParticleSystem =>
             {
                 // ParentConstraint constraint = impactParticleSystem.GetComponent<ParentConstraint>();
-                if (impactLayers != (impactLayers | (1 << hit.collider.gameObject.layer))) return;
 
                 impactParticleSystem.transform.position = hitPoint;
                 impactParticleSystem.transform.rotation = Quaternion.LookRotation(hitNormal);

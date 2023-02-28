@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public float maxHealth;
+    public int maxHealth;
     public float maxSpeed;
     public float minSpeed;
     
-    public float baseHealth;
+    public int baseHealth;
     public float baseSpeed;
+    public List<DamageObserver> damageObservers;
 
-    protected float _currentHealth;
+    protected int _currentHealth;
     private float _currentSpeed;
 
-    public float GetHealth()
+    public int GetHealth()
     {
         return _currentHealth;
     }
@@ -30,9 +31,10 @@ public class Character : MonoBehaviour
         _currentSpeed = baseSpeed;
     }
 
-    public void AddHealth(float health)
+    public void AddHealth(int health)
     {
         _currentHealth += health;
+        damageObservers.ForEach((observer => observer.HandleDamagePopup(this, health)));
 
         if (_currentHealth > maxHealth)
         {
@@ -40,10 +42,10 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void RemoveHealth(float health)
+    public void RemoveHealth(int health)
     {
         _currentHealth -= health;
-        Debug.Log(_currentHealth);
+        damageObservers.ForEach((observer => observer.HandleDamagePopup(this, -health)));
 
         if (_currentHealth < 0)
         {

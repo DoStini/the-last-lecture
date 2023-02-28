@@ -5,8 +5,8 @@ public class RandomDamageStrategy : DamageStrategy
     public float baseDamage;
     public float variation;
 
-    public override float CalculateDamage()
+    public override int CalculateDamage()
     {
-        return Random.Range(baseDamage - baseDamage * variation, baseDamage + baseDamage * variation);
+        return Mathf.FloorToInt(Random.Range(baseDamage - baseDamage * variation, baseDamage + baseDamage * variation));
     }
 }
