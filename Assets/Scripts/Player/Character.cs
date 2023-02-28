@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public int maxHealth;
+    public float maxHealth;
     public float maxSpeed;
     public float minSpeed;
     
-    public int baseHealth;
+    public float baseHealth;
     public float baseSpeed;
 
-    private int _currentHealth;
+    protected float _currentHealth;
     private float _currentSpeed;
+
+    public float GetHealth()
+    {
+        return _currentHealth;
+    }
 
     public void ResetHealth()
     {
@@ -25,7 +30,7 @@ public class Character : MonoBehaviour
         _currentSpeed = baseSpeed;
     }
 
-    public void AddHealth(int health)
+    public void AddHealth(float health)
     {
         _currentHealth += health;
 
@@ -35,7 +40,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void RemoveHealth(int health)
+    public void RemoveHealth(float health)
     {
         _currentHealth -= health;
 
