@@ -43,6 +43,7 @@ public class Character : MonoBehaviour
     public void RemoveHealth(float health)
     {
         _currentHealth -= health;
+        Debug.Log(_currentHealth);
 
         if (_currentHealth < 0)
         {
