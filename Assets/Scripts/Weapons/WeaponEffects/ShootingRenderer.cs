@@ -2,10 +2,12 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class ShootingRenderer : MonoBehaviour
 {
     public Transform bulletSpawnPoint;
+    public LayerMask impactLayers;
 
     [SerializeField] private ObjectPool impactPool;
     [SerializeField] private ObjectPool trailPool;
@@ -16,11 +18,14 @@ public class ShootingRenderer : MonoBehaviour
         shootingParticleSystem.Play();
 
         StartCoroutine(madeImpact
-            ? SpawnTrail(callback, hit.point, hit.normal, true, bulletSpeed)
-            : SpawnTrail(callback, bulletSpawnPoint.position + direction * 100, Vector3.zero, false, bulletSpeed));
+            ? SpawnTrail(callback, hit.point, hit.normal, hit, true, bulletSpeed)
+            : SpawnTrail(
+                callback, 
+                bulletSpawnPoint.position + direction * 100, 
+                Vector3.zero, hit, false, bulletSpeed));
     }
     
-    private IEnumerator SpawnTrail(Action callback, Vector3 hitPoint, Vector3 hitNormal, bool madeImpact, float bulletSpeed)
+    private IEnumerator SpawnTrail(Action callback, Vector3 hitPoint, Vector3 hitNormal, RaycastHit hit, bool madeImpact, float bulletSpeed)
     {
         TrailRenderer trail = trailPool.GetAndActivate((obj =>
         {
@@ -41,12 +46,20 @@ public class ShootingRenderer : MonoBehaviour
         }
         
         trail.transform.position = hitPoint;
-        if (madeImpact)
+        if (madeImpact && impactLayers == (impactLayers | (1 << hit.collider.gameObject.layer)))
         {
             impactPool.GetAndActivate((impactParticleSystem =>
             {
+                // ParentConstraint constraint = impactParticleSystem.GetComponent<ParentConstraint>();
+
                 impactParticleSystem.transform.position = hitPoint;
                 impactParticleSystem.transform.rotation = Quaternion.LookRotation(hitNormal);
+                
+                
+                // ConstraintSource source = default;
+                // source.sourceTransform = hit.transform;
+                // source.weight = 1;
+                // constraint.SetSource(0, source);
             }));
         }
 

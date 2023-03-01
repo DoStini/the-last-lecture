@@ -11,9 +11,15 @@ public class Character : MonoBehaviour
     
     public int baseHealth;
     public float baseSpeed;
+    public List<DamageObserver> damageObservers;
 
-    private int _currentHealth;
+    protected int _currentHealth;
     private float _currentSpeed;
+
+    public int GetHealth()
+    {
+        return _currentHealth;
+    }
 
     public void ResetHealth()
     {
@@ -28,6 +34,7 @@ public class Character : MonoBehaviour
     public void AddHealth(int health)
     {
         _currentHealth += health;
+        damageObservers.ForEach((observer => observer.HandleDamagePopup(this, health)));
 
         if (_currentHealth > maxHealth)
         {
@@ -38,6 +45,7 @@ public class Character : MonoBehaviour
     public void RemoveHealth(int health)
     {
         _currentHealth -= health;
+        damageObservers.ForEach((observer => observer.HandleDamagePopup(this, -health)));
 
         if (_currentHealth < 0)
         {

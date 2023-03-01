@@ -678,6 +678,59 @@ Transform:
   m_Father: {fileID: 1015380478}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &725730136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725730137}
+  - component: {fileID: 725730138}
+  m_Layer: 0
+  m_Name: EnemyDamageObserver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &725730137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725730136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1807760172}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &725730138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725730136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bd5e660bdd4552baa6631eec4c0bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorThresholds: fafffffffcffffff
+  colors:
+  - serializedVersion: 2
+    rgba: 4278192639
+  - serializedVersion: 2
+    rgba: 4278254591
+  - serializedVersion: 2
+    rgba: 4294967295
+  damagePopupPool: {fileID: 2107434740}
 --- !u!1 &851676764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,11 +1068,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84c83d80bcdd084dbc049a9491c6b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 30
   maxSpeed: 0
   minSpeed: 0
-  baseHealth: 0
+  baseHealth: 30
   baseSpeed: 0
+  damageObservers: []
   maxWeight: 0
   backpack: {fileID: 958481662}
   weapon: {fileID: 2040898410}
@@ -1205,7 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1393e93cd18a669cd831b23d19825296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damageStrategy: {fileID: 0}
   attackInterval: 0
   mask:
     serializedVersion: 2
@@ -1397,11 +1451,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd6d31ef5a67c3f79fb5b161fd5c31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 500
   maxSpeed: 0
   minSpeed: 0
-  baseHealth: 30
+  baseHealth: 500
   baseSpeed: 0
+  damageObservers:
+  - {fileID: 725730138}
   movementStrategy: {fileID: 1138653620}
 --- !u!136 &1138653614
 CapsuleCollider:
@@ -1908,6 +1964,8 @@ Transform:
   - {fileID: 88209530}
   - {fileID: 1790734515}
   - {fileID: 1202505701}
+  - {fileID: 725730137}
+  - {fileID: 2107434739}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2150,6 +2208,7 @@ GameObject:
   - component: {fileID: 2040898407}
   - component: {fileID: 2040898410}
   - component: {fileID: 2040898409}
+  - component: {fileID: 2040898411}
   m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
@@ -2236,6 +2295,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 2096735966}
+  impactLayers:
+    serializedVersion: 2
+    m_Bits: 8
   impactPool: {fileID: 1790734516}
   trailPool: {fileID: 1202505702}
   shootingParticleSystem: {fileID: 2096735968}
@@ -2251,19 +2313,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c785edd23764f87b96d54e35f84351b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  attackInterval: 0.5
+  damageStrategy: {fileID: 2040898411}
+  attackInterval: 0.1
   mask:
     serializedVersion: 2
     m_Bits: 136
   automatic: 1
-  ammo: 15
+  ammo: 100000
   stockType: 0
   bulletSpawnPoint: {fileID: 2096735966}
   bulletSpread: 1
   bulletSpreadVariance: {x: 0.1, y: 0.1, z: 0.1}
   bulletSpeed: 100
   shootingRenderer: {fileID: 2040898409}
+--- !u!114 &2040898411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040898405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afaf338ed12498b942fbd161c2c52c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 5
+  variation: 0.6
 --- !u!4 &2096735966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2877231027574248398, guid: 53a229ee54a831cae9d3689e5e38dbe9, type: 3}
@@ -2274,3 +2350,49 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2675974053469561472, guid: 53a229ee54a831cae9d3689e5e38dbe9, type: 3}
   m_PrefabInstance: {fileID: 1191277730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2107434738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107434739}
+  - component: {fileID: 2107434740}
+  m_Layer: 0
+  m_Name: DamagePopupPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107434739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107434738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1807760172}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2107434740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107434738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97642c63e5b542c28c0dcd4b9684eab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPool: {fileID: 5948167946563032108, guid: f94e331914a6726b3ad148970a24b72e, type: 3}
+  amountToPool: 50

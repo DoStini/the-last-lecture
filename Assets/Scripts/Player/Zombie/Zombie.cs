@@ -9,11 +9,17 @@ public class Zombie : Character
 
     private void Start()
     {
+        Init();
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
         movementStrategy.Move();
+
+        if (_currentHealth == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
