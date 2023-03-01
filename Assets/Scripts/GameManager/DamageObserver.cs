@@ -35,7 +35,7 @@ public class DamageObserver : MonoBehaviour
         damagePopupPool.GetAndActivate((o =>
         {
             o.transform.position = characterPosition;
-            ReleaseDamagePopup releaseDamagePopup = o.transform.GetChild(0).AddComponent<ReleaseDamagePopup>();
+            ReleaseDamagePopup releaseDamagePopup = o.transform.GetChild(0).GetOrAddComponent<ReleaseDamagePopup>();
             releaseDamagePopup.damagePopupPool = damagePopupPool;
             
             Color32 color = getColor(damageTaken);
