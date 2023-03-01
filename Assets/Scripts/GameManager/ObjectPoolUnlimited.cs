@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPoolUnlimited : ObjectPool
 {
     /**
-     * Always returns an object, even if it is in use. No new objects created
+     * Always returns an object, and creates a new one if all instances are active.
      */
     public override GameObject GetAndActivate(Action<GameObject> instantiate)
     {
