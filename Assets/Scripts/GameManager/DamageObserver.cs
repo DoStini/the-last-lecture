@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DamageObserver : MonoBehaviour
@@ -11,9 +13,10 @@ public class DamageObserver : MonoBehaviour
      * Number of colors is the size of color thresholds + 1. The first color is the default color, the second color is
      * used when damage passes the first threshold and so on.
      */
-    public List<Color> colors;
+    public List<Color32> colors;
+    public GameObject damageText;
 
-    private Color getColor(int damage)
+    private Color32 getColor(int damage)
     {
         int index = colorThresholds.BinarySearch(damage);
         if (index < 0)
@@ -28,6 +31,13 @@ public class DamageObserver : MonoBehaviour
     {
         Debug.Log("------");
         Debug.Log(character + " took " + damageTaken);
-        Color color = getColor(damageTaken);
+
+        Vector3 characterPosition = character.transform.position;
+        characterPosition.y += 1;
+        GameObject damageInst = Instantiate(damageText.gameObject, characterPosition, Quaternion.identity);
+        Color32 color = getColor(damageTaken);
+        TextMeshPro textMesh = damageInst.transform.GetChild(0).GetComponent<TextMeshPro>();
+        textMesh.text = Mathf.Abs(damageTaken).ToString();
+        textMesh.faceColor = color;
     }
 }

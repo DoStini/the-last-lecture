@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8625027721115257378}
   m_Layer: 0
-  m_Name: TextHolder
+  m_Name: DamagePopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5948167946563032108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 533353108699331271}
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 531654928373156019}
   - component: {fileID: 2151986946841181255}
   - component: {fileID: 4418575603482273138}
+  - component: {fileID: 5172606203364733584}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -225,3 +226,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5172606203364733584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7340513615666554590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d35e9604be44ff8b3e870dba30a17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
