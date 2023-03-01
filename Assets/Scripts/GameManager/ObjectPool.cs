@@ -9,7 +9,7 @@ public class ObjectPool : MonoBehaviour
     public GameObject objectToPool;
     public int amountToPool;
 
-    private LinkedList<GameObject> _pooledObjects;
+    protected LinkedList<GameObject> _pooledObjects;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class ObjectPool : MonoBehaviour
     /**
      * Always returns an object, even if it is in use. No new objects created
      */
-    public GameObject GetAndActivate(Action<GameObject> instantiate)
+    public virtual GameObject GetAndActivate(Action<GameObject> instantiate)
     {
         GameObject obj = _pooledObjects.First.Value;
         instantiate(obj);
@@ -38,14 +38,14 @@ public class ObjectPool : MonoBehaviour
         return obj;
     }
 
-    public void Release(GameObject toRelease)
+    public virtual void Release(GameObject toRelease)
     {
         for (var node = _pooledObjects.First; node != null; node = node.Next)
         {
             if (!node.Value.activeInHierarchy || !ReferenceEquals(node.Value, toRelease)) continue;
             
             _pooledObjects.Remove(node);
-            _pooledObjects.AddLast(toRelease);
+            _pooledObjects.AddFirst(toRelease);
             toRelease.SetActive(false);
 
             break;

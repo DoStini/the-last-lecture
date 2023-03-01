@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamageObserver : MonoBehaviour
@@ -14,7 +15,7 @@ public class DamageObserver : MonoBehaviour
      * used when damage passes the first threshold and so on.
      */
     public List<Color32> colors;
-    public GameObject damageText;
+    public ObjectPool damagePopupPool;
 
     private Color32 getColor(int damage)
     {
@@ -29,15 +30,18 @@ public class DamageObserver : MonoBehaviour
 
     public void HandleDamagePopup(Character character, int damageTaken)
     {
-        Debug.Log("------");
-        Debug.Log(character + " took " + damageTaken);
-
         Vector3 characterPosition = character.transform.position;
         characterPosition.y += 1;
-        GameObject damageInst = Instantiate(damageText.gameObject, characterPosition, Quaternion.identity);
-        Color32 color = getColor(damageTaken);
-        TextMeshPro textMesh = damageInst.transform.GetChild(0).GetComponent<TextMeshPro>();
-        textMesh.text = Mathf.Abs(damageTaken).ToString();
-        textMesh.faceColor = color;
+        damagePopupPool.GetAndActivate((o =>
+        {
+            o.transform.position = characterPosition;
+            ReleaseDamagePopup releaseDamagePopup = o.transform.GetChild(0).AddComponent<ReleaseDamagePopup>();
+            releaseDamagePopup.damagePopupPool = damagePopupPool;
+            
+            Color32 color = getColor(damageTaken);
+            TextMeshPro textMesh = o.transform.GetChild(0).GetComponent<TextMeshPro>();
+            textMesh.text = Mathf.Abs(damageTaken).ToString();
+            textMesh.faceColor = color;
+        }));
     }
 }
