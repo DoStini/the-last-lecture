@@ -49,6 +49,7 @@ public abstract class FiringWeapon : Weapon
 
         shootingRenderer.Render(() =>
             {
+                if (!madeImpact) return;
                 if (!hit.collider.gameObject.CompareTag("Enemy") && !hit.collider.gameObject.CompareTag("Player")) return;
                 
                 Character character = hit.collider.gameObject.GetComponent<Character>();
