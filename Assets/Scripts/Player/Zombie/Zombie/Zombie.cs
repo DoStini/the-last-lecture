@@ -4,18 +4,19 @@ using UnityEngine.AI;
 
 public class Zombie : Character
 {
-    [SerializeField] private MovementStrategy movementStrategy;
-    private NavMeshAgent _navMeshAgent;
+    [SerializeField] private ZombieStrategy zombieStrategy;
+    [SerializeField] public Weapon weapon;
+    [SerializeField] public Player target;
+    [SerializeField] public float attackRange;
 
     private void Start()
     {
         Init();
-        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        movementStrategy.Move();
+        zombieStrategy.Act();
 
         if (_currentHealth == 0)
         {
