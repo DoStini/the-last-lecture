@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MeleeWeapon : Weapon
 {
@@ -38,6 +39,11 @@ public class MeleeWeapon : Weapon
 
             Character character = hitCollider.gameObject.GetComponent<Character>();
             character.RemoveHealth(damageStrategy.CalculateDamage());
+            
+            ImpactHandler impactHandler = hitCollider.gameObject.GetComponent<ImpactHandler>();
+            
+            Vector3 knockbackDirection = rotation * Vector3.forward;
+            impactHandler.AddImpact(knockbackDirection, knockbackFactor);
         }
     }
 
