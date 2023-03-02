@@ -27,6 +27,11 @@ public class MeleeWeapon : Weapon
         return true;
     }
 
+    private void DealDamage()
+    {
+        
+    }
+
     private void OnDrawGizmos()
     {
 // cache previous Gizmos settings
