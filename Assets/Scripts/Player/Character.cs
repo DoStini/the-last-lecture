@@ -13,6 +13,9 @@ public class Character : MonoBehaviour
     public float baseSpeed;
     public List<DamageObserver> damageObservers;
 
+    public float radius;
+    public float height;
+    
     protected int _currentHealth;
     private float _currentSpeed;
 
@@ -71,5 +74,10 @@ public class Character : MonoBehaviour
     {
         _currentHealth = baseHealth;
         _currentSpeed = baseSpeed;
+            
+        CapsuleCollider collider = GetComponent<CapsuleCollider>();
+            
+        collider.radius = radius;
+        collider.height = height;
     }
 }
