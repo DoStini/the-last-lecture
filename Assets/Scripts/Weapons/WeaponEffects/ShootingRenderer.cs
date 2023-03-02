@@ -1,8 +1,6 @@
-
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class ShootingRenderer : MonoBehaviour
 {

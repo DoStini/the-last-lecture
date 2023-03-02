@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Stock : PickableItem
@@ -12,8 +9,8 @@ public class Stock : PickableItem
     
     public enum Type
     {
-        PISTOL,
-        SNIPER
+        Pistol,
+        Sniper
     }
 
     public void Start()

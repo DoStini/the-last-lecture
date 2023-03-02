@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,13 +15,13 @@ public class ZombieImpactHandler : ImpactHandler
 
     private void Update()
     {
-        if (impulse.magnitude > 0.2f)
+        if (_impulse.magnitude > 0.2f)
         {
             _agent.isStopped = true;
             _rigidbody.isKinematic = false;
             _inImpact = true;
             
-            _rigidbody.velocity = impulse;
+            _rigidbody.velocity = _impulse;
         }
         else if (_inImpact)
         {
@@ -32,6 +31,6 @@ public class ZombieImpactHandler : ImpactHandler
             _inImpact = false;
         }
         
-        impulse = Vector3.Lerp(impulse, Vector3.zero, 5*Time.deltaTime);
+        _impulse = Vector3.Lerp(_impulse, Vector3.zero, 5*Time.deltaTime);
     }
 }

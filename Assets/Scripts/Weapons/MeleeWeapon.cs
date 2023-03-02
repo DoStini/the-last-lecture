@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MeleeWeapon : Weapon
 {
@@ -7,7 +6,7 @@ public class MeleeWeapon : Weapon
     public Vector3 boxSize;
     public Animator animator;
     public float knockbackFactor;
-    private bool m_start;
+    private bool _mStart;
 
     private Collider[] _colliders;
     private Vector3 _boxCenter;
@@ -16,7 +15,7 @@ public class MeleeWeapon : Weapon
     private void Start()
     {
         _colliders = new Collider[80];
-        m_start = true;
+        _mStart = true;
     }
 
     protected override bool _Attack(Vector3 pointerLocation)
@@ -25,6 +24,7 @@ public class MeleeWeapon : Weapon
         return true;
     }
 
+    // ReSharper disable once UnusedMember.Local
     private void DealDamage()
     {
         var rotation = playerCenter.rotation;
@@ -50,7 +50,7 @@ public class MeleeWeapon : Weapon
     private void OnDrawGizmos()
     {
 // cache previous Gizmos settings
-        if (m_start)
+        if (_mStart)
         {
             _boxCenter = playerCenter.position + playerCenter.rotation * Vector3.forward * boxSize.z;
 

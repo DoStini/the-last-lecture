@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class PlayerImpactHandler : ImpactHandler
 {
@@ -13,11 +11,11 @@ public class PlayerImpactHandler : ImpactHandler
 
     private void Update()
     {
-        if (impulse.magnitude > 0.2f)
+        if (_impulse.magnitude > 0.2f)
         {
-            _controller.Move(impulse * Time.deltaTime);
+            _controller.Move(_impulse * Time.deltaTime);
         }
         
-        impulse = Vector3.Lerp(impulse, Vector3.zero, 5*Time.deltaTime);
+        _impulse = Vector3.Lerp(_impulse, Vector3.zero, 5*Time.deltaTime);
     }
 }
