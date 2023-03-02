@@ -29,6 +29,7 @@ public abstract class MovementStrategy : MonoBehaviour
 
     protected bool FollowPlayer()
     {
+        if (!agent.enabled) return true;
         float distance = Vector3.Distance(target.transform.position, agent.transform.position);
         agent.isStopped = false;
 

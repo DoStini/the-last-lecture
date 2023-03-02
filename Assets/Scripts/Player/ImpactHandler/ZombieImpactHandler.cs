@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,20 +14,38 @@ public class ZombieImpactHandler : ImpactHandler
         _agent = GetComponent<NavMeshAgent>();
     }
 
+    private bool IsAgentOnNavMesh()
+    {
+        Vector3 agentPosition = _agent.transform.position;
+
+        if (!NavMesh.SamplePosition(agentPosition, out NavMeshHit hit, 1.5f, NavMesh.AllAreas)) return false;
+        
+        if ((agentPosition.x < hit.position.x + 0.5f && agentPosition.x > hit.position.x - 0.5f) &&
+            (agentPosition.z < hit.position.z + 0.5f && agentPosition.z > hit.position.z - 0.5f))
+        {
+            return agentPosition.y >= hit.position.y;
+        }
+
+        return false;
+    }
+
     private void Update()
     {
-        if (_impulse.magnitude > 0.2f)
+        if (_impulse.magnitude > 0.5f)
         {
-            _agent.isStopped = true;
-            _rigidbody.isKinematic = false;
-            _inImpact = true;
-            
-            _rigidbody.velocity = _impulse;
+            if (!_inImpact)
+            {
+                _agent.enabled = false;
+                _rigidbody.isKinematic = false;
+                _inImpact = true;
+            }
+
+            _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0) + _impulse;
         }
-        else if (_inImpact)
+        else if (_inImpact && IsAgentOnNavMesh())
         {
+            _agent.enabled = true;
             _agent.ResetPath();
-            _agent.isStopped = false;
             _rigidbody.isKinematic = true;
             _inImpact = false;
         }
