@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShootingStrategy : MonoBehaviour
+public abstract class AttackStrategy : MonoBehaviour
 {
     [SerializeField] protected Player attackTarget;
+    [SerializeField] protected Zombie zombie;
     [SerializeField] protected float attackRange;
     [SerializeField] protected Weapon weapon;
 
@@ -16,7 +17,7 @@ public abstract class ShootingStrategy : MonoBehaviour
     {
         float distance = Vector3.Distance(attackTarget.transform.position, transform.position);
 
-        if (distance > attackRange)
+        if (distance >  Mathf.Min(attackRange, zombie.viewRange))
         {
             holdTime = 0;
             return;

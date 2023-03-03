@@ -7,7 +7,6 @@ public class Zombie : Character
     [SerializeField] private ZombieStrategy zombieStrategy;
     [SerializeField] public Weapon weapon;
     [SerializeField] public Player target;
-    [SerializeField] public float attackRange;
 
     private void Start()
     {
@@ -18,7 +17,7 @@ public class Zombie : Character
     {
         zombieStrategy.Act();
 
-        if (_currentHealth == 0)
+        if (currentHealth == 0)
         {
             gameObject.SetActive(false);
         }

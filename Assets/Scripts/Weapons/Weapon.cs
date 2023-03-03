@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -16,7 +13,7 @@ public abstract class Weapon : MonoBehaviour
     {
         if (!(_lastAttack + attackInterval < Time.time)) return;
         if (!automatic && holdTime > 0) return;
-        
+
         if (_Attack(pointerLocation))
         {
             _lastAttack = Time.time;

@@ -1,4 +1,4 @@
-public class ConstantShootingStrategy : ShootingStrategy
+public class ConstantAttackStrategy : AttackStrategy
 {
     protected override bool _Shoot()
     {

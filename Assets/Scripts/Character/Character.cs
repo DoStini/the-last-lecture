@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,18 +13,21 @@ public class Character : MonoBehaviour
 
     public float radius;
     public float height;
+
+    public float attackRange;
+    public float viewRange;
     
-    protected int _currentHealth;
+    protected int currentHealth;
     private float _currentSpeed;
 
     public int GetHealth()
     {
-        return _currentHealth;
+        return currentHealth;
     }
 
     public void ResetHealth()
     {
-        _currentHealth = baseHealth;
+        currentHealth = baseHealth;
     }
 
     public void ResetSpeed()
@@ -36,23 +37,23 @@ public class Character : MonoBehaviour
 
     public void AddHealth(int health)
     {
-        _currentHealth += health;
+        currentHealth += health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, health)));
 
-        if (_currentHealth > maxHealth)
+        if (currentHealth > maxHealth)
         {
-            _currentHealth = maxHealth;
+            currentHealth = maxHealth;
         }
     }
 
     public void RemoveHealth(int health)
     {
-        _currentHealth -= health;
+        currentHealth -= health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, -health)));
 
-        if (_currentHealth < 0)
+        if (currentHealth < 0)
         {
-            _currentHealth = 0;
+            currentHealth = 0;
         }
     }
 
@@ -72,7 +73,7 @@ public class Character : MonoBehaviour
 
     protected void Init()
     {
-        _currentHealth = baseHealth;
+        currentHealth = baseHealth;
         _currentSpeed = baseSpeed;
             
         CapsuleCollider collider = GetComponent<CapsuleCollider>();

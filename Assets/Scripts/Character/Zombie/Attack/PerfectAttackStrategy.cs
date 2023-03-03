@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PerfectShootingStrategy : ShootingStrategy
+public class PerfectAttackStrategy : AttackStrategy
 {
     protected override bool _Shoot()
     {
