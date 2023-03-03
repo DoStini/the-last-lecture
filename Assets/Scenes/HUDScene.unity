@@ -1003,9 +1003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8549d940730cd36e8a858b73f6160cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBackpackUpdate:
-    m_PersistentCalls:
-      m_Calls: []
   player: {fileID: 958481663}
 --- !u!1 &958481657
 GameObject:
@@ -1120,6 +1117,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e86344a0a36674e390ee207e0c681b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBackpackUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 930599594}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: UpdateStock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   maxWeight: 10
 --- !u!114 &958481663
 MonoBehaviour:

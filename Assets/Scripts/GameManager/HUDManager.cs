@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UIElements;
-
-[System.Serializable]
-public class PlayerBackpackUpdate : UnityEvent<GameObject>
-{
-    
-}
 
 public class HUDManager : MonoBehaviour
 {
-    [SerializeField] private PlayerBackpackUpdate playerBackpackUpdate;
     [SerializeField] private Player player;
 
     private ProgressBar _healthBar;
@@ -29,6 +19,14 @@ public class HUDManager : MonoBehaviour
         _currentAmmo = root.Q<Label>("CurrentAmmo");
         _stock = root.Q<Label>("Stock");
         _ammoCounter = root.Q<VisualElement>("AmmoCounter");
+
+        UpdateStock();
+    }
+
+    public void UpdateStock()
+    {
+        if (ReferenceEquals(player.weapon, null) || player.weapon is not FiringWeapon fw) return;
+        _stock.text = player.backpack.StockAmount(fw.stockType).ToString();
     }
 
     private void ToggleAmmo(bool active)
