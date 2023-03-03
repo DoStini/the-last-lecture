@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private Player player;
+    public int maxHealth = 50;
 
     private ProgressBar _healthBar;
     private Label _currentAmmo;
@@ -39,6 +40,7 @@ public class HUDManager : MonoBehaviour
     {
         _healthBar.value = player.GetHealth();
         _healthBar.highValue = player.maxHealth;
+        _healthBar.style.width = new StyleLength(Length.Percent((float)player.maxHealth / maxHealth * 100));
 
         if (ReferenceEquals(player.weapon, null) || player.weapon is not FiringWeapon fw)
         {
