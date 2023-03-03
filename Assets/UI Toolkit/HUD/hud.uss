@@ -41,6 +41,14 @@
 .unity-progress-bar__progress {
     background-image: url('project://database/Assets/UI%20Toolkit/HUD/BarV6_ProgressBar.png?fileID=2800000&guid=e06197fdd581bfa6e83627123db820e5&type=3#BarV6_ProgressBar');
     background-color: rgba(0, 0, 0, 0);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .unity-progress-bar__title-container {
