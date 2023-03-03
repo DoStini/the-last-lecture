@@ -17,7 +17,7 @@ public class Zombie : Character
     {
         movementStrategy.Move();
 
-        if (CurrentHealth == 0)
+        if (_currentHealth == 0)
         {
             gameObject.SetActive(false);
         }

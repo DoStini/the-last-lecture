@@ -18,6 +18,13 @@ public class Backpack : MonoBehaviour
         return default(Stock) ? null : stock;
     }
 
+    public int StockAmount(Stock.Type type)
+    {
+        var stocks = _items.AsQueryable();
+
+        return stocks.OfType<Stock>().Count(stock => stock.type == type);
+    }
+
     public bool AddPickableItem(PickableItem item)
     {
         if (_weight + item.weight > maxWeight)

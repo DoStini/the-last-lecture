@@ -12,31 +12,18 @@ public class Character : MonoBehaviour
     public int baseHealth;
     public float baseSpeed;
     public List<DamageObserver> damageObservers;
-    [CanBeNull] public HUDManager hudManager;
-
-    private int _currentHealth;
-
-    protected int CurrentHealth
-    {
-        get => _currentHealth;
-        private set
-        {
-            _currentHealth = value;
-            if (!ReferenceEquals(hudManager, null))
-                hudManager.UpdateHealth(_currentHealth);
-        }
-    }
+    protected int _currentHealth;
 
     private float _currentSpeed;
 
     public int GetHealth()
     {
-        return CurrentHealth;
+        return _currentHealth;
     }
 
     public void ResetHealth()
     {
-        CurrentHealth = baseHealth;
+        _currentHealth = baseHealth;
     }
 
     public void ResetSpeed()
@@ -46,23 +33,23 @@ public class Character : MonoBehaviour
 
     public void AddHealth(int health)
     {
-        CurrentHealth += health;
+        _currentHealth += health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, health)));
 
-        if (CurrentHealth > maxHealth)
+        if (_currentHealth > maxHealth)
         {
-            CurrentHealth = maxHealth;
+            _currentHealth = maxHealth;
         }
     }
 
     public void RemoveHealth(int health)
     {
-        CurrentHealth -= health;
+        _currentHealth -= health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, -health)));
 
-        if (CurrentHealth < 0)
+        if (_currentHealth < 0)
         {
-            CurrentHealth = 0;
+            _currentHealth = 0;
         }
     }
 
@@ -82,7 +69,7 @@ public class Character : MonoBehaviour
 
     protected void Init()
     {
-        CurrentHealth = baseHealth;
+        _currentHealth = baseHealth;
         _currentSpeed = baseSpeed;
     }
 }

@@ -1003,6 +1003,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8549d940730cd36e8a858b73f6160cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBackpackUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  player: {fileID: 958481663}
 --- !u!1 &958481657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1139,6 @@ MonoBehaviour:
   baseHealth: 30
   baseSpeed: 0
   damageObservers: []
-  hudManager: {fileID: 930599594}
   maxWeight: 0
   backpack: {fileID: 958481662}
   weapon: {fileID: 2040898410}
@@ -1520,7 +1523,6 @@ MonoBehaviour:
   baseSpeed: 0
   damageObservers:
   - {fileID: 725730138}
-  hudManager: {fileID: 0}
   movementStrategy: {fileID: 1138653620}
 --- !u!136 &1138653614
 CapsuleCollider:
@@ -2382,9 +2384,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   automatic: 1
-  ammo: 100000
   stockType: 0
   bulletSpawnPoint: {fileID: 2096735966}
+  <Ammo>k__BackingField: 50
   bulletSpread: 1
   bulletSpreadVariance: {x: 0.1, y: 0.1, z: 0.1}
   bulletSpeed: 100

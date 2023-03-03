@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
+
+[System.Serializable]
+public class PlayerBackpackUpdate : UnityEvent<GameObject>
+{
+    
+}
 
 public class HUDManager : MonoBehaviour
 {
+    [SerializeField] private PlayerBackpackUpdate playerBackpackUpdate;
+    [SerializeField] private Player player;
+
     private ProgressBar _healthBar;
     private Label _currentAmmo;
     private Label _stock;
     private VisualElement _ammoCounter;
-    
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -21,29 +31,24 @@ public class HUDManager : MonoBehaviour
         _ammoCounter = root.Q<VisualElement>("AmmoCounter");
     }
 
-    public void ToggleAmmo(bool active)
+    private void ToggleAmmo(bool active)
     {
         _ammoCounter.style.display = active ? 
             new StyleEnum<DisplayStyle>(DisplayStyle.Flex) : new StyleEnum<DisplayStyle>(DisplayStyle.None);
     }
 
-    public void UpdateCurrentAmmo(int ammo)
+    private void Update()
     {
-        _currentAmmo.text = ammo.ToString();
-    }
+        _healthBar.value = player.GetHealth();
+        _healthBar.highValue = player.maxHealth;
 
-    public void UpdateStock(int stockCount)
-    {
-        _stock.text = stockCount.ToString();
-    }
+        if (ReferenceEquals(player.weapon, null) || player.weapon is not FiringWeapon fw)
+        {
+            ToggleAmmo(false);
+            return;
+        }
+        ToggleAmmo(true);
 
-    public void UpdateMaxHealth(int maxHealth)
-    {
-        _healthBar.highValue = maxHealth;
-    }
-
-    public void UpdateHealth(int health)
-    {
-        _healthBar.value = health;
+        _currentAmmo.text = fw.Ammo.ToString();
     }
 }
