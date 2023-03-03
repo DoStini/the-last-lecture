@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -12,18 +12,31 @@ public class Character : MonoBehaviour
     public int baseHealth;
     public float baseSpeed;
     public List<DamageObserver> damageObservers;
+    [CanBeNull] public HUDManager hudManager;
 
-    protected int _currentHealth;
+    private int _currentHealth;
+
+    protected int CurrentHealth
+    {
+        get => _currentHealth;
+        private set
+        {
+            _currentHealth = value;
+            if (!ReferenceEquals(hudManager, null))
+                hudManager.UpdateHealth(_currentHealth);
+        }
+    }
+
     private float _currentSpeed;
 
     public int GetHealth()
     {
-        return _currentHealth;
+        return CurrentHealth;
     }
 
     public void ResetHealth()
     {
-        _currentHealth = baseHealth;
+        CurrentHealth = baseHealth;
     }
 
     public void ResetSpeed()
@@ -33,23 +46,23 @@ public class Character : MonoBehaviour
 
     public void AddHealth(int health)
     {
-        _currentHealth += health;
+        CurrentHealth += health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, health)));
 
-        if (_currentHealth > maxHealth)
+        if (CurrentHealth > maxHealth)
         {
-            _currentHealth = maxHealth;
+            CurrentHealth = maxHealth;
         }
     }
 
     public void RemoveHealth(int health)
     {
-        _currentHealth -= health;
+        CurrentHealth -= health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, -health)));
 
-        if (_currentHealth < 0)
+        if (CurrentHealth < 0)
         {
-            _currentHealth = 0;
+            CurrentHealth = 0;
         }
     }
 
@@ -69,7 +82,7 @@ public class Character : MonoBehaviour
 
     protected void Init()
     {
-        _currentHealth = baseHealth;
+        CurrentHealth = baseHealth;
         _currentSpeed = baseSpeed;
     }
 }

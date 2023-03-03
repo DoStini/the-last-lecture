@@ -1135,6 +1135,7 @@ MonoBehaviour:
   baseHealth: 30
   baseSpeed: 0
   damageObservers: []
+  hudManager: {fileID: 930599594}
   maxWeight: 0
   backpack: {fileID: 958481662}
   weapon: {fileID: 2040898410}
@@ -1519,6 +1520,7 @@ MonoBehaviour:
   baseSpeed: 0
   damageObservers:
   - {fileID: 725730138}
+  hudManager: {fileID: 0}
   movementStrategy: {fileID: 1138653620}
 --- !u!136 &1138653614
 CapsuleCollider:

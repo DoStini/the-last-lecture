@@ -12,6 +12,9 @@ public class Player : Character
     private void Start()
     {
         Init();
+        
+        if (!ReferenceEquals(hudManager, null))
+            hudManager.UpdateMaxHealth(maxHealth);
     }
 
 
