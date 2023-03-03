@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 public abstract class Weapon : MonoBehaviour
 {
     public DamageStrategy damageStrategy;
+    
     public float attackInterval;
     public LayerMask mask;
     public bool automatic = true;
