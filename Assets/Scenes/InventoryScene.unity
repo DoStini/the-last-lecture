@@ -964,6 +964,7 @@ MonoBehaviour:
   baseSpeed: 0
   damageObservers: []
   backpack: {fileID: 958481662}
+  pickRange: 3
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,6 +1905,11 @@ PrefabInstance:
       objectReference: {fileID: 1790734516}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
+--- !u!1 &8718044921279802623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 233282686626591108, guid: d2aafd2a2fd59c9598cb8ccb6e861565, type: 3}
+  m_PrefabInstance: {fileID: 8917266850650758523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8917266850650758523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1911,6 +1917,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8430926332431130800, guid: d2aafd2a2fd59c9598cb8ccb6e861565, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 8718044921279802623}
     - target: {fileID: 8430926332431130803, guid: d2aafd2a2fd59c9598cb8ccb6e861565, type: 3}
       propertyPath: trailPool
       value: 

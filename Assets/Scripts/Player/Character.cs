@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     public int maxHealth;
     public float maxSpeed;
     public float minSpeed;
-    
+
     public int baseHealth;
     public float baseSpeed;
     public List<DamageObserver> damageObservers;

@@ -1,24 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : Character
 {
     public Backpack backpack;
-
+    public float pickRange;
+    
     private void Start()
     {
         Init();
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Pickable"))
-        {
-            HandlePickable(other.gameObject);
-        }
     }
 
     public void HandleReload()
@@ -53,9 +43,29 @@ public class Player : Character
         }
     }
 
-    private void HandlePickable(GameObject pickableGameObject)
+    public void HandleDrop()
     {
-        var pickableItem = pickableGameObject.GetComponent<PickableItem>();
+        if (!ReferenceEquals(backpack.weapon, null))
+        {
+            backpack.weapon.Drop(backpack.weapon.transform.position);
+            backpack.RemovePickableItem(backpack.weapon);
+        }
+    }
+
+    public void HandleInteract(Vector3 pointerLocation)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(pointerLocation, 0.5f);
+        Collider closestPickableItem = hitColliders.AsQueryable().OfType<Collider>()
+            .Where(item => item.GetComponent<PickableItem>())
+            .Where(item => Vector3.Distance(item.transform.position, transform.position) < pickRange)
+            .OrderBy(item => Vector3.Distance(item.transform.position, pointerLocation)).FirstOrDefault();
+
+        if (closestPickableItem is null)
+        {
+            return;
+        }
+
+        var pickableItem = closestPickableItem.GetComponent<PickableItem>();
 
         if (!backpack.AddPickableItem(pickableItem))
         {
