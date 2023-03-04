@@ -1304,6 +1304,8 @@ MonoBehaviour:
   - {fileID: 725730138}
   radius: 0.5
   height: 2
+  attackRange: 0
+  viewRange: 0
   backpack: {fileID: 958481662}
   weapon: {fileID: 2040898410}
 --- !u!136 &958481664
@@ -1554,10 +1556,11 @@ MonoBehaviour:
   - {fileID: 725730138}
   radius: 0.5
   height: 2
+  attackRange: 5
+  viewRange: 10
   zombieStrategy: {fileID: 1138653623}
   weapon: {fileID: 641275044}
   target: {fileID: 958481663}
-  attackRange: 5
 --- !u!136 &1138653614
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1667,7 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 958481663}
-  viewRange: 6
+  zombie: {fileID: 1138653613}
   minRange: 3
   agent: {fileID: 1138653621}
   waypoints:
@@ -1708,7 +1711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 958481663}
-  viewRange: 6
+  zombie: {fileID: 0}
   minRange: 3
   agent: {fileID: 1138653621}
   interval: 2
@@ -1726,7 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementStrategy: {fileID: 1138653620}
-  shootingStrategy: {fileID: 1138653625}
+  attackStrategy: {fileID: 1138653625}
 --- !u!114 &1138653624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,6 +1743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 958481663}
+  zombie: {fileID: 1138653613}
   attackRange: 8
   weapon: {fileID: 641275044}
 --- !u!114 &1138653625
@@ -1755,6 +1759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 958481663}
+  zombie: {fileID: 1138653613}
   attackRange: 8
   weapon: {fileID: 641275044}
 --- !u!1001 &1191277730
