@@ -80,7 +80,7 @@ public class Backpack : MonoBehaviour
     private void RemoveWeapon(Weapon pickedWeapon)
     {
         int index = Array.FindIndex(_weapons, w => pickedWeapon);
-        _weapons[index] = pickedWeapon;
+        _weapons[index] = null;
         _numWeapons--;
     }
 

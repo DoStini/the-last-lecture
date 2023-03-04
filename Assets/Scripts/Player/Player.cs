@@ -37,19 +37,17 @@ public class Player : Character
 
     public void HandleAttack(Vector3 pointerLocation, int holdTime)
     {
-        if (!ReferenceEquals(backpack.weapon, null))
-        {
-            backpack.weapon.Attack(pointerLocation, holdTime);
-        }
+        if (backpack.weapon is null) return;
+
+        backpack.weapon.Attack(pointerLocation, holdTime);
     }
 
     public void HandleDrop()
     {
-        if (!ReferenceEquals(backpack.weapon, null))
-        {
-            backpack.weapon.Drop(backpack.weapon.transform.position);
-            backpack.RemovePickableItem(backpack.weapon);
-        }
+        if (backpack.weapon is null) return;
+
+        backpack.weapon.Drop(backpack.weapon.transform.position);
+        backpack.RemovePickableItem(backpack.weapon);
     }
 
     public void HandleInteract(Vector3 pointerLocation)
