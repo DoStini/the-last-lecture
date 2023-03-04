@@ -9,6 +9,11 @@ public class Zombie : Character
     private void Start()
     {
         Init();
+        
+        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+            
+        capsuleCollider.radius = radius;
+        capsuleCollider.height = height;
     }
 
     private void Update()

@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 4171958471042868504}
   - component: {fileID: 4171958471042868511}
   - component: {fileID: 4171958471042868508}
+  - component: {fileID: 267603624097719681}
+  - component: {fileID: 881399948050538405}
+  - component: {fileID: 1820337618741183889}
   m_Layer: 7
   m_Name: Zombie
   m_TagString: Enemy
@@ -145,7 +148,13 @@ MonoBehaviour:
   baseSpeed: 0
   damageObservers:
   - {fileID: 0}
-  movementStrategy: {fileID: 4171958471042868511}
+  radius: 0.5
+  height: 2
+  attackRange: 5
+  viewRange: 10
+  zombieStrategy: {fileID: 267603624097719681}
+  weapon: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &4171958471042868509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  viewRange: 6
+  zombie: {fileID: 4171958471042868486}
   minRange: 3
   agent: {fileID: 4171958471042868510}
   interval: 2
@@ -193,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  viewRange: 6
+  zombie: {fileID: 0}
   minRange: 3
   agent: {fileID: 4171958471042868510}
   waypoints:
@@ -212,3 +221,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 1
+--- !u!114 &267603624097719681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171958471042868487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45ad25ee25f98360adc3ce82df1a8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementStrategy: {fileID: 4171958471042868509}
+  attackStrategy: {fileID: 1820337618741183889}
+--- !u!114 &881399948050538405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171958471042868487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5817b39057fb45bbe4d1cfa2f926b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTarget: {fileID: 0}
+  attackRange: 8
+  weapon: {fileID: 0}
+--- !u!114 &1820337618741183889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171958471042868487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4ce9b4d56b9e6d882e2308253d79d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTarget: {fileID: 0}
+  attackRange: 8
+  weapon: {fileID: 0}
