@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public uint maxWeight;
     public Backpack backpack;
-    public Weapon weapon;
 
     private void Start()
     {
@@ -25,7 +23,7 @@ public class Player : Character
 
     public void HandleReload()
     {
-        if (weapon is not FiringWeapon firingWeapon)
+        if (backpack.weapon is not FiringWeapon firingWeapon)
         {
             return;
         }
@@ -38,29 +36,33 @@ public class Player : Character
             return;
         }
 
+        if (backpack.RemovePickableItem(stock))
+        {
+            stock.Drop(backpack.weapon.transform.position);
+        }
+
         backpack.RemovePickableItem(stock);
         firingWeapon.Reload(stock);
     }
 
     public void HandleAttack(Vector3 pointerLocation, int holdTime)
     {
-        if (!ReferenceEquals(weapon, null))
+        if (!ReferenceEquals(backpack.weapon, null))
         {
-            weapon.Attack(pointerLocation, holdTime);
+            backpack.weapon.Attack(pointerLocation, holdTime);
         }
     }
-    
+
     private void HandlePickable(GameObject pickableGameObject)
     {
         var pickableItem = pickableGameObject.GetComponent<PickableItem>();
+
         if (!backpack.AddPickableItem(pickableItem))
         {
             Debug.Log("Backpack max capacity");
             return;
         }
-        
-        Destroy(pickableGameObject);
-        Debug.Log(pickableItem);
+
+        pickableItem.Pick(gameObject);
     }
-    
 }

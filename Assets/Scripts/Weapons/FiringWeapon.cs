@@ -53,7 +53,7 @@ public abstract class FiringWeapon : Weapon
                 
                 Character character = hit.collider.gameObject.GetComponent<Character>();
                 character.RemoveHealth(damageStrategy.CalculateDamage());
-            }, 
+            },
             direction, madeImpact, hit, bulletSpeed);
 
         return true;

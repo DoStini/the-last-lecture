@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Backpack : MonoBehaviour
@@ -8,6 +9,11 @@ public class Backpack : MonoBehaviour
     private uint _weight;
 
     private readonly List<PickableItem> _items = new();
+
+    private readonly List<Weapon> _weapons = new();
+    public int maxWeapons;
+    public int activeWeapon = -1;
+    [CanBeNull] public Weapon weapon => activeWeapon == -1 ? null : _weapons[activeWeapon];
 
     public Stock FindStock(Stock.Type type)
     {
@@ -20,22 +26,42 @@ public class Backpack : MonoBehaviour
 
     public bool AddPickableItem(PickableItem item)
     {
+        if (item.isPicked)
+        {
+            return false;
+        }
+        
         if (_weight + item.weight > maxWeight)
         {
             return false;
         }
 
-        _items.Add(item);
-        _weight += item.weight;
+        if (item is Weapon pickedWeapon)
+        {
+            if (_weapons.Count == maxWeapons) return false;
+
+            _weapons.Add(pickedWeapon);
+            activeWeapon = 0; // TODO CHANGE THIS
+        }
+        else
+        {
+            _items.Add(item);
+        }
         
+        _weight += item.weight;
+
         return true;
     }
 
     public bool RemovePickableItem(PickableItem item)
     {
-        if (!_items.Remove(item))
+        if (item is Weapon pickedWeapon)
         {
-            return false;
+            _weapons.Remove(pickedWeapon);
+        }
+        else
+        {
+            _items.Remove(item);
         }
 
         _weight -= item.weight;
