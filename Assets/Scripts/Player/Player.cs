@@ -65,12 +65,11 @@ public class Player : Character
 
         var pickableItem = closestPickableItem.GetComponent<PickableItem>();
 
-        if (!backpack.AddPickableItem(pickableItem))
+        if (!backpack.AddPickableItem(pickableItem, gameObject))
         {
             Debug.Log("Backpack max capacity");
             return;
         }
 
-        pickableItem.Pick(gameObject);
     }
 }

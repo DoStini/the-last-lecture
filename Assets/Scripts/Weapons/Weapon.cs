@@ -27,7 +27,6 @@ public abstract class Weapon : PickableItem
 
     public override void Pick(GameObject parent)
     {
-        _Pick(parent);
-        transform.SetLocalPositionAndRotation(activePosition, activeRotation);
+        base.Pick(parent, false);
     }
 }

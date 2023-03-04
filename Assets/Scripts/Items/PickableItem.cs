@@ -11,26 +11,25 @@ public abstract class PickableItem : MonoBehaviour
 
     private GameObject _currentParent;
 
-    protected void _Pick(GameObject parent)
+    public void Pick(GameObject parent, bool deactivateModel)
     {
         isPicked = true;
         rigidbody.isKinematic = true;
         transform.SetParent(parent.transform);
-    }
-    
-    public virtual void Pick(GameObject parent)
-    {
-        _Pick(parent);
-        model.SetActive(false);
+        model.SetActive(!deactivateModel);
     }
 
-    public virtual void Drop(Vector3 position)
+    public void Drop(Vector3 position)
     {
-        model.SetActive(true);
         rigidbody.isKinematic = false;
         transform.SetParent(null);
         transform.position = position;
         rigidbody.AddTorque(5,5,5);
         isPicked = false;
+    }
+
+    public virtual void Pick(GameObject parent)
+    {
+        Pick(parent, true);
     }
 }
