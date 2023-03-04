@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _shootAction;
     private InputAction _dropAction;
     private InputAction _interactAction;
+    private InputAction _scrollPositiveAction;
+    private InputAction _scrollNegativeAction;
     private float _vSpeed;
     private float _lookAngle;
     private Vector2 _actionDirection = Vector2.zero;
@@ -54,6 +56,12 @@ public class PlayerMovement : MonoBehaviour
         _interactAction = _playerActions.Player.Interact;
         _interactAction.Enable();
 
+        _scrollNegativeAction = _playerActions.Player.SwitchWeaponNeg;
+        _scrollNegativeAction.Enable();
+
+        _scrollPositiveAction = _playerActions.Player.SwitchWeaponPos;
+        _scrollPositiveAction.Enable();
+
         _shootAction.started += StartShooting;
         _shootAction.canceled += StartShooting;
     }
@@ -69,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
         _reloadAction.Disable();
         _dropAction.Disable();
         _interactAction.Disable();
+        _scrollNegativeAction.Disable();
+        _scrollPositiveAction.Disable();
     }
     
     // Update is called once per frame
@@ -91,10 +101,18 @@ public class PlayerMovement : MonoBehaviour
         {
             player.HandleInteract(_pointerLocation);
         }
+
+        if (_scrollNegativeAction.WasPerformedThisFrame())
+        {
+            player.backpack.SwitchPreviousWeapon();
+        }
+        else if (_scrollPositiveAction.WasPerformedThisFrame())
+        {
+            player.backpack.SwitchNextWeapon();
+        }
         
         if (_shootHeld)
         {
-            var playerPosition = transform.position;
             player.HandleAttack(_pointerLocation, _holdTime);
             _holdTime++;
         }

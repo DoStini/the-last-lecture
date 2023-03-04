@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
@@ -10,8 +11,10 @@ public class Backpack : MonoBehaviour
 
     private readonly List<PickableItem> _items = new();
 
-    private readonly List<Weapon> _weapons = new();
+    private Weapon[] _weapons;
     public int maxWeapons;
+    private int _numWeapons = 0;
+
     public int activeWeapon = -1;
     [CanBeNull] public Weapon weapon => activeWeapon == -1 ? null : _weapons[activeWeapon];
 
@@ -38,10 +41,9 @@ public class Backpack : MonoBehaviour
 
         if (item is Weapon pickedWeapon)
         {
-            if (_weapons.Count == maxWeapons) return false;
+            if (_numWeapons == maxWeapons) return false;
 
-            _weapons.Add(pickedWeapon);
-            activeWeapon = 0; // TODO CHANGE THIS
+            AddWeapon(pickedWeapon);
         }
         else
         {
@@ -53,11 +55,18 @@ public class Backpack : MonoBehaviour
         return true;
     }
 
+    private void AddWeapon(Weapon pickedWeapon)
+    {
+        int index = Array.FindIndex(_weapons, w => w is null);
+        _weapons[index] = pickedWeapon;
+        _numWeapons++;
+    }
+
     public bool RemovePickableItem(PickableItem item)
     {
         if (item is Weapon pickedWeapon)
         {
-            _weapons.Remove(pickedWeapon);
+            RemoveWeapon(pickedWeapon);
         }
         else
         {
@@ -67,9 +76,29 @@ public class Backpack : MonoBehaviour
         _weight -= item.weight;
         return true;
     }
-    
-    void Start()
+
+    private void RemoveWeapon(Weapon pickedWeapon)
+    {
+        int index = Array.FindIndex(_weapons, w => pickedWeapon);
+        _weapons[index] = pickedWeapon;
+        _numWeapons--;
+    }
+
+    private void Start()
     {
         _weight = 0;
+        _weapons = new Weapon[maxWeapons];
+    }
+
+    public void SwitchNextWeapon()
+    {
+        activeWeapon ++;
+        if (activeWeapon == _numWeapons) activeWeapon = -1;
+    }
+
+    public void SwitchPreviousWeapon()
+    {
+        activeWeapon--;
+        if (activeWeapon == -2) activeWeapon = _numWeapons - 1;
     }
 }
