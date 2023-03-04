@@ -16,17 +16,17 @@ public class Character : MonoBehaviour
     
     public float viewRange;
     
-    protected int currentHealth;
+    protected int _currentHealth;
     private float _currentSpeed;
 
     public int GetHealth()
     {
-        return currentHealth;
+        return _currentHealth;
     }
 
     public void ResetHealth()
     {
-        currentHealth = baseHealth;
+        _currentHealth = baseHealth;
     }
 
     public void ResetSpeed()
@@ -36,23 +36,23 @@ public class Character : MonoBehaviour
 
     public void AddHealth(int health)
     {
-        currentHealth += health;
+        _currentHealth += health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, health)));
 
-        if (currentHealth > maxHealth)
+        if (_currentHealth > maxHealth)
         {
-            currentHealth = maxHealth;
+            _currentHealth = maxHealth;
         }
     }
 
     public void RemoveHealth(int health)
     {
-        currentHealth -= health;
+        _currentHealth -= health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, -health)));
 
-        if (currentHealth < 0)
+        if (_currentHealth < 0)
         {
-            currentHealth = 0;
+            _currentHealth = 0;
         }
     }
 
@@ -72,7 +72,7 @@ public class Character : MonoBehaviour
 
     protected void Init()
     {
-        currentHealth = baseHealth;
+        _currentHealth = baseHealth;
         _currentSpeed = baseSpeed;
     }
 }

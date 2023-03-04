@@ -13,8 +13,7 @@ public class Player : Character
         controller.radius = radius;
         controller.height = height;
     }
-
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pickable"))

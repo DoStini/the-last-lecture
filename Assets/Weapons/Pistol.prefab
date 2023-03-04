@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8094975623259462373}
   - component: {fileID: 8094975623259462375}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,14 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageStrategy: {fileID: 8094975623259462375}
-  attackInterval: 0.1
+  attackInterval: 0.4
   mask:
     serializedVersion: 2
     m_Bits: 136
-  automatic: 1
-  ammo: 100000
+  automatic: 0
   stockType: 0
   bulletSpawnPoint: {fileID: 6321605891153780448}
+  <Ammo>k__BackingField: 0
   bulletSpread: 1
   bulletSpreadVariance: {x: 0.1, y: 0.1, z: 0.1}
   bulletSpeed: 100

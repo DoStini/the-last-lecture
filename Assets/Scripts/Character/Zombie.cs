@@ -20,7 +20,7 @@ public class Zombie : Character
     {
         zombieStrategy.Act();
 
-        if (currentHealth == 0)
+        if (_currentHealth == 0)
         {
             gameObject.SetActive(false);
         }
