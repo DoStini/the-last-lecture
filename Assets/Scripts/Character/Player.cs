@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public uint maxWeight;
     public Backpack backpack;
     public Weapon weapon;
 

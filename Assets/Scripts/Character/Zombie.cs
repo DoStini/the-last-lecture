@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Zombie : Character
 {
-    [SerializeField] private MovementStrategy movementStrategy;
+    [SerializeField] private ZombieStrategy zombieStrategy;
+    [SerializeField] public Weapon weapon;
+    [SerializeField] public Player target;
 
     private void Start()
     {
@@ -11,9 +13,9 @@ public class Zombie : Character
 
     private void Update()
     {
-        movementStrategy.Move();
+        zombieStrategy.Act();
 
-        if (_currentHealth == 0)
+        if (currentHealth == 0)
         {
             gameObject.SetActive(false);
         }

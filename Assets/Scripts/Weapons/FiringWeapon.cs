@@ -51,10 +51,10 @@ public abstract class FiringWeapon : Weapon
             {
                 if (!madeImpact) return;
                 if (!hit.collider.gameObject.CompareTag("Enemy") && !hit.collider.gameObject.CompareTag("Player")) return;
-                
+
                 Character character = hit.collider.gameObject.GetComponent<Character>();
                 character.RemoveHealth(damageStrategy.CalculateDamage());
-            }, 
+            },
             direction, madeImpact, hit, bulletSpeed);
 
         return true;

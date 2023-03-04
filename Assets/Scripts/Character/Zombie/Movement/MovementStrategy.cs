@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public abstract class MovementStrategy : MonoBehaviour
 {
     [SerializeField] private Player target;
-    [SerializeField] private float viewRange;
+    [SerializeField] private Zombie zombie;
     [SerializeField] private float minRange;
     [SerializeField] protected NavMeshAgent agent;
 
@@ -24,7 +24,7 @@ public abstract class MovementStrategy : MonoBehaviour
 
     private bool PlayerInViewRange(float distance)
     {
-        return distance < viewRange;
+        return distance < zombie.viewRange;
     }
 
     protected bool FollowPlayer()
