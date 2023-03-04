@@ -1,23 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AttackStrategy : MonoBehaviour
 {
-    [SerializeField] protected Player attackTarget;
-    [SerializeField] protected Zombie zombie;
+    private Zombie _zombie; 
+    protected Player _attackTarget;
+    protected Weapon _weapon;
+
     [SerializeField] protected float attackRange;
-    [SerializeField] protected Weapon weapon;
 
     protected int holdTime = 0;
-    
+
+    private void Start()
+    {
+        _zombie = GetComponent<Zombie>();
+        _attackTarget = _zombie.target;
+        _weapon = _zombie.weapon;
+    }
+
     protected abstract bool _Shoot();
 
     public void Shoot()
     {
-        float distance = Vector3.Distance(attackTarget.transform.position, transform.position);
+        float distance = Vector3.Distance(_attackTarget.transform.position, transform.position);
 
-        if (distance >  Mathf.Min(attackRange, zombie.viewRange))
+        if (distance >  Mathf.Min(attackRange, _zombie.viewRange))
         {
             holdTime = 0;
             return;
@@ -29,10 +38,10 @@ public abstract class AttackStrategy : MonoBehaviour
 
     protected Vector3? TargetPoint()
     {
-        var weaponTransform = weapon.transform;
+        var weaponTransform = _weapon.transform;
         var weaponPosition = weaponTransform.position;
 
-        float distance = Vector3.Distance( weaponPosition, attackTarget.transform.position);
+        float distance = Vector3.Distance( weaponPosition, _attackTarget.transform.position);
 
         Vector3 direction = weaponTransform.forward.normalized;
         Vector3 targetPoint = weaponPosition + direction * distance;

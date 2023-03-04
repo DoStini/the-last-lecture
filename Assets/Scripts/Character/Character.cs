@@ -13,8 +13,7 @@ public class Character : MonoBehaviour
 
     public float radius;
     public float height;
-
-    public float attackRange;
+    
     public float viewRange;
     
     protected int currentHealth;
@@ -75,10 +74,5 @@ public class Character : MonoBehaviour
     {
         currentHealth = baseHealth;
         _currentSpeed = baseSpeed;
-            
-        CapsuleCollider collider = GetComponent<CapsuleCollider>();
-            
-        collider.radius = radius;
-        collider.height = height;
     }
 }

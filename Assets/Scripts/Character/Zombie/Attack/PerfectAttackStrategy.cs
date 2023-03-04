@@ -11,11 +11,11 @@ public class PerfectAttackStrategy : AttackStrategy
         if (targetPoint == null) return false;
 
         if (Vector3.Distance(
-                new Vector3(targetPoint.Value.x, attackTarget.transform.position.y, targetPoint.Value.z),
-                attackTarget.transform.position) > attackTarget.radius) 
+                new Vector3(targetPoint.Value.x, _attackTarget.transform.position.y, targetPoint.Value.z),
+                _attackTarget.transform.position) > _attackTarget.radius) 
             return false;
 
-        weapon.Attack( targetPoint.Value, holdTime);
+        _weapon.Attack( targetPoint.Value, holdTime);
         return true;
     }
 }
