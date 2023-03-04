@@ -1,17 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character
 {
-    public uint maxWeight;
     public Backpack backpack;
     public Weapon weapon;
 
     private void Start()
     {
         Init();
+
+        CharacterController controller = GetComponent<CharacterController>();
+        controller.radius = radius;
+        controller.height = height;
     }
     
     private void OnTriggerEnter(Collider other)

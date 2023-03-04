@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class WaypointsMovementStrategy : MovementStrategy
 {
     [SerializeField] private List<Transform> waypoints;
 
-    private int _currentWaypoint = 0;
+    private int _currentWaypoint;
 
     private void Start()
     {

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -12,8 +10,13 @@ public class Character : MonoBehaviour
     public int baseHealth;
     public float baseSpeed;
     public List<DamageObserver> damageObservers;
-    protected int _currentHealth;
 
+    public float radius;
+    public float height;
+    
+    public float viewRange;
+    
+    protected int _currentHealth;
     private float _currentSpeed;
 
     public int GetHealth()
