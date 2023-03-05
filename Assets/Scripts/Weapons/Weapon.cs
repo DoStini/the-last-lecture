@@ -9,15 +9,16 @@ public abstract class Weapon : MonoBehaviour
 
     private float _lastAttack;
 
-    public void Attack(Vector3 pointerLocation, int holdTime)
+    public bool Attack(Vector3 pointerLocation, int holdTime)
     {
-        if (!(_lastAttack + attackInterval < Time.time)) return;
-        if (!automatic && holdTime > 0) return;
+        if (!(_lastAttack + attackInterval < Time.time)) return false;
+        if (!automatic && holdTime > 0) return false;
 
-        if (_Attack(pointerLocation))
-        {
-            _lastAttack = Time.time;
-        }
+        if (!_Attack(pointerLocation)) return false;
+        
+        _lastAttack = Time.time;
+        return true;
+
     }
 
     protected abstract bool _Attack(Vector3 pointerLocation);

@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 4535856435568618645}
   - component: {fileID: 89829253336094025}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ Transform:
   m_GameObject: {fileID: 8094975623259462377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.01, z: 0.64}
-  m_LocalScale: {x: 0.079999916, y: 0.05999992, z: 0.27000007}
+  m_LocalScale: {x: 0.079999916, y: 0.05999992, z: 0.72}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6321605891153780448}

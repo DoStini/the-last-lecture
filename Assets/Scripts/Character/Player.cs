@@ -51,12 +51,9 @@ public class Player : Character
         firingWeapon.Reload(stock);
     }
 
-    public void HandleAttack(Vector3 pointerLocation, int holdTime)
+    public bool HandleAttack(Vector3 pointerLocation, int holdTime)
     {
-        if (!ReferenceEquals(weapon, null))
-        {
-            weapon.Attack(pointerLocation, holdTime);
-        }
+        return !ReferenceEquals(weapon, null) && weapon.Attack(pointerLocation, holdTime);
     }
     
     private void HandlePickable(GameObject pickableGameObject)

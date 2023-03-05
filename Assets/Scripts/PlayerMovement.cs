@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Angle = Animator.StringToHash("Angle");
     private static readonly int Falling = Animator.StringToHash("Falling");
+    private static readonly int Shoot = Animator.StringToHash("Shoot");
 
     public void UpdateLookAngle(Vector3 pointerLocation)
     {
@@ -75,8 +76,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (_shootHeld)
         {
-            player.HandleAttack(_pointerLocation, _holdTime);
+            var attacked = player.HandleAttack(_pointerLocation, _holdTime);
             _holdTime++;
+
+            if (attacked)
+            {
+                player.animator.SetTrigger(Shoot);
+            }
         }
         else
         {
