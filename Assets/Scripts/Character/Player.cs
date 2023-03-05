@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [SerializeField] public Animator animator;
+
     public Backpack backpack;
     public Weapon weapon;
+    private static readonly int Hit = Animator.StringToHash("Hit");
 
     private void Start()
     {
@@ -12,6 +15,13 @@ public class Player : Character
         CharacterController controller = GetComponent<CharacterController>();
         controller.radius = radius;
         controller.height = height;
+    }
+
+    public override void RemoveHealth(int health)
+    {
+        base.RemoveHealth(health);
+        
+        animator.SetTrigger(Hit);
     }
     
     private void OnTriggerEnter(Collider other)

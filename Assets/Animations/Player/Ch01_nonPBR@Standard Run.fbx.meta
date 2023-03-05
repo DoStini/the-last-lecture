@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2ba914538f8e94fb49788e9c70e6cc91
+guid: 662bec4a1d79979dfa616b39673dca95
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -23,7 +23,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 1
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Running(1)
+      name: Standard Run
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 42
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

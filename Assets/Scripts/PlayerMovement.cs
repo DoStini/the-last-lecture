@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speedFactor = 6f;
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
-    [SerializeField] private Animator animator;
 
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
@@ -85,15 +84,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (_actionDirection.magnitude > 0)
         {
-            animator.SetFloat(Speed, speedFactor/6);
+            player.animator.SetFloat(Speed, speedFactor/6);
             var angle = Vector2.SignedAngle(_lookDirection, _actionDirection);
 
-            animator.SetFloat(Angle, angle);
-            Debug.Log(angle);
+            player.animator.SetFloat(Angle, angle);
         }
         else
         {
-            animator.SetFloat(Speed, 0);
+            player.animator.SetFloat(Speed, 0);
         }
     }
 

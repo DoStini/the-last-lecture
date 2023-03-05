@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void RemoveHealth(int health)
+    public virtual void RemoveHealth(int health)
     {
         _currentHealth -= health;
         damageObservers.ForEach((observer => observer.HandleDamagePopup(this, -health)));

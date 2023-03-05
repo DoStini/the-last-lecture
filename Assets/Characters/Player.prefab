@@ -72,7 +72,6 @@ MonoBehaviour:
   speedFactor: 6
   gravityFactor: 11
   player: {fileID: 1726359577272186032}
-  animator: {fileID: 6810613341425473370}
 --- !u!114 &1726359577272186034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +123,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2.6
   viewRange: 0
+  animator: {fileID: 6810613341425473370}
   backpack: {fileID: 1726359577272186033}
   weapon: {fileID: 0}
 --- !u!114 &1726359577272186033
