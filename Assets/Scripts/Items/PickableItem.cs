@@ -19,7 +19,7 @@ public abstract class PickableItem : MonoBehaviour
         model.SetActive(!deactivateModel);
     }
 
-    public void Drop(Vector3 position)
+    public virtual void Drop(Vector3 position)
     {
         rigidbody.isKinematic = false;
         transform.SetParent(null);

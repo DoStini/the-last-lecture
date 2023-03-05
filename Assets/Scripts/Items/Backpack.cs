@@ -123,9 +123,21 @@ public class Backpack : MonoBehaviour
         VisuallyStoreWeaponInBackpack(activeWeapon);
 
         activeWeapon ++;
-        if (activeWeapon == _numWeapons) activeWeapon = -1;
+        if (activeWeapon >= _numWeapons) activeWeapon = -1;
 
         VisuallyStoreWeaponInHand(activeWeapon);
+        playerBackpackUpdate.Invoke();
+    }
+
+    public void SwitchPreviousWeapon()
+    {
+        VisuallyStoreWeaponInBackpack(activeWeapon);
+
+        activeWeapon--;
+        if (activeWeapon < -1) activeWeapon = _numWeapons - 1;
+
+        VisuallyStoreWeaponInHand(activeWeapon);
+        playerBackpackUpdate.Invoke();
     }
 
     private void VisuallyStoreWeaponInHand(int pickedWeaponIndex)
@@ -154,11 +166,5 @@ public class Backpack : MonoBehaviour
 
         PositionAndRotation slot = weaponSlotPositions[pickedWeaponIndex];
         _weapons[pickedWeaponIndex].transform.SetLocalPositionAndRotation(slot.position, slot.rotation);
-    }
-
-    public void SwitchPreviousWeapon()
-    {
-        activeWeapon--;
-        if (activeWeapon == -2) activeWeapon = _numWeapons - 1;
     }
 }
