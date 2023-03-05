@@ -16,6 +16,7 @@ public class MeleeWeapon : Weapon
     {
         _colliders = new Collider[80];
         _mStart = true;
+        animator.enabled = false;
     }
 
     protected override bool _Attack(Vector3 pointerLocation)
@@ -28,7 +29,7 @@ public class MeleeWeapon : Weapon
     private void DealDamage()
     {
         var rotation = playerCenter.rotation;
-        
+
         _boxCenter = playerCenter.position + rotation * Vector3.forward * boxSize.z;
         int numColliders = Physics.OverlapBoxNonAlloc(_boxCenter, boxSize, _colliders, rotation, mask);
 
@@ -45,6 +46,19 @@ public class MeleeWeapon : Weapon
             Vector3 knockbackDirection = rotation * Vector3.forward;
             impactHandler.AddImpact(knockbackDirection, knockbackFactor);
         }
+    }
+
+    public override void Pick(GameObject parent)
+    {
+        base.Pick(parent);
+        playerCenter = parent.transform;
+        animator.enabled = true;
+    }
+
+    public override void Drop(Vector3 position)
+    {
+        base.Drop(position);
+        animator.enabled = false;
     }
 
     private void OnDrawGizmos()
