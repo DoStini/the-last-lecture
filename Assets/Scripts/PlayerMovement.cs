@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private int _holdTime;
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Angle = Animator.StringToHash("Angle");
+    private static readonly int Falling = Animator.StringToHash("Falling");
 
     public void UpdateLookAngle(Vector3 pointerLocation)
     {
@@ -93,6 +94,8 @@ public class PlayerMovement : MonoBehaviour
         {
             player.animator.SetFloat(Speed, 0);
         }
+
+        player.animator.SetBool(Falling, _vSpeed < -0.9f);
     }
 
 
@@ -100,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            _vSpeed = 0;
+            _vSpeed = -0.8f;
         }
         else
         {
