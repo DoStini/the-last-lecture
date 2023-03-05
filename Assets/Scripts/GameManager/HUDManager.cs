@@ -50,5 +50,6 @@ public class HUDManager : MonoBehaviour
         ToggleAmmo(true);
 
         _currentAmmo.text = fw.Ammo.ToString();
+        UpdateStock();
     }
 }
