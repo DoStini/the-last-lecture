@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private float _lookAngle;
     private Vector2 _actionDirection = Vector2.zero;
     private Vector3 _pointerLocation = Vector2.zero;
-    private bool _shootHeld = false;
-    private int _holdTime = 0;
+    private bool _shootHeld;
+    private int _holdTime;
 
     public void UpdateLookAngle(Vector3 pointerLocation)
     {

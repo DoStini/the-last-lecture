@@ -16,7 +16,7 @@ public abstract class Weapon : PickableItem
     {
         if (!(_lastAttack + attackInterval < Time.time)) return;
         if (!automatic && holdTime > 0) return;
-        
+
         if (_Attack(pointerLocation))
         {
             _lastAttack = Time.time;

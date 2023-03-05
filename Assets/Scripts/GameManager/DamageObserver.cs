@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -17,7 +16,7 @@ public class DamageObserver : MonoBehaviour
     public List<Color32> colors;
     public ObjectPool damagePopupPool;
 
-    private Color32 getColor(int damage)
+    private Color32 GetColor(int damage)
     {
         int index = colorThresholds.BinarySearch(damage);
         if (index < 0)
@@ -38,7 +37,7 @@ public class DamageObserver : MonoBehaviour
             ReleaseDamagePopup releaseDamagePopup = o.transform.GetChild(0).GetOrAddComponent<ReleaseDamagePopup>();
             releaseDamagePopup.damagePopupPool = damagePopupPool;
             
-            Color32 color = getColor(damageTaken);
+            Color32 color = GetColor(damageTaken);
             TextMeshPro textMesh = o.transform.GetChild(0).GetComponent<TextMeshPro>();
             textMesh.text = Mathf.Abs(damageTaken).ToString();
             textMesh.faceColor = color;

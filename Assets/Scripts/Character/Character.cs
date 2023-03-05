@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +11,11 @@ public class Character : MonoBehaviour
     public float baseSpeed;
     public List<DamageObserver> damageObservers;
 
+    public float radius;
+    public float height;
+    
+    public float viewRange;
+    
     protected int _currentHealth;
     private float _currentSpeed;
 

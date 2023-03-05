@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class PlayerBackpackUpdate : UnityEvent
+{
+    
+}
 
 [System.Serializable]
 public class PositionAndRotation
@@ -13,6 +20,7 @@ public class PositionAndRotation
 
 public class Backpack : MonoBehaviour
 {
+    [SerializeField] private PlayerBackpackUpdate playerBackpackUpdate;
     [SerializeField] public uint maxWeight;
     private uint _weight;
 
@@ -41,6 +49,13 @@ public class Backpack : MonoBehaviour
         return default(Stock) ? null : stock;
     }
 
+    public int StockAmount(Stock.Type type)
+    {
+        var stocks = _items.AsQueryable();
+
+        return stocks.OfType<Stock>().Count(stock => stock.type == type);
+    }
+
     public bool AddPickableItem(PickableItem item, GameObject parent)
     {
         if (item.isPicked)
@@ -67,7 +82,7 @@ public class Backpack : MonoBehaviour
         }
         
         _weight += item.weight;
-
+        playerBackpackUpdate.Invoke();
         return true;
     }
 
@@ -92,6 +107,7 @@ public class Backpack : MonoBehaviour
         }
 
         _weight -= item.weight;
+        playerBackpackUpdate.Invoke();
         return true;
     }
 
