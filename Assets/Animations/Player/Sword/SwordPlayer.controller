@@ -95,7 +95,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 91386fa79a139e409930149c4482720a, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 85c42b4c6fe0c4e63b1adb57f4bf21e6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -121,7 +121,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.1
   m_TransitionOffset: 0
   m_ExitTime: 0.78571427
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 3
   m_OrderedInterruption: 1
@@ -360,7 +360,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RiflePlayer
+  m_Name: SwordPlayer
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed
@@ -484,7 +484,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: d64ec8dd4b4b1c9eda849a43a7e42376, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: c8753eac3ef9d35f69d7d661224ff868, type: 3}
     m_Threshold: -180
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -492,7 +492,7 @@ BlendTree:
     m_DirectBlendParameter: Angle
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 627a944541b9cb550a97e6cabef43e60, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 8fab26d6f1105d28896d3e6c9f32b2bf, type: 3}
     m_Threshold: -90
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -500,7 +500,7 @@ BlendTree:
     m_DirectBlendParameter: Angle
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 6403afb2a52eb6b65bcf45a7ac89e072, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 95aa498330821a63d97a98ea049f8b75, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -508,7 +508,7 @@ BlendTree:
     m_DirectBlendParameter: Angle
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 627a944541b9cb550a97e6cabef43e60, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 8fab26d6f1105d28896d3e6c9f32b2bf, type: 3}
     m_Threshold: 90
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -516,7 +516,7 @@ BlendTree:
     m_DirectBlendParameter: Angle
     m_Mirror: 1
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: d64ec8dd4b4b1c9eda849a43a7e42376, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: c8753eac3ef9d35f69d7d661224ff868, type: 3}
     m_Threshold: 180
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -605,7 +605,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 5a61513d56e22a15fb5c70f29d4a1205, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: a472bab063eb5a784886ca87ba8b1769, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

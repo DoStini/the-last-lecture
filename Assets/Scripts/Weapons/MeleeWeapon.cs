@@ -4,13 +4,11 @@ public class MeleeWeapon : Weapon
 {
     public Transform playerCenter;
     public Vector3 boxSize;
-    public Animator animator;
     public float knockbackFactor;
     private bool _mStart;
 
     private Collider[] _colliders;
     private Vector3 _boxCenter;
-    private static readonly int Attack1 = Animator.StringToHash("Attack");
 
     private void Start()
     {
@@ -20,12 +18,11 @@ public class MeleeWeapon : Weapon
 
     protected override bool _Attack(Vector3 pointerLocation)
     {
-        animator.SetTrigger(Attack1);
         return true;
     }
 
     // ReSharper disable once UnusedMember.Local
-    private void DealDamage()
+    public void DealDamage()
     {
         var rotation = playerCenter.rotation;
         
