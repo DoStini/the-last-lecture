@@ -88,7 +88,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat(Speed, speedFactor/6);
             var angle = Vector2.SignedAngle(_lookDirection, _actionDirection);
 
-            animator.SetFloat(Angle, angle, 0.1f, Time.deltaTime);
+            animator.SetFloat(Angle, angle);
+            Debug.Log(angle);
         }
         else
         {
