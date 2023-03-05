@@ -1116,7 +1116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1068705927}
-  height: 15
+  height: 10
 --- !u!1 &1015380477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,10 +1326,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 229636061108508570, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+      propertyPath: m_Name
+      value: PlayerModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 604613109517012256, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1726359577272186032, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1501848212}
+      objectReference: {fileID: 0}
     - target: {fileID: 1726359577272186032, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
       propertyPath: damageObservers.Array.size
       value: 1
@@ -1568,13 +1576,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 368691413696028012, guid: 5da2f4fe0d9cf73fa8cb5ae8e17d8d51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 368691413696028013, guid: 5da2f4fe0d9cf73fa8cb5ae8e17d8d51, type: 3}
       propertyPath: playerCenter
       value: 
       objectReference: {fileID: 1225586737}
     - target: {fileID: 368691413696028014, guid: 5da2f4fe0d9cf73fa8cb5ae8e17d8d51, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 368691413696028014, guid: 5da2f4fe0d9cf73fa8cb5ae8e17d8d51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1618,17 +1630,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5da2f4fe0d9cf73fa8cb5ae8e17d8d51, type: 3}
---- !u!114 &1501848212 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 368691413696028013, guid: 5da2f4fe0d9cf73fa8cb5ae8e17d8d51, type: 3}
-  m_PrefabInstance: {fileID: 1501848211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1393e93cd18a669cd831b23d19825296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1712395389
 GameObject:
   m_ObjectHideFlags: 0
