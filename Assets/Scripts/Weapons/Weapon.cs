@@ -9,6 +9,7 @@ public abstract class Weapon : PickableItem
 
     public Vector3 activePosition;
     public Quaternion activeRotation;
+    public RuntimeAnimatorController playerAnimator;
     
     private float _lastAttack;
 

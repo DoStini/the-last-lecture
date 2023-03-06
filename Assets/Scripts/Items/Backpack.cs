@@ -5,13 +5,19 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
+[Serializable]
 public class PlayerBackpackUpdate : UnityEvent
 {
     
 }
 
-[System.Serializable]
+[Serializable]
+public class AnimationSwapEvent : UnityEvent<RuntimeAnimatorController>
+{
+    
+}
+
+[Serializable]
 public class PositionAndRotation
 {
     public Vector3 position;
@@ -21,6 +27,7 @@ public class PositionAndRotation
 public class Backpack : MonoBehaviour
 {
     [SerializeField] private PlayerBackpackUpdate playerBackpackUpdate;
+    [SerializeField] private AnimationSwapEvent animationSwapEvent;
     [SerializeField] public uint maxWeight;
     private uint _weight;
 
@@ -38,6 +45,7 @@ public class Backpack : MonoBehaviour
     {
         _weight = 0;
         _weapons = new Weapon[maxWeapons];
+        animationSwapEvent.Invoke(activeWeapon == -1 ? null : _weapons[activeWeapon].playerAnimator);
     }
 
     public Stock FindStock(Stock.Type type)
@@ -116,6 +124,16 @@ public class Backpack : MonoBehaviour
         int index = Array.FindIndex(_weapons, w => pickedWeapon);
         _weapons[index] = null;
         _numWeapons--;
+
+        if (index != activeWeapon) return;
+        activeWeapon = -1;
+        animationSwapEvent.Invoke(null);
+    }
+
+    private void SwitchWeapon()
+    {
+        VisuallyStoreWeaponInHand(activeWeapon);
+        playerBackpackUpdate.Invoke();
     }
 
     public void SwitchNextWeapon()
@@ -125,8 +143,7 @@ public class Backpack : MonoBehaviour
         activeWeapon ++;
         if (activeWeapon >= _numWeapons) activeWeapon = -1;
 
-        VisuallyStoreWeaponInHand(activeWeapon);
-        playerBackpackUpdate.Invoke();
+        SwitchWeapon();
     }
 
     public void SwitchPreviousWeapon()
@@ -136,19 +153,24 @@ public class Backpack : MonoBehaviour
         activeWeapon--;
         if (activeWeapon < -1) activeWeapon = _numWeapons - 1;
 
-        VisuallyStoreWeaponInHand(activeWeapon);
-        playerBackpackUpdate.Invoke();
+        SwitchWeapon();
     }
 
     private void VisuallyStoreWeaponInHand(int pickedWeaponIndex)
     {
-        if (pickedWeaponIndex == -1) return;
+        if (pickedWeaponIndex == -1)
+        {
+            animationSwapEvent.Invoke(null);
+            return;
+        }
 
         Weapon pickedWeapon = _weapons[pickedWeaponIndex];
         pickedWeapon.transform.SetLocalPositionAndRotation(pickedWeapon.activePosition, pickedWeapon.activeRotation);
+        animationSwapEvent.Invoke(pickedWeapon.playerAnimator);
+        
     }
 
-    public void VisuallyStoreWeapon(int index)
+    private void VisuallyStoreWeapon(int index)
     {
         if (index == activeWeapon)
         {

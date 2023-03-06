@@ -10041,8 +10041,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   automatic: 1
-  activePosition: {x: 0.25, y: 0, z: 1}
+  activePosition: {x: 0.6, y: 0, z: 1.25}
   activeRotation: {x: 0, y: 0, z: 0, w: 0}
+  playerAnimator: {fileID: 9100000, guid: 5bef56b016e410be999cde7b00e114d4, type: 2}
   stockType: 0
   bulletSpawnPoint: {fileID: 5975521017800697014}
   <Ammo>k__BackingField: 0

@@ -1,5 +1,7 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : Character
 {
@@ -11,7 +13,6 @@ public class Player : Character
     private void Start()
     {
         Init();
-
         CharacterController controller = GetComponent<CharacterController>();
         controller.radius = radius;
         controller.height = height;

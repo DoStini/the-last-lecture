@@ -320,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[1].position.x
-      value: -0.025
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[1].position.y
@@ -328,19 +328,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[1].position.z
-      value: -0.12
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[2].position.x
-      value: 0.3
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[2].position.y
-      value: 0.6
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[2].position.z
-      value: -0.12
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409847, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: m_RootOrder

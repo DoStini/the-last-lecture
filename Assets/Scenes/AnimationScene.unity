@@ -729,32 +729,40 @@ PrefabInstance:
       value: -0.04899943
       objectReference: {fileID: 0}
     - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
-      propertyPath: weaponSlotPositions.Array.data[1].position.x
-      value: -0.05
+      propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
-      propertyPath: weaponSlotPositions.Array.data[1].position.z
-      value: -0.2
+      propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
-      propertyPath: weaponSlotPositions.Array.data[2].position.x
-      value: 0.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
-      propertyPath: weaponSlotPositions.Array.data[2].position.y
-      value: 0.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
-      propertyPath: weaponSlotPositions.Array.data[2].position.z
-      value: -0.2
-      objectReference: {fileID: 0}
+      propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 521406843}
     - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
       propertyPath: playerBackpackUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1138303368}
     - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+      propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+      propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwapAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
       propertyPath: playerBackpackUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdateStock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+      propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerAnimationSwap, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+      propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4717864186231171157, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
       propertyPath: m_Center.y
@@ -837,6 +845,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e064457a59fefbab4136746f83aaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &521406843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521406835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81d90b641a8042a6b8d4e927fd7ebc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 1729506857}
 --- !u!1 &669061936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1292,10 @@ PrefabInstance:
       propertyPath: impactPool
       value: 
       objectReference: {fileID: 1790734516}
+    - target: {fileID: 9117387340649539323, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 9100000, guid: 0b623608bd7c20cbe9c283b0a6d04f44, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
 --- !u!1 &963194225
@@ -1825,6 +1850,11 @@ Transform:
   m_Father: {fileID: 1015380478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1729506857 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6810613341425473370, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+  m_PrefabInstance: {fileID: 521406833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1790734514
 GameObject:
   m_ObjectHideFlags: 0
