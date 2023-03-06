@@ -1,4 +1,13 @@
+using System;
 using UnityEngine;
+
+[Serializable]
+public class WeaponHoldStyle
+{
+    public Transform leftGrip;
+    public Transform rightGrip;
+    public Transform parent;
+}
 
 public abstract class Weapon : PickableItem
 {
@@ -10,6 +19,7 @@ public abstract class Weapon : PickableItem
     public Vector3 activePosition;
     public Quaternion activeRotation;
     public RuntimeAnimatorController playerAnimator;
+    public WeaponHoldStyle weaponHoldStyle;
     
     private float _lastAttack;
 

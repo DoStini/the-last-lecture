@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 5656559098108250750}
   - component: {fileID: 1220911774714257585}
   - component: {fileID: 3271688355983825195}
+  - component: {fileID: 4486317100992347334}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -251,6 +252,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4486317100992347334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726359577272186038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81d90b641a8042a6b8d4e927fd7ebc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 6810613341425473370}
+  rigBuilder: {fileID: 766074122378776662}
+  leftConstraint: {fileID: 5978398087525832344}
+  rightConstraint: {fileID: 4061275082444509159}
+  leftIKConstraint: {fileID: 3701319016345400112}
+  rightIKConstraint: {fileID: 4759254738894288856}
 --- !u!1 &4929746589195757032
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6652513494335297328}
+  - component: {fileID: 5978398087525832344}
   m_Layer: 0
   m_Name: LeftConstraint
   m_TagString: Untagged
@@ -282,6 +302,28 @@ Transform:
   m_Father: {fileID: 7929451656969488096}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1773428102 &5978398087525832344
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929746589195757032}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets: []
+  m_RotationOffsets: []
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 0
+  m_Sources: []
 --- !u!1 &7969398950112600097
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4106360341304011573}
+  - component: {fileID: 4061275082444509159}
   m_Layer: 0
   m_Name: RightConstraint
   m_TagString: Untagged
@@ -363,6 +406,28 @@ Transform:
   m_Father: {fileID: 7929451656969488096}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1773428102 &4061275082444509159
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8962440831302683873}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets: []
+  m_RotationOffsets: []
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 0
+  m_Sources: []
 --- !u!1001 &956834236287275478
 PrefabInstance:
   m_ObjectHideFlags: 0
