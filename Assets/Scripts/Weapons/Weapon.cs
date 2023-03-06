@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Animations;
 
 [Serializable]
 public class WeaponHoldStyle
@@ -7,6 +8,7 @@ public class WeaponHoldStyle
     public Transform leftGrip;
     public Transform rightGrip;
     public Transform parent;
+    public LookAtConstraint lookAtConstraint;
 }
 
 public abstract class Weapon : PickableItem

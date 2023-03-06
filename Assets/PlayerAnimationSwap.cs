@@ -23,8 +23,23 @@ public class PlayerAnimationSwap : MonoBehaviour
         _initController = playerAnimator.runtimeAnimatorController;
     }
 
-    public void SwapAnimation(Weapon weapon)
+    private void SwapOld(Weapon lastWeapon)
     {
+        if (lastWeapon is null)
+        {
+            return;
+        }
+        
+        if (lastWeapon.weaponHoldStyle.lookAtConstraint != null)
+        {
+            lastWeapon.weaponHoldStyle.lookAtConstraint.constraintActive = false;
+        }
+    }
+
+    public void SwapAnimation(Weapon weapon, Weapon lastWeapon)
+    {
+        SwapOld(lastWeapon);
+        
         if (weapon is null)
         {
             playerAnimator.runtimeAnimatorController = _initController;
@@ -55,6 +70,11 @@ public class PlayerAnimationSwap : MonoBehaviour
         else
         {
             rightIKConstraint.weight = 0;
+        }
+        
+        if (weapon.weaponHoldStyle.lookAtConstraint != null)
+        {
+            weapon.weaponHoldStyle.lookAtConstraint.constraintActive = true;
         }
         rigBuilder.layers[0].active = true;
 

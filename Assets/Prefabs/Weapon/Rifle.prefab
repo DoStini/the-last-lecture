@@ -10057,6 +10057,7 @@ GameObject:
   - component: {fileID: 8430926332431130801}
   - component: {fileID: 8430926332431130813}
   - component: {fileID: 8430926332431130810}
+  - component: {fileID: 6857523872482438448}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Pickable
@@ -10112,6 +10113,7 @@ MonoBehaviour:
     leftGrip: {fileID: 2799873086796595282}
     rightGrip: {fileID: 6643088910824442031}
     parent: {fileID: 0}
+    lookAtConstraint: {fileID: 6857523872482438448}
   stockType: 0
   bulletSpawnPoint: {fileID: 5975521017800697014}
   <Ammo>k__BackingField: 0
@@ -10181,6 +10183,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1183024399 &6857523872482438448
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430926332431130815}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1 &8917266849199329775
 GameObject:
   m_ObjectHideFlags: 0
