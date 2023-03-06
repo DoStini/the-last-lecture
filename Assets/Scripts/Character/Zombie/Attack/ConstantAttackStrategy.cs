@@ -6,7 +6,7 @@ public class ConstantAttackStrategy : AttackStrategy
 
         if (targetPoint == null) return false;
 
-        _weapon.Attack( targetPoint.Value, holdTime);
+        _weapon.Attack(targetPoint.Value, holdTime);
         return true;
     }
 }

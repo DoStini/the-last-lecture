@@ -25,7 +25,7 @@ public class MeleeWeapon : Weapon
     public void DealDamage()
     {
         var rotation = playerCenter.rotation;
-        
+
         _boxCenter = playerCenter.position + rotation * Vector3.forward * boxSize.z;
         int numColliders = Physics.OverlapBoxNonAlloc(_boxCenter, boxSize, _colliders, rotation, mask);
 
@@ -42,6 +42,12 @@ public class MeleeWeapon : Weapon
             Vector3 knockbackDirection = rotation * Vector3.forward;
             impactHandler.AddImpact(knockbackDirection, knockbackFactor);
         }
+    }
+
+    public override void Pick(GameObject parent)
+    {
+        base.Pick(parent);
+        playerCenter = parent.transform;
     }
 
     private void OnDrawGizmos()

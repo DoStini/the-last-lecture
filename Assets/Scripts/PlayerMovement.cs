@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _moveAction;
     private InputAction _reloadAction;
     private InputAction _shootAction;
+    private InputAction _dropAction;
+    private InputAction _interactAction;
+    private InputAction _scrollPositiveAction;
+    private InputAction _scrollNegativeAction;
     private float _vSpeed;
     private float _lookAngle;
     private Vector2 _actionDirection = Vector2.zero;
@@ -48,6 +52,18 @@ public class PlayerMovement : MonoBehaviour
         _shootAction = _playerActions.Player.Fire;
         _shootAction.Enable();
 
+        _dropAction = _playerActions.Player.Drop;
+        _dropAction.Enable();
+
+        _interactAction = _playerActions.Player.Interact;
+        _interactAction.Enable();
+
+        _scrollNegativeAction = _playerActions.Player.SwitchWeaponNeg;
+        _scrollNegativeAction.Enable();
+
+        _scrollPositiveAction = _playerActions.Player.SwitchWeaponPos;
+        _scrollPositiveAction.Enable();
+
         _shootAction.started += StartShooting;
         _shootAction.canceled += StartShooting;
     }
@@ -61,6 +77,10 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveAction.Disable();
         _reloadAction.Disable();
+        _dropAction.Disable();
+        _interactAction.Disable();
+        _scrollNegativeAction.Disable();
+        _scrollPositiveAction.Disable();
     }
     
     // Update is called once per frame
@@ -74,6 +94,25 @@ public class PlayerMovement : MonoBehaviour
             player.HandleReload();
         }
 
+        if (_dropAction.WasPerformedThisFrame())
+        {
+            player.HandleDrop();
+        }
+
+        if (_interactAction.WasPerformedThisFrame())
+        {
+            player.HandleInteract(_pointerLocation);
+        }
+
+        if (_scrollNegativeAction.WasPerformedThisFrame())
+        {
+            player.backpack.SwitchPreviousWeapon();
+        }
+        else if (_scrollPositiveAction.WasPerformedThisFrame())
+        {
+            player.backpack.SwitchNextWeapon();
+        }
+        
         if (_shootHeld)
         {
             var attacked = player.HandleAttack(_pointerLocation, _holdTime);

@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +11,13 @@ public class PlayerBackpackUpdate : UnityEvent
     
 }
 
+[System.Serializable]
+public class PositionAndRotation
+{
+    public Vector3 position;
+    public Quaternion rotation;
+}
+
 public class Backpack : MonoBehaviour
 {
     [SerializeField] private PlayerBackpackUpdate playerBackpackUpdate;
@@ -16,6 +25,20 @@ public class Backpack : MonoBehaviour
     private uint _weight;
 
     private readonly List<PickableItem> _items = new();
+
+    private Weapon[] _weapons;
+    public int maxWeapons;
+    private int _numWeapons = 0;
+    public List<PositionAndRotation> weaponSlotPositions;
+
+    public int activeWeapon = -1;
+    [CanBeNull] public Weapon weapon => activeWeapon == -1 ? null : _weapons[activeWeapon];
+
+    private void Start()
+    {
+        _weight = 0;
+        _weapons = new Weapon[maxWeapons];
+    }
 
     public Stock FindStock(Stock.Type type)
     {
@@ -33,34 +56,115 @@ public class Backpack : MonoBehaviour
         return stocks.OfType<Stock>().Count(stock => stock.type == type);
     }
 
-    public bool AddPickableItem(PickableItem item)
+    public bool AddPickableItem(PickableItem item, GameObject parent)
     {
-        if (_weight + item.weight > maxWeight)
+        if (item.isPicked)
         {
             return false;
         }
         
-        _items.Add(item);
-        _weight += item.weight;
+        if (_weight + item.weight > maxWeight)
+        {
+            return false;
+        }
+
+        item.Pick(gameObject);
+
+        if (item is Weapon pickedWeapon)
+        {
+            if (_numWeapons == maxWeapons) return false;
+
+            AddWeapon(pickedWeapon);
+        }
+        else
+        {
+            _items.Add(item);
+        }
         
+        _weight += item.weight;
         playerBackpackUpdate.Invoke();
         return true;
     }
 
+    private void AddWeapon(Weapon pickedWeapon)
+    {
+        int index = Array.FindIndex(_weapons, w => w is null);
+        _weapons[index] = pickedWeapon;
+        _numWeapons++;
+        
+        VisuallyStoreWeapon(index);
+    }
+
     public bool RemovePickableItem(PickableItem item)
     {
-        if (!_items.Remove(item))
+        if (item is Weapon pickedWeapon)
         {
-            return false;
+            RemoveWeapon(pickedWeapon);
+        }
+        else
+        {
+            _items.Remove(item);
         }
 
         _weight -= item.weight;
         playerBackpackUpdate.Invoke();
         return true;
     }
-    
-    void Start()
+
+    private void RemoveWeapon(Weapon pickedWeapon)
     {
-        _weight = 0;
+        int index = Array.FindIndex(_weapons, w => pickedWeapon);
+        _weapons[index] = null;
+        _numWeapons--;
+    }
+
+    public void SwitchNextWeapon()
+    {
+        VisuallyStoreWeaponInBackpack(activeWeapon);
+
+        activeWeapon ++;
+        if (activeWeapon >= _numWeapons) activeWeapon = -1;
+
+        VisuallyStoreWeaponInHand(activeWeapon);
+        playerBackpackUpdate.Invoke();
+    }
+
+    public void SwitchPreviousWeapon()
+    {
+        VisuallyStoreWeaponInBackpack(activeWeapon);
+
+        activeWeapon--;
+        if (activeWeapon < -1) activeWeapon = _numWeapons - 1;
+
+        VisuallyStoreWeaponInHand(activeWeapon);
+        playerBackpackUpdate.Invoke();
+    }
+
+    private void VisuallyStoreWeaponInHand(int pickedWeaponIndex)
+    {
+        if (pickedWeaponIndex == -1) return;
+
+        Weapon pickedWeapon = _weapons[pickedWeaponIndex];
+        pickedWeapon.transform.SetLocalPositionAndRotation(pickedWeapon.activePosition, pickedWeapon.activeRotation);
+    }
+
+    public void VisuallyStoreWeapon(int index)
+    {
+        if (index == activeWeapon)
+        {
+            VisuallyStoreWeaponInHand(index);
+        }
+        else
+        {
+            VisuallyStoreWeaponInBackpack(index);
+        }
+    }
+
+    private void VisuallyStoreWeaponInBackpack(int pickedWeaponIndex)
+    {
+        if (pickedWeaponIndex == -1) return;
+
+        PositionAndRotation slot = weaponSlotPositions[pickedWeaponIndex];
+        _weapons[pickedWeaponIndex].transform.SetLocalPositionAndRotation(slot.position, slot.rotation);
     }
 }

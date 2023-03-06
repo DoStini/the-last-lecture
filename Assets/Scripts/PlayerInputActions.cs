@@ -62,6 +62,42 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""d642e0c6-6fb5-44b4-ba70-647eba18cbba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""bbc68d05-36fb-4342-82e8-aef803f0a624"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeaponPos"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a86e3f0-1845-4775-8b6f-8e6609c9cc6f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeaponNeg"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e267b77-47b7-4b1d-a800-61ee3310708a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -302,10 +338,120 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7c34406-ce00-45df-8ff7-03262e61224f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3869587-dd1a-4a38-9058-4c4fdeb449bb"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c1fccb4-c6e4-4144-977a-b9fdfd21c067"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9f1a81d-b7c7-45b9-bcb7-5b1e1c85cd01"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1915aa1-f50f-45fd-81e1-6f9b1a63d2b5"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SwitchWeaponPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af4ce136-0049-447c-8017-dbf6a9ea295d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SwitchWeaponPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9f28fc5-0777-4564-b9ca-e5bc2b6f5b97"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SwitchWeaponNeg"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""3625b704-f2b4-4671-a25f-5ff931d89a2d"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeaponNeg"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""d5b86be9-2b9c-4b75-9ece-7d2e3ddaa845"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SwitchWeaponNeg"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""4f2cc8d5-9bf8-47ce-8c14-2365350357e1"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SwitchWeaponNeg"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -895,6 +1041,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_SwitchWeaponPos = m_Player.FindAction("SwitchWeaponPos", throwIfNotFound: true);
+        m_Player_SwitchWeaponNeg = m_Player.FindAction("SwitchWeaponNeg", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -970,6 +1120,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_Drop;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_SwitchWeaponPos;
+    private readonly InputAction m_Player_SwitchWeaponNeg;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -978,6 +1132,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        public InputAction @Drop => m_Wrapper.m_Player_Drop;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @SwitchWeaponPos => m_Wrapper.m_Player_SwitchWeaponPos;
+        public InputAction @SwitchWeaponNeg => m_Wrapper.m_Player_SwitchWeaponNeg;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -999,6 +1157,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Drop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
+                @Drop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
+                @Drop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @SwitchWeaponPos.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponPos;
+                @SwitchWeaponPos.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponPos;
+                @SwitchWeaponPos.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponPos;
+                @SwitchWeaponNeg.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponNeg;
+                @SwitchWeaponNeg.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponNeg;
+                @SwitchWeaponNeg.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponNeg;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1015,6 +1185,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @Drop.started += instance.OnDrop;
+                @Drop.performed += instance.OnDrop;
+                @Drop.canceled += instance.OnDrop;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @SwitchWeaponPos.started += instance.OnSwitchWeaponPos;
+                @SwitchWeaponPos.performed += instance.OnSwitchWeaponPos;
+                @SwitchWeaponPos.canceled += instance.OnSwitchWeaponPos;
+                @SwitchWeaponNeg.started += instance.OnSwitchWeaponNeg;
+                @SwitchWeaponNeg.performed += instance.OnSwitchWeaponNeg;
+                @SwitchWeaponNeg.canceled += instance.OnSwitchWeaponNeg;
             }
         }
     }
@@ -1175,6 +1357,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnSwitchWeaponPos(InputAction.CallbackContext context);
+        void OnSwitchWeaponNeg(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

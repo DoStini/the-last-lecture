@@ -26,7 +26,7 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateStock()
     {
-        if (ReferenceEquals(player.weapon, null) || player.weapon is not FiringWeapon fw) return;
+        if (player.backpack.weapon is not FiringWeapon fw) return;
         _stock.text = player.backpack.StockAmount(fw.stockType).ToString();
     }
 
@@ -42,7 +42,7 @@ public class HUDManager : MonoBehaviour
         _healthBar.highValue = player.maxHealth;
         _healthBar.style.width = new StyleLength(Length.Percent((float)player.maxHealth / maxHealth * 100));
 
-        if (ReferenceEquals(player.weapon, null) || player.weapon is not FiringWeapon fw)
+        if (player.backpack.weapon is not FiringWeapon fw)
         {
             ToggleAmmo(false);
             return;
