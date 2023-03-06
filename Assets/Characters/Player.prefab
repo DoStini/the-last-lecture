@@ -308,7 +308,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[0].position.x
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[0].position.y
@@ -316,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[0].position.z
-      value: -0.12
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2651989844766409844, guid: a8a723536a145046a880859737e4e998, type: 3}
       propertyPath: weaponSlotPositions.Array.data[1].position.x
