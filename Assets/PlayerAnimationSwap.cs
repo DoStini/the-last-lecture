@@ -25,7 +25,7 @@ public class PlayerAnimationSwap : MonoBehaviour
 
     private void SwapOld(Weapon lastWeapon)
     {
-        if (lastWeapon is null)
+        if (lastWeapon == null)
         {
             return;
         }
@@ -40,7 +40,7 @@ public class PlayerAnimationSwap : MonoBehaviour
     {
         SwapOld(lastWeapon);
         
-        if (weapon is null)
+        if (weapon == null)
         {
             playerAnimator.runtimeAnimatorController = _initController;
             rigBuilder.layers[0].active = false;
@@ -48,7 +48,7 @@ public class PlayerAnimationSwap : MonoBehaviour
         }
 
         playerAnimator.runtimeAnimatorController = weapon.playerAnimator;
-        if (weapon.weaponHoldStyle.leftGrip is not null)
+        if (weapon.weaponHoldStyle.leftGrip != null)
         {
             _constraintSourceLeft.weight = 1;
             _constraintSourceLeft.sourceTransform = weapon.weaponHoldStyle.leftGrip;
@@ -60,7 +60,7 @@ public class PlayerAnimationSwap : MonoBehaviour
             leftIKConstraint.weight = 0;
         }
         
-        if (weapon.weaponHoldStyle.rightGrip is not null)
+        if (weapon.weaponHoldStyle.rightGrip != null)
         {
             _constraintSourceRight.weight = 1;
             _constraintSourceRight.sourceTransform = weapon.weaponHoldStyle.rightGrip;
