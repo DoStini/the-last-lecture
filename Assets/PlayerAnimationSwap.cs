@@ -16,6 +16,7 @@ public class PlayerAnimationSwap : MonoBehaviour
     private RuntimeAnimatorController _initController;
     private ConstraintSource _constraintSourceLeft;
     private ConstraintSource _constraintSourceRight;
+    private Transform _lastParent;
 
     // Start is called before the first frame update
     private void Awake()
@@ -34,6 +35,12 @@ public class PlayerAnimationSwap : MonoBehaviour
         {
             lastWeapon.weaponHoldStyle.lookAtConstraint.constraintActive = false;
         }
+        
+        
+        if (lastWeapon.weaponHoldStyle.parent != null)
+        {
+            lastWeapon.transform.parent = _lastParent;
+        }
     }
 
     public void SwapAnimation(Weapon weapon, Weapon lastWeapon)
@@ -45,6 +52,12 @@ public class PlayerAnimationSwap : MonoBehaviour
             playerAnimator.runtimeAnimatorController = _initController;
             rigBuilder.layers[0].active = false;
             return;
+        }
+
+        if (weapon.weaponHoldStyle.parent != null)
+        {
+            _lastParent = weapon.transform.parent;
+            weapon.transform.parent = weapon.weaponHoldStyle.parent;
         }
 
         playerAnimator.runtimeAnimatorController = weapon.playerAnimator;
