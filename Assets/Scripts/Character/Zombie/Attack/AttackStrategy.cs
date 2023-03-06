@@ -44,7 +44,7 @@ public abstract class AttackStrategy : MonoBehaviour
         float distance = Vector3.Distance( weaponPosition, _attackTarget.transform.position);
 
         Vector3 direction = weaponTransform.forward.normalized;
-        Vector3 targetPoint = weaponPosition + direction * distance;
+        Vector3 targetPoint = weaponPosition + direction * (distance + 0.3f);
 
         if (Physics.Raycast(targetPoint, Vector3.down, out var hit, float.MaxValue, LayerMask.GetMask("Ground")))
         {
