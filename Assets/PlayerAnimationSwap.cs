@@ -13,14 +13,14 @@ public class PlayerAnimationSwap : MonoBehaviour
         _initController = playerAnimator.runtimeAnimatorController;
     }
 
-    public void SwapAnimation(RuntimeAnimatorController controller)
+    public void SwapAnimation(Weapon weapon)
     {
-        if (controller is null)
+        if (weapon is null)
         {
             playerAnimator.runtimeAnimatorController = _initController;
             return;
         }
 
-        playerAnimator.runtimeAnimatorController = controller;
+        playerAnimator.runtimeAnimatorController = weapon.playerAnimator;
     }
 }

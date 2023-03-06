@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Events;
 
 [Serializable]
@@ -12,7 +13,7 @@ public class PlayerBackpackUpdate : UnityEvent
 }
 
 [Serializable]
-public class AnimationSwapEvent : UnityEvent<RuntimeAnimatorController>
+public class AnimationSwapEvent : UnityEvent<Weapon>
 {
     
 }
@@ -39,13 +40,14 @@ public class Backpack : MonoBehaviour
     public List<PositionAndRotation> weaponSlotPositions;
 
     public int activeWeapon = -1;
-    [CanBeNull] public Weapon weapon => activeWeapon == -1 ? null : _weapons[activeWeapon];
+    // [CanBeNull] public Weapon weapon => activeWeapon == -1 ? null : _weapons[activeWeapon];
+    public Weapon weapon;
 
     private void Start()
     {
         _weight = 0;
         _weapons = new Weapon[maxWeapons];
-        animationSwapEvent.Invoke(activeWeapon == -1 ? null : _weapons[activeWeapon].playerAnimator);
+        animationSwapEvent.Invoke(weapon);
     }
 
     public Stock FindStock(Stock.Type type)
@@ -166,7 +168,7 @@ public class Backpack : MonoBehaviour
 
         Weapon pickedWeapon = _weapons[pickedWeaponIndex];
         pickedWeapon.transform.SetLocalPositionAndRotation(pickedWeapon.activePosition, pickedWeapon.activeRotation);
-        animationSwapEvent.Invoke(pickedWeapon.playerAnimator);
+        animationSwapEvent.Invoke(pickedWeapon);
         
     }
 
