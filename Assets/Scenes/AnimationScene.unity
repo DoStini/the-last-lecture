@@ -210,6 +210,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 521406834}
     - target: {fileID: 8217238988350969700, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217238988350969700, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
       propertyPath: maxHealth
       value: 50
       objectReference: {fileID: 0}
@@ -261,7 +265,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8217238988350969700, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
 --- !u!1 &263255064
 GameObject:
@@ -714,7 +719,7 @@ PrefabInstance:
     - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
       propertyPath: playerBackpackUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1138303368}
+      objectReference: {fileID: 0}
     - target: {fileID: 2993373254857201058, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
       propertyPath: animationSwapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1287,6 +1292,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871039339}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &931106572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 229636061108508570, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+  m_PrefabInstance: {fileID: 521406833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &939038472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1294,6 +1304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2106440037536741637, guid: 5a0aaf3fa65b028d89c5396699c7a1b7, type: 3}
+      propertyPath: playerCenter
+      value: 
+      objectReference: {fileID: 1729506858}
     - target: {fileID: 2106440037536741637, guid: 5a0aaf3fa65b028d89c5396699c7a1b7, type: 3}
       propertyPath: weaponHoldStyle.parent
       value: 
@@ -1514,7 +1528,7 @@ PrefabInstance:
     - target: {fileID: 4171958471042868486, guid: 124f1f91c85956d20b1db57244342fe2, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 521406834}
     - target: {fileID: 4171958471042868486, guid: 124f1f91c85956d20b1db57244342fe2, type: 3}
       propertyPath: weapon
       value: 
@@ -1602,17 +1616,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4171958471042868505, guid: 124f1f91c85956d20b1db57244342fe2, type: 3}
   m_PrefabInstance: {fileID: 1052196718}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1138303368 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8217238988350969700, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
-  m_PrefabInstance: {fileID: 244752714}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8549d940730cd36e8a858b73f6160cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1202505700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1812,24 @@ Transform:
   m_Father: {fileID: 1015380478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1729506858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 604613109517012256, guid: 4ef4649597e2b8284ae041529aad2257, type: 3}
+  m_PrefabInstance: {fileID: 521406833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1729506860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931106572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4afa633e619fabd869b1308eb72eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 521406834}
 --- !u!1 &1790734514
 GameObject:
   m_ObjectHideFlags: 0

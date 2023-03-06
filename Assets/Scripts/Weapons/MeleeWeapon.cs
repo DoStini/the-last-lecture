@@ -44,12 +44,6 @@ public class MeleeWeapon : Weapon
         }
     }
 
-    public override void Pick(GameObject parent)
-    {
-        base.Pick(parent);
-        playerCenter = parent.transform;
-    }
-
     private void OnDrawGizmos()
     {
 // cache previous Gizmos settings

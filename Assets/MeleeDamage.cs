@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class MeleeDamage : MonoBehaviour
 {
-    [SerializeField] private MeleeWeapon weapon;
+    [SerializeField] private Player player;
 
     public void DealDamage()
     {
-        weapon.DealDamage();
+        Weapon weapon = player.backpack.weapon;
+        if (weapon == null) return;
+        
+        if (weapon is MeleeWeapon mw)
+        {
+            mw.DealDamage();
+        }
     }
 }
