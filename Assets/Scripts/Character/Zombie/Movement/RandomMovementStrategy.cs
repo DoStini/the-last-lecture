@@ -15,7 +15,7 @@ public class RandomMovementStrategy : MovementStrategy
         _lastTime = Time.time;
     }
 
-    public override void Move()
+    protected override void _Move()
     {
         if (FollowPlayer()) return;
 
