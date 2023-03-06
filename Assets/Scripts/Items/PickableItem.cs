@@ -12,7 +12,7 @@ public abstract class PickableItem : MonoBehaviour
     private GameObject _currentParent;
     private Rigidbody _rigidbody;
 
-    private void Start()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
     }

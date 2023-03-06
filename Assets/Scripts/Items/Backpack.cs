@@ -131,17 +131,16 @@ public class Backpack : MonoBehaviour
         animationSwapEvent.Invoke(null, pickedWeapon);
     }
 
-    private void SwitchWeapon(Weapon lastWeapon)
+    private void SwitchWeapon(int lastWeapon)
     {
-        VisuallyStoreWeaponInHand(activeWeapon, lastWeapon);
+        VisuallyStoreWeaponInHand(activeWeapon, lastWeapon == - 1? null : _weapons[lastWeapon]);
+        VisuallyStoreWeaponInBackpack(lastWeapon);
         playerBackpackUpdate.Invoke();
     }
 
     public void SwitchNextWeapon()
     {
-        VisuallyStoreWeaponInBackpack(activeWeapon);
-
-        Weapon lastWeapon = weapon;
+        int lastWeapon = activeWeapon;
         activeWeapon ++;
         if (activeWeapon >= _numWeapons) activeWeapon = -1;
 
@@ -150,9 +149,7 @@ public class Backpack : MonoBehaviour
 
     public void SwitchPreviousWeapon()
     {
-        VisuallyStoreWeaponInBackpack(activeWeapon);
-        
-        Weapon lastWeapon = weapon;
+        int lastWeapon = activeWeapon;
         activeWeapon--;
         if (activeWeapon < -1) activeWeapon = _numWeapons - 1;
 
@@ -168,9 +165,9 @@ public class Backpack : MonoBehaviour
         }
 
         Weapon pickedWeapon = _weapons[pickedWeaponIndex];
-        pickedWeapon.transform.SetLocalPositionAndRotation(pickedWeapon.activePosition, pickedWeapon.activeRotation);
         animationSwapEvent.Invoke(pickedWeapon, lastWeapon);
         
+        pickedWeapon.transform.SetLocalPositionAndRotation(pickedWeapon.activePosition, pickedWeapon.activeRotation);
     }
 
     private void VisuallyStoreWeapon(int index)
