@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speedFactor = 6f;
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
+    [SerializeField] public InventoryManager inventoryManager;
 
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _interactAction;
     private InputAction _scrollPositiveAction;
     private InputAction _scrollNegativeAction;
+    private InputAction _inventoryAction;
     private float _vSpeed;
     private float _lookAngle;
     private Vector2 _actionDirection = Vector2.zero;
@@ -59,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
         _scrollPositiveAction = _playerActions.Player.SwitchWeaponPos;
         _scrollPositiveAction.Enable();
 
+        _inventoryAction = _playerActions.Player.Inventory;
+        _inventoryAction.Enable();
+
         _shootAction.started += StartShooting;
         _shootAction.canceled += StartShooting;
     }
@@ -74,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         _reloadAction.Disable();
         _dropAction.Disable();
         _interactAction.Disable();
+        _inventoryAction.Disable();
         _scrollNegativeAction.Disable();
         _scrollPositiveAction.Disable();
     }
@@ -106,6 +112,11 @@ public class PlayerMovement : MonoBehaviour
         else if (_scrollPositiveAction.WasPerformedThisFrame())
         {
             player.backpack.SwitchNextWeapon();
+        }
+
+        if (_inventoryAction.WasPerformedThisFrame())
+        {
+            inventoryManager.Toggle();
         }
         
         if (_shootHeld)

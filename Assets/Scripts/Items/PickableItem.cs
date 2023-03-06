@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public abstract class PickableItem : MonoBehaviour
 {
     [SerializeField] public uint weight;
-    [SerializeField] public Image icon;
+    [SerializeField] public Sprite icon;
     [SerializeField] public GameObject model;
     [SerializeField] public Rigidbody rigidbody;
     public bool isPicked;

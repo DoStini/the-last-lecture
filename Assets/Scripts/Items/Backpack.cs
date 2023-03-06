@@ -4,12 +4,15 @@ using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class PlayerBackpackUpdate : UnityEvent
 {
     
 }
+
+
 
 [System.Serializable]
 public class PositionAndRotation
@@ -22,10 +25,10 @@ public class Backpack : MonoBehaviour
 {
     [SerializeField] private PlayerBackpackUpdate playerBackpackUpdate;
     [SerializeField] public uint maxWeight;
-    private uint _weight;
 
-    private readonly List<PickableItem> _items = new();
-
+    public List<PickableItem> items = new() ;
+    public InventoryManager inventoryManager;
+    
     private Weapon[] _weapons;
     public int maxWeapons;
     private int _numWeapons = 0;
@@ -34,15 +37,18 @@ public class Backpack : MonoBehaviour
     public int activeWeapon = -1;
     [CanBeNull] public Weapon weapon => activeWeapon == -1 ? null : _weapons[activeWeapon];
 
+    public int Count => items.Count;
+    public uint Weight { get; private set; }
+
     private void Start()
     {
-        _weight = 0;
+        Weight = 0;
         _weapons = new Weapon[maxWeapons];
     }
 
     public Stock FindStock(Stock.Type type)
     {
-        var stocks = _items.AsQueryable();
+        var stocks = items.AsQueryable();
 
         Stock stock = stocks.OfType<Stock>().FirstOrDefault(stock => stock.type == type);
 
@@ -51,7 +57,7 @@ public class Backpack : MonoBehaviour
 
     public int StockAmount(Stock.Type type)
     {
-        var stocks = _items.AsQueryable();
+        var stocks = items.AsQueryable();
 
         return stocks.OfType<Stock>().Count(stock => stock.type == type);
     }
@@ -63,7 +69,7 @@ public class Backpack : MonoBehaviour
             return false;
         }
         
-        if (_weight + item.weight > maxWeight)
+        if (Weight + item.weight > maxWeight)
         {
             return false;
         }
@@ -78,10 +84,11 @@ public class Backpack : MonoBehaviour
         }
         else
         {
-            _items.Add(item);
+            items.Add(item);
+            inventoryManager.AddItem(item);
         }
         
-        _weight += item.weight;
+        Weight += item.weight;
         playerBackpackUpdate.Invoke();
         return true;
     }
@@ -103,10 +110,10 @@ public class Backpack : MonoBehaviour
         }
         else
         {
-            _items.Remove(item);
+            items.Remove(item);
         }
 
-        _weight -= item.weight;
+        Weight -= item.weight;
         playerBackpackUpdate.Invoke();
         return true;
     }
