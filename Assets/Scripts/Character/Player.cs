@@ -30,11 +30,6 @@ public class Player : Character
             return;
         }
 
-        if (backpack.RemovePickableItem(stock))
-        {
-            stock.Drop(backpack.weapon.transform.position);
-        }
-
         backpack.RemovePickableItem(stock);
         firingWeapon.Reload(stock);
     }
@@ -50,7 +45,6 @@ public class Player : Character
     {
         if (backpack.weapon is null) return;
 
-        backpack.weapon.Drop(backpack.weapon.transform.position);
         backpack.RemovePickableItem(backpack.weapon);
     }
 

@@ -27,6 +27,6 @@ public abstract class Weapon : PickableItem
 
     public override void Pick(GameObject parent)
     {
-        base.Pick(parent, false);
+        base.Pick(parent, false, false);
     }
 }

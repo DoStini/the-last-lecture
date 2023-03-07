@@ -55,9 +55,9 @@ public class MeleeWeapon : Weapon
         animator.enabled = true;
     }
 
-    public override void Drop(Vector3 position)
+    public override void Drop()
     {
-        base.Drop(position);
+        base.Drop();
         animator.enabled = false;
     }
 

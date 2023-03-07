@@ -35,11 +35,23 @@ public class InventoryManager : MonoBehaviour
     {
         VisualElement el = itemPrefab.Instantiate();
         el.Q<VisualElement>("Icon").style.backgroundImage = new StyleBackground(item.icon);
-        el.Q<VisualElement>("Drop").AddManipulator(new Clickable(() => Debug.Log(("Drop"))));
+        el.Q<VisualElement>("Drop").AddManipulator(new Clickable(
+            () =>
+            {
+                backpack.RemovePickableItem(item);
+                RemoveItem(item);
+            }));
+        el.name = item.GetInstanceID().ToString();
 
-        _itemsView.Add(el);        
+        _itemsView.Add(el);
     }
 
+    public void RemoveItem(PickableItem item)
+    {
+        VisualElement el = _itemsView.Q<VisualElement>(item.GetInstanceID().ToString());
+        el.RemoveFromHierarchy();
+    }
+    
     private void Update()
     {
         _itemsCountLabel.text = backpack.Count + " Items";

@@ -112,6 +112,7 @@ public class Backpack : MonoBehaviour
         {
             items.Remove(item);
         }
+        item.Drop();
 
         Weight -= item.weight;
         playerBackpackUpdate.Invoke();
