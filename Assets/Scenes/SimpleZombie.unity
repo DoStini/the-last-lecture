@@ -1815,6 +1815,10 @@ PrefabInstance:
       propertyPath: zombieAnimator
       value: 
       objectReference: {fileID: 1445569588}
+    - target: {fileID: 4171958471042868486, guid: d936523468efcee689c4591b35aa0316, type: 3}
+      propertyPath: damageObservers.Array.data[0]
+      value: 
+      objectReference: {fileID: 725730138}
     - target: {fileID: 4171958471042868487, guid: d936523468efcee689c4591b35aa0316, type: 3}
       propertyPath: m_Name
       value: SimpleZombie

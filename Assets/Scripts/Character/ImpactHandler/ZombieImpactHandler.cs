@@ -18,7 +18,8 @@ public class ZombieImpactHandler : ImpactHandler
     {
         Vector3 agentPosition = _agent.transform.position;
 
-        if (!NavMesh.SamplePosition(agentPosition, out NavMeshHit hit, 1.5f, NavMesh.AllAreas)) return false;
+        float height = _agent.height * 0.7f;
+        if (!NavMesh.SamplePosition(agentPosition, out NavMeshHit hit, height, NavMesh.AllAreas)) return false;
         
         if ((agentPosition.x < hit.position.x + 0.5f && agentPosition.x > hit.position.x - 0.5f) &&
             (agentPosition.z < hit.position.z + 0.5f && agentPosition.z > hit.position.z - 0.5f))
