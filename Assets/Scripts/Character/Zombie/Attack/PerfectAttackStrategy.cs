@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PerfectAttackStrategy : AttackStrategy
 {
+    public float waitTime = 0.5f;
+    private float _lastTime = 0;
+    
     protected override bool _Shoot()
     {
+        if (_lastTime + waitTime > Time.time) return false;
+        _lastTime = Time.time;
         var targetPoint = TargetPoint();
 
         if (targetPoint == null) return false;

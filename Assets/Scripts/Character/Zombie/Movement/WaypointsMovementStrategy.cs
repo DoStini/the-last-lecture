@@ -12,7 +12,7 @@ public class WaypointsMovementStrategy : MovementStrategy
         _Start();
     }
 
-    public override void Move()
+    protected override void _Move()
     {   
         if (FollowPlayer()) return;
 

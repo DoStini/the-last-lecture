@@ -4,29 +4,25 @@ public class MeleeWeapon : Weapon
 {
     public Transform playerCenter;
     public Vector3 boxSize;
-    public Animator animator;
     public float knockbackFactor;
     private bool _mStart;
 
     private Collider[] _colliders;
     private Vector3 _boxCenter;
-    private static readonly int Attack1 = Animator.StringToHash("Attack");
 
     private void Start()
     {
         _colliders = new Collider[80];
         _mStart = true;
-        animator.enabled = false;
     }
 
     protected override bool _Attack(Vector3 pointerLocation)
     {
-        animator.SetTrigger(Attack1);
         return true;
     }
 
     // ReSharper disable once UnusedMember.Local
-    private void DealDamage()
+    public void DealDamage()
     {
         var rotation = playerCenter.rotation;
 
@@ -46,19 +42,6 @@ public class MeleeWeapon : Weapon
             Vector3 knockbackDirection = rotation * Vector3.forward;
             impactHandler.AddImpact(knockbackDirection, knockbackFactor);
         }
-    }
-
-    public override void Pick(GameObject parent)
-    {
-        base.Pick(parent);
-        playerCenter = parent.transform;
-        animator.enabled = true;
-    }
-
-    public override void Drop(Vector3 position)
-    {
-        base.Drop(position);
-        animator.enabled = false;
     }
 
     private void OnDrawGizmos()

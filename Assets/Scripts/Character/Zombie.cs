@@ -5,7 +5,16 @@ public class Zombie : Character
     [SerializeField] private ZombieStrategy zombieStrategy;
     [SerializeField] public Weapon weapon;
     [SerializeField] public Player target;
+    public Animator zombieAnimator;
+    private static readonly int Hit = Animator.StringToHash("Hit");
 
+    public override void RemoveHealth(int health)
+    {
+        base.RemoveHealth(health);
+        
+        zombieAnimator.SetTrigger(Hit);
+    }
+    
     private void Start()
     {
         Init();
