@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
-  icon: {fileID: 21300000, guid: 3168140d6f409d0448447f18568d9482, type: 3}
+  icon: {fileID: 21300000, guid: a1872dcefc75fc8f5846894c6f91bb3c, type: 3}
   model: {fileID: 8780449567372325146}
   rigidbody: {fileID: 793446868438806976}
   isPicked: 0

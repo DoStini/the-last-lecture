@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public abstract class PickableItem : MonoBehaviour
@@ -38,5 +37,15 @@ public abstract class PickableItem : MonoBehaviour
     public virtual void Pick(GameObject parent)
     {
         Pick(parent, true, true);
+    }
+
+    public virtual void RunAction()
+    {
+        
+    }
+
+    public virtual bool HasAction()
+    {
+        return false;
     }
 }
