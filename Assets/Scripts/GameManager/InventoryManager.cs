@@ -14,8 +14,8 @@ public class InventoryManager : MonoBehaviour
     private ScrollView _itemsView;
     public VisualTreeAsset itemPrefab;
 
-    private bool _visible = true;
-    
+    public bool Active { get; private set; } = true;
+
     private void Start()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -59,7 +59,7 @@ public class InventoryManager : MonoBehaviour
 
     public void Toggle()
     {
-        root.style.display = _visible ? DisplayStyle.None : DisplayStyle.Flex;
-        _visible = !_visible;
+        root.style.display = Active ? DisplayStyle.None : DisplayStyle.Flex;
+        Active = !Active;
     }
 }

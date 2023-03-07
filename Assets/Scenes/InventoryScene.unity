@@ -199,10 +199,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  pointerHideEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 399188766}
+        m_TargetAssemblyTypeName: PointerFollow, Assembly-CSharp
+        m_MethodName: HidePointer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   pointerLayers:
     serializedVersion: 2
     m_Bits: 8
   cam: {fileID: 963194227}
+  inventoryManager: {fileID: 312452001}
 --- !u!1 &263255064
 GameObject:
   m_ObjectHideFlags: 0

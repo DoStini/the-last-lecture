@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateLookAngle(Vector3 pointerLocation)
     {
+        if (inventoryManager.Active) return;
+
         var position = transform.position;
         var lookDirection = new Vector2(pointerLocation.x - position.x, pointerLocation.z - position.z);
         _lookAngle = Mathf.Atan2(lookDirection.x, lookDirection.y) * Mathf.Rad2Deg;
@@ -87,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (_inventoryAction.WasPerformedThisFrame())
+        {
+            inventoryManager.Toggle();
+        }
+
         _actionDirection = _moveAction.ReadValue<Vector2>().normalized;
         transform.rotation = Quaternion.Euler(0f, _lookAngle,0f);
 
@@ -95,6 +102,12 @@ public class PlayerMovement : MonoBehaviour
             player.HandleReload();
         }
 
+        if (inventoryManager.Active)
+        {
+            _holdTime = 0;
+            return;
+        }
+ 
         if (_dropAction.WasPerformedThisFrame())
         {
             player.HandleDrop();
@@ -114,11 +127,6 @@ public class PlayerMovement : MonoBehaviour
             player.backpack.SwitchNextWeapon();
         }
 
-        if (_inventoryAction.WasPerformedThisFrame())
-        {
-            inventoryManager.Toggle();
-        }
-        
         if (_shootHeld)
         {
             player.HandleAttack(_pointerLocation, _holdTime);
