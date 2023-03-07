@@ -22,6 +22,7 @@ public abstract class Weapon : PickableItem
     public Quaternion activeRotation;
     public RuntimeAnimatorController playerAnimator;
     public WeaponHoldStyle weaponHoldStyle;
+    [NonSerialized] public Transform lastParent;
     
     private float _lastAttack;
 
@@ -42,5 +43,11 @@ public abstract class Weapon : PickableItem
     public override void Pick(GameObject parent)
     {
         base.Pick(parent, false);
+    }
+
+    public override void Drop(Vector3 position)
+    {
+        base.Drop(position);
+        lastParent = null;
     }
 }
