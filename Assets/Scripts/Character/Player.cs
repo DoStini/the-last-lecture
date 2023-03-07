@@ -1,20 +1,30 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : Character
 {
+    [SerializeField] public Animator animator;
+
     public Backpack backpack;
+    private static readonly int Hit = Animator.StringToHash("Hit");
     public float pickRange;
-    
     private void Start()
     {
         Init();
-
         CharacterController controller = GetComponent<CharacterController>();
         controller.radius = radius;
         controller.height = height;
     }
 
+    public override void RemoveHealth(int health)
+    {
+        base.RemoveHealth(health);
+        
+        animator.SetTrigger(Hit);
+    }
+    
     public void HandleReload()
     {
         if (backpack.weapon is not FiringWeapon firingWeapon)
@@ -37,11 +47,9 @@ public class Player : Character
         firingWeapon.Reload(stock);
     }
 
-    public void HandleAttack(Vector3 pointerLocation, int holdTime)
+    public bool HandleAttack(Vector3 pointerLocation, int holdTime)
     {
-        if (backpack.weapon is null) return;
-
-        backpack.weapon.Attack(pointerLocation, holdTime);
+        return !ReferenceEquals(backpack.weapon, null) && backpack.weapon.Attack(pointerLocation, holdTime);
     }
 
     public void HandleDrop()
@@ -66,7 +74,7 @@ public class Player : Character
 
         var pickableItem = closestPickableItem.GetComponent<PickableItem>();
 
-        if (!backpack.AddPickableItem(pickableItem, gameObject))
+        if (!backpack.AddPickableItem(pickableItem))
         {
             Debug.Log("Backpack max capacity");
             return;

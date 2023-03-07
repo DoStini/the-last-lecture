@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 2106440037536741637}
   - component: {fileID: 2106440037536741642}
   - component: {fileID: 2106440037536741641}
-  - component: {fileID: 2106440037536741640}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Pickable
@@ -113,8 +112,8 @@ Transform:
   m_GameObject: {fileID: 2106440037536741639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.56, y: 0.56, z: 0.56}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5237680829226809051}
   m_Father: {fileID: 0}
@@ -149,19 +148,23 @@ MonoBehaviour:
   weight: 5
   icon: {fileID: 0}
   model: {fileID: 4892081661843319905}
-  rigidbody: {fileID: 2106440037536741641}
   isPicked: 0
-  damageStrategy: {fileID: 0}
+  damageStrategy: {fileID: 2106440037536741636}
   attackInterval: 0.5
   mask:
     serializedVersion: 2
     m_Bits: 128
   automatic: 1
-  activePosition: {x: 0.5, y: 0, z: 0.5}
-  activeRotation: {x: -0.5, y: 0, z: 0, w: 0.8660254}
+  activePosition: {x: -0.352, y: 0.077, z: -0.02}
+  activeRotation: {x: -0.33278793, y: -0.68964887, z: 0.24851407, w: 0.5931926}
+  playerAnimator: {fileID: 9100000, guid: 0165b0f08d37283ada1076ad6a3d3001, type: 2}
+  weaponHoldStyle:
+    leftGrip: {fileID: 0}
+    rightGrip: {fileID: 0}
+    parent: {fileID: 0}
+    lookAtConstraint: {fileID: 0}
   playerCenter: {fileID: 0}
-  boxSize: {x: 1.4, y: 0.3, z: 1.3}
-  animator: {fileID: 2106440037536741640}
+  boxSize: {x: 1.2, y: 0.3, z: 1.2}
   knockbackFactor: 15
 --- !u!65 &2106440037536741642
 BoxCollider:
@@ -192,26 +195,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &2106440037536741640
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106440037536741639}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 808041b31eac8ce92ae0440a149719d5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4892081661843319905
 GameObject:
   m_ObjectHideFlags: 0

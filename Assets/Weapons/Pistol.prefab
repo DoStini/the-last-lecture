@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &304048518771968642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7181927735318843488}
+  m_Layer: 0
+  m_Name: ref_LeftHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7181927735318843488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304048518771968642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8094975623259462378}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3409631722755929290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2611271298798742824}
+  m_Layer: 0
+  m_Name: ref_RightHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2611271298798742824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3409631722755929290}
+  m_LocalRotation: {x: 0.49025905, y: -0.43143383, z: -0.5118956, w: 0.5580984}
+  m_LocalPosition: {x: 0.62, y: -0.72, z: -0.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8094975623259462378}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 6.058, y: -81.498, z: -90.276}
 --- !u!1 &8094975623259462377
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +76,8 @@ GameObject:
   - component: {fileID: 8094975623259462374}
   - component: {fileID: 8094975623259462373}
   - component: {fileID: 8094975623259462375}
+  - component: {fileID: 4535856435568618645}
+  - component: {fileID: 89829253336094025}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -30,10 +94,12 @@ Transform:
   m_GameObject: {fileID: 8094975623259462377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.01, z: 0.64}
-  m_LocalScale: {x: 0.47, y: 0.27, z: 1}
+  m_LocalScale: {x: 0.079999916, y: 0.05999992, z: 0.27000007}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6321605891153780448}
+  - {fileID: 2611271298798742824}
+  - {fileID: 7181927735318843488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,6 +211,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 5
   variation: 0.6
+--- !u!114 &4535856435568618645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094975623259462377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48948dfe9d76b07488dacd46a7955fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1773428102 &89829253336094025
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094975623259462377}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: -0.05100003, y: 1.3899996, z: 0.40000018}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: -0.08910787, y: 0.21269679, z: 0.6116271}
+  m_RotationOffsets:
+  - {x: 5.803713, y: -2.7572265, z: -1.200396}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1001 &8094975622414552366
 PrefabInstance:
   m_ObjectHideFlags: 0

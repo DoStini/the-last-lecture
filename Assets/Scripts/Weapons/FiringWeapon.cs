@@ -5,7 +5,8 @@ public abstract class FiringWeapon : Weapon
 {
     public Stock.Type stockType;
     public Transform bulletSpawnPoint;
-
+    public bool infiniteAmmo = false;
+    
     public uint Ammo => Stock != null ? Stock.Ammo : 0;
     [CanBeNull] public Stock Stock { get; private set; }
 
@@ -40,12 +41,13 @@ public abstract class FiringWeapon : Weapon
     
     protected override bool _Attack(Vector3 pointerLocation)
     {
-        if (Stock is null || Stock.Ammo == 0)
+        if (!infiniteAmmo && (Stock is null || Stock.Ammo == 0))
         {
             return false;
         }
 
-        Stock.Ammo--;
+        if(Stock is not null) Stock.Ammo--;
+
         Vector3 direction = GetDirection(pointerLocation);
         Vector3 position = bulletSpawnPoint.position;
 

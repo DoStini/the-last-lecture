@@ -10,6 +10,8 @@ public abstract class MovementStrategy : MonoBehaviour
     [SerializeField] protected NavMeshAgent agent;
 
     private float _originalSpeed;
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int Angle = Animator.StringToHash("Angle");
 
     protected void _Start()
     {
@@ -18,7 +20,15 @@ public abstract class MovementStrategy : MonoBehaviour
         _target = _zombie.target;
     }
 
-    public abstract void Move();
+    protected abstract void _Move();
+
+    public void Move()
+    {
+        _Move();
+
+        var velocity = agent.velocity;
+        _zombie.zombieAnimator.SetFloat(Speed, velocity.magnitude);
+    }
 
     private bool PlayerInMinRange(float distance)
     {
