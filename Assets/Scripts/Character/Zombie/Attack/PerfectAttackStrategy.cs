@@ -20,7 +20,7 @@ public class PerfectAttackStrategy : AttackStrategy
                 _attackTarget.transform.position) > _attackTarget.radius) 
             return false;
 
-        _weapon.Attack( targetPoint.Value, holdTime);
+        _weapon.Attack(targetPoint.Value, holdTime);
         return true;
     }
 }

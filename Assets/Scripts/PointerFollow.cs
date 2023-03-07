@@ -9,6 +9,12 @@ public class PointerFollow : MonoBehaviour
 
     public void UpdatePointerPosition(Vector3 pointerLocation)
     {
+        gameObject.SetActive(true);
         transform.position = pointerLocation;
+    }
+
+    public void HidePointer()
+    {
+        gameObject.SetActive(false);
     }
 }

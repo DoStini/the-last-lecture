@@ -40,12 +40,10 @@ public class Player : Character
             return;
         }
 
-        if (backpack.RemovePickableItem(stock))
-        {
-            stock.Drop(backpack.weapon.transform.position);
-        }
+        if (firingWeapon.Stock != null) firingWeapon.Stock.Drop();
 
-        backpack.RemovePickableItem(stock);
+        backpack.RemovePickableItem(stock, false);
+
         firingWeapon.Reload(stock);
     }
 
@@ -58,7 +56,6 @@ public class Player : Character
     {
         if (backpack.weapon is null) return;
 
-        backpack.weapon.Drop(backpack.weapon.transform.position);
         backpack.RemovePickableItem(backpack.weapon);
     }
 
@@ -77,7 +74,7 @@ public class Player : Character
 
         var pickableItem = closestPickableItem.GetComponent<PickableItem>();
 
-        if (!backpack.AddPickableItem(pickableItem, gameObject))
+        if (!backpack.AddPickableItem(pickableItem))
         {
             Debug.Log("Backpack max capacity");
             return;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 using UnityEngine.Events;
 
 [Serializable]
@@ -11,6 +10,7 @@ public class PlayerBackpackUpdate : UnityEvent
 {
     
 }
+
 
 [Serializable]
 public class AnimationSwapEvent : UnityEvent<Weapon>
@@ -30,10 +30,10 @@ public class Backpack : MonoBehaviour
     [SerializeField] private PlayerBackpackUpdate playerBackpackUpdate;
     [SerializeField] private AnimationSwapEvent animationSwapEvent;
     [SerializeField] public uint maxWeight;
-    private uint _weight;
 
-    private readonly List<PickableItem> _items = new();
-
+    public List<PickableItem> items = new() ;
+    public InventoryManager inventoryManager;
+    
     private Weapon[] _weapons;
     public int maxWeapons;
     private int _numWeapons = 0;
@@ -42,16 +42,19 @@ public class Backpack : MonoBehaviour
     public int activeWeapon = -1;
     [CanBeNull] public Weapon weapon => activeWeapon == -1 ? null : _weapons[activeWeapon];
 
+    public int Count => items.Count;
+    public uint Weight { get; private set; }
+
     private void Start()
     {
-        _weight = 0;
+        Weight = 0;
         _weapons = new Weapon[maxWeapons];
         animationSwapEvent.Invoke(weapon);
     }
 
     public Stock FindStock(Stock.Type type)
     {
-        var stocks = _items.AsQueryable();
+        var stocks = items.AsQueryable();
 
         Stock stock = stocks.OfType<Stock>().FirstOrDefault(stock => stock.type == type);
 
@@ -60,37 +63,39 @@ public class Backpack : MonoBehaviour
 
     public int StockAmount(Stock.Type type)
     {
-        var stocks = _items.AsQueryable();
+        var stocks = items.AsQueryable();
 
         return stocks.OfType<Stock>().Count(stock => stock.type == type);
     }
 
-    public bool AddPickableItem(PickableItem item, GameObject parent)
+    public bool AddPickableItem(PickableItem item)
     {
         if (item.isPicked)
         {
             return false;
         }
         
-        if (_weight + item.weight > maxWeight)
+        if (Weight + item.weight > maxWeight)
         {
             return false;
         }
 
-        item.Pick(gameObject);
 
         if (item is Weapon pickedWeapon)
         {
-            if (_numWeapons == maxWeapons) return false;
-
+            if (_numWeapons == maxWeapons) return false; 
+            
+            item.Pick(gameObject);
             AddWeapon(pickedWeapon);
         }
         else
         {
-            _items.Add(item);
+            item.Pick(gameObject);
+            items.Add(item);
+            inventoryManager.AddItem(item);
         }
         
-        _weight += item.weight;
+        Weight += item.weight;
         playerBackpackUpdate.Invoke();
         return true;
     }
@@ -104,7 +109,7 @@ public class Backpack : MonoBehaviour
         VisuallyStoreWeapon(index);
     }
 
-    public bool RemovePickableItem(PickableItem item)
+    public bool RemovePickableItem(PickableItem item, bool drop = true)
     {
         if (item is Weapon pickedWeapon)
         {
@@ -112,10 +117,13 @@ public class Backpack : MonoBehaviour
         }
         else
         {
-            _items.Remove(item);
+            items.Remove(item);
+            inventoryManager.RemoveItem(item);
         }
 
-        _weight -= item.weight;
+        if (drop) item.Drop();
+
+        Weight -= item.weight;
         playerBackpackUpdate.Invoke();
         return true;
     }

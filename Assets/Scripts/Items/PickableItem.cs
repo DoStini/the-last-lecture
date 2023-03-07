@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class PickableItem : MonoBehaviour
 {
     [SerializeField] public uint weight;
-    [SerializeField] public Image icon;
+    [SerializeField] public Sprite icon;
     [SerializeField] public GameObject model;
+    [SerializeField] public new Rigidbody rigidbody;
+
     public bool isPicked;
 
     private GameObject _currentParent;
@@ -17,25 +18,25 @@ public abstract class PickableItem : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void Pick(GameObject parent, bool deactivateModel)
+    public void Pick(GameObject parent, bool deactivateModel, bool resetPosition)
     {
         isPicked = true;
         _rigidbody.isKinematic = true;
         transform.SetParent(parent.transform);
         model.SetActive(!deactivateModel);
+        if (resetPosition) transform.SetLocalPositionAndRotation(Vector3.zero, transform.rotation);
     }
 
-    public virtual void Drop(Vector3 position)
+    public virtual void Drop()
     {
         _rigidbody.isKinematic = false;
         transform.SetParent(null);
-        transform.position = position;
-        _rigidbody.AddTorque(5,5,5);
+        model.SetActive(true);
         isPicked = false;
     }
 
     public virtual void Pick(GameObject parent)
     {
-        Pick(parent, true);
+        Pick(parent, true, true);
     }
 }
