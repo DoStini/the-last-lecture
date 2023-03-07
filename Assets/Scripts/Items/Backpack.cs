@@ -74,16 +74,17 @@ public class Backpack : MonoBehaviour
             return false;
         }
 
-        item.Pick(parent);
 
         if (item is Weapon pickedWeapon)
         {
-            if (_numWeapons == maxWeapons) return false;
-
+            if (_numWeapons == maxWeapons) return false; 
+            
+            item.Pick(parent);
             AddWeapon(pickedWeapon);
         }
         else
         {
+            item.Pick(parent);
             items.Add(item);
             inventoryManager.AddItem(item);
         }
