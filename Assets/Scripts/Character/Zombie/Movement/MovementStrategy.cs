@@ -59,8 +59,14 @@ public abstract class MovementStrategy : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
-        Quaternion rotation = Quaternion.LookRotation(_target.transform.position - agent.transform.position);
-        agent.transform.rotation =
-            Quaternion.RotateTowards(agent.transform.rotation, rotation, Time.deltaTime * agent.angularSpeed);
+        var agentTransform = agent.transform;
+        var curRotation = agentTransform.rotation;
+        
+        Quaternion rotation = Quaternion.LookRotation(_target.transform.position - agentTransform.position);
+        Vector3 angles = curRotation.eulerAngles;
+        rotation = Quaternion.Euler(angles.x, rotation.eulerAngles.y, angles.z);
+        
+        agentTransform.rotation =
+            Quaternion.RotateTowards(curRotation, rotation, Time.deltaTime * agent.angularSpeed);
     }
 }
