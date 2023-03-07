@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 267603624097719681}
   - component: {fileID: 881399948050538405}
   - component: {fileID: 1820337618741183889}
+  - component: {fileID: 3266470265537788055}
   m_Layer: 7
   m_Name: GunnerZombie
   m_TagString: Enemy
@@ -100,7 +101,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.50000006
+  m_Radius: 0.57
   m_Height: 2.6
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -145,13 +146,15 @@ MonoBehaviour:
   baseSpeed: 0
   damageObservers:
   - {fileID: 0}
-  radius: 0.5
+  radius: 0.54
   height: 2.6
   viewRange: 10
   zombieStrategy: {fileID: 267603624097719681}
   weapon: {fileID: 4876500336862030296}
   target: {fileID: 0}
   zombieAnimator: {fileID: 6919719282137151352}
+  touchDamage: {fileID: 0}
+  touchKnockback: 0
 --- !u!114 &4171958471042868509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24866715706dcf162a812acd7a27a9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 3
+  minRange: 5
   agent: {fileID: 4171958471042868510}
   interval: 2
   directionScale: 5
@@ -255,6 +258,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 8
   waitTime: 0.5
+--- !u!114 &3266470265537788055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171958471042868487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afaf338ed12498b942fbd161c2c52c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 3
+  variation: 0.5
 --- !u!1 &4235631445712905208
 GameObject:
   m_ObjectHideFlags: 0

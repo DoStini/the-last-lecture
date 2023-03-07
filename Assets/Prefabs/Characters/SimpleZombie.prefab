@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4171958471042868508}
   - component: {fileID: 267603624097719681}
   - component: {fileID: 1502771185782622461}
+  - component: {fileID: 7789253877922932067}
   m_Layer: 7
   m_Name: SimpleZombie
   m_TagString: Enemy
@@ -64,7 +65,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4171958471042868487}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.50000006
+  m_Radius: 0.55
   m_Speed: 1.8
   m_Acceleration: 8
   avoidancePriority: 50
@@ -103,6 +104,8 @@ MonoBehaviour:
   weapon: {fileID: 0}
   target: {fileID: 0}
   zombieAnimator: {fileID: 4829813825757891575}
+  touchDamage: {fileID: 7789253877922932067}
+  touchKnockback: 12
 --- !u!114 &4171958471042868509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24866715706dcf162a812acd7a27a9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 3
+  minRange: 1.2
   agent: {fileID: 4171958471042868510}
   interval: 2
   directionScale: 5
@@ -192,6 +195,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+--- !u!114 &7789253877922932067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171958471042868487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afaf338ed12498b942fbd161c2c52c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 7
+  variation: 0.2
 --- !u!1001 &1327550048330937958
 PrefabInstance:
   m_ObjectHideFlags: 0
