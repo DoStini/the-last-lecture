@@ -30,7 +30,10 @@ public class Player : Character
             return;
         }
 
-        backpack.RemovePickableItem(stock);
+        if (firingWeapon.Stock != null) firingWeapon.Stock.Drop();
+
+        backpack.RemovePickableItem(stock, false);
+
         firingWeapon.Reload(stock);
     }
 

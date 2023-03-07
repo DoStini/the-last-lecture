@@ -102,7 +102,7 @@ public class Backpack : MonoBehaviour
         VisuallyStoreWeapon(index);
     }
 
-    public bool RemovePickableItem(PickableItem item)
+    public bool RemovePickableItem(PickableItem item, bool drop = true)
     {
         if (item is Weapon pickedWeapon)
         {
@@ -111,8 +111,10 @@ public class Backpack : MonoBehaviour
         else
         {
             items.Remove(item);
+            inventoryManager.RemoveItem(item);
         }
-        item.Drop();
+
+        if (drop) item.Drop();
 
         Weight -= item.weight;
         playerBackpackUpdate.Invoke();

@@ -5,16 +5,26 @@ public class Stock : PickableItem
     [SerializeField] public Type type;
 
     [SerializeField] public uint baseCapacity;
-    private uint _currentCapacity;
-    
+
     public enum Type
     {
         Pistol,
-        Sniper
+        Rifle
+    }
+
+    public uint Ammo { get; set; }
+
+    public override void Drop()
+    {
+        base.Drop();
+        if (Ammo == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Start()
     {
-        _currentCapacity = baseCapacity;
+        Ammo = baseCapacity;
     }
 }

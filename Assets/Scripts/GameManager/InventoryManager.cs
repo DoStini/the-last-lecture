@@ -39,7 +39,6 @@ public class InventoryManager : MonoBehaviour
             () =>
             {
                 backpack.RemovePickableItem(item);
-                RemoveItem(item);
             }));
         el.name = item.GetInstanceID().ToString();
 

@@ -25,7 +25,6 @@ public abstract class PickableItem : MonoBehaviour
         rigidbody.isKinematic = false;
         transform.SetParent(null);
         model.SetActive(true);
-        rigidbody.AddTorque(5,5,5);
         isPicked = false;
     }
 

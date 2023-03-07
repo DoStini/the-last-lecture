@@ -10035,6 +10035,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   model: {fileID: 0}
   rigidbody: {fileID: 8430926332431130810}
+  isPicked: 0
   damageStrategy: {fileID: 8430926332431130801}
   attackInterval: 0.1
   mask:
@@ -10043,13 +10044,15 @@ MonoBehaviour:
   automatic: 1
   activePosition: {x: 0.25, y: 0, z: 1}
   activeRotation: {x: 0, y: 0, z: 0, w: 0}
-  ammo: 100000
-  stockType: 0
+  stockType: 1
   bulletSpawnPoint: {fileID: 5975521017800697014}
   bulletSpread: 1
   bulletSpreadVariance: {x: 0.5, y: 0.5, z: 0.5}
   bulletSpeed: 100
   shootingRenderer: {fileID: 8430926332431130803}
+  stockPosition:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &8430926332431130803
 MonoBehaviour:
   m_ObjectHideFlags: 0
