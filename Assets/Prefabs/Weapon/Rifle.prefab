@@ -10099,6 +10099,7 @@ MonoBehaviour:
   weight: 5
   icon: {fileID: 0}
   model: {fileID: 233282686626591108}
+  rigidbody: {fileID: 8430926332431130810}
   isPicked: 0
   damageStrategy: {fileID: 8430926332431130801}
   attackInterval: 0.1
@@ -10114,9 +10115,8 @@ MonoBehaviour:
     rightGrip: {fileID: 6643088910824442031}
     parent: {fileID: 0}
     lookAtConstraint: {fileID: 6857523872482438448}
-  stockType: 0
+  stockType: 1
   bulletSpawnPoint: {fileID: 5975521017800697014}
-  <Ammo>k__BackingField: 0
   bulletSpread: 1
   bulletSpreadVariance: {x: 0.5, y: 0.5, z: 0.5}
   bulletSpeed: 100

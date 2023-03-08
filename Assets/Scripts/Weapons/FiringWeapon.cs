@@ -5,16 +5,22 @@ public abstract class FiringWeapon : Weapon
 {
     public Stock.Type stockType;
     public Transform bulletSpawnPoint;
+    public bool infiniteAmmo = false;
+    
+    public uint Ammo => Stock != null ? Stock.Ammo : 0;
+    [CanBeNull] public Stock Stock { get; private set; }
 
-    [field: SerializeField] public uint Ammo { get; private set; }
     [SerializeField] private bool bulletSpread = true;
-    [SerializeField] private Vector3 bulletSpreadVariance = new Vector3(0.1f, 0.1f, 0.1f);
+    [SerializeField] private Vector3 bulletSpreadVariance = new (0.1f, 0.1f, 0.1f);
     [SerializeField] private float bulletSpeed = 100;
     [SerializeField] public ShootingRenderer shootingRenderer;
+    [SerializeField] private PositionAndRotation stockPosition;
 
     public void Reload(Stock stock)
     {
-        Ammo = stock.baseCapacity;
+        Stock = stock;
+        stock.transform.SetParent(transform);
+        stock.transform.SetLocalPositionAndRotation(stockPosition.position, stockPosition.rotation);
     }
 
     private Vector3 GetDirection(Vector3 pointerLocation)
@@ -35,12 +41,13 @@ public abstract class FiringWeapon : Weapon
     
     protected override bool _Attack(Vector3 pointerLocation)
     {
-        if (Ammo == 0)
+        if (!infiniteAmmo && (Stock is null || Stock.Ammo == 0))
         {
             return false;
         }
 
-        Ammo--;
+        if(Stock is not null) Stock.Ammo--;
+
         Vector3 direction = GetDirection(pointerLocation);
         Vector3 position = bulletSpawnPoint.position;
 

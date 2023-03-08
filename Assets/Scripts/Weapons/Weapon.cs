@@ -42,12 +42,12 @@ public abstract class Weapon : PickableItem
 
     public override void Pick(GameObject parent)
     {
-        base.Pick(parent, false);
+        base.Pick(parent, false, false);
     }
 
-    public override void Drop(Vector3 position)
+    public override void Drop()
     {
-        base.Drop(position);
+        base.Drop();
         lastParent = null;
     }
 }

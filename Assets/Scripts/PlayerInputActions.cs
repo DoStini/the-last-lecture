@@ -98,6 +98,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4f88bc5-e63b-46ed-8d56-ccc75a965033"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -452,6 +461,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""SwitchWeaponNeg"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78853ee4-640b-4965-85b1-aa74b7923eb6"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38db7179-dd19-4106-b4f8-46521cd7d4e0"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1045,6 +1076,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_SwitchWeaponPos = m_Player.FindAction("SwitchWeaponPos", throwIfNotFound: true);
         m_Player_SwitchWeaponNeg = m_Player.FindAction("SwitchWeaponNeg", throwIfNotFound: true);
+        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1124,6 +1156,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_SwitchWeaponPos;
     private readonly InputAction m_Player_SwitchWeaponNeg;
+    private readonly InputAction m_Player_Inventory;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1136,6 +1169,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @SwitchWeaponPos => m_Wrapper.m_Player_SwitchWeaponPos;
         public InputAction @SwitchWeaponNeg => m_Wrapper.m_Player_SwitchWeaponNeg;
+        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1169,6 +1203,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchWeaponNeg.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponNeg;
                 @SwitchWeaponNeg.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponNeg;
                 @SwitchWeaponNeg.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeaponNeg;
+                @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1197,6 +1234,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchWeaponNeg.started += instance.OnSwitchWeaponNeg;
                 @SwitchWeaponNeg.performed += instance.OnSwitchWeaponNeg;
                 @SwitchWeaponNeg.canceled += instance.OnSwitchWeaponNeg;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
             }
         }
     }
@@ -1361,6 +1401,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSwitchWeaponPos(InputAction.CallbackContext context);
         void OnSwitchWeaponNeg(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

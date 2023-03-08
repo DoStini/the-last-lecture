@@ -1,0 +1,21 @@
+.item {
+    -unity-background-image-tint-color: rgb(95, 89, 128);
+    width: 130px;
+    height: 130px;
+    display: flex;
+    visibility: visible;
+    overflow: visible;
+    background-color: rgb(95, 89, 128);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

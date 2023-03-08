@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speedFactor = 6f;
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
+    [SerializeField] public InventoryManager inventoryManager;
 
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _interactAction;
     private InputAction _scrollPositiveAction;
     private InputAction _scrollNegativeAction;
+    private InputAction _inventoryAction;
     private float _vSpeed;
     private float _lookAngle;
     private Vector2 _actionDirection = Vector2.zero;
@@ -48,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
     
     public void UpdateLookAngle(Vector3 pointerLocation)
     {
+        if (inventoryManager.Active) return;
+
         var position = transform.position;
         _lookDirection = new Vector2(pointerLocation.x - position.x, pointerLocation.z - position.z);
         _lookAngle = Mathf.Atan2(_lookDirection.x, _lookDirection.y) * Mathf.Rad2Deg;
@@ -83,6 +87,9 @@ public class PlayerMovement : MonoBehaviour
         _scrollPositiveAction = _playerActions.Player.SwitchWeaponPos;
         _scrollPositiveAction.Enable();
 
+        _inventoryAction = _playerActions.Player.Inventory;
+        _inventoryAction.Enable();
+
         _shootAction.started += StartShooting;
         _shootAction.canceled += StartShooting;
     }
@@ -98,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         _reloadAction.Disable();
         _dropAction.Disable();
         _interactAction.Disable();
+        _inventoryAction.Disable();
         _scrollNegativeAction.Disable();
         _scrollPositiveAction.Disable();
     }
@@ -105,6 +113,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (_inventoryAction.WasPerformedThisFrame())
+        {
+            inventoryManager.Toggle();
+        }
+
         _actionDirection = _moveAction.ReadValue<Vector2>().normalized;
         transform.rotation = Quaternion.Euler(0f, _lookAngle,0f);
 
@@ -113,6 +126,29 @@ public class PlayerMovement : MonoBehaviour
             player.HandleReload();
         }
 
+        if (_actionDirection.magnitude > 0)
+        {
+            player.animator.SetFloat(Speed, speedFactor/6);
+            var angle = Vector2.SignedAngle(_lookDirection, _actionDirection);
+
+            player.animator.SetFloat(Angle, angle);
+        }
+        else
+        {
+            player.animator.SetFloat(Speed, 0);
+        }
+
+        player.animator.SetBool(Falling, _vSpeed < -0.9f);
+        
+        
+        
+        
+        if (inventoryManager.Active)
+        {
+            _holdTime = 0;
+            return;
+        }
+ 
         if (_dropAction.WasPerformedThisFrame())
         {
             player.HandleDrop();
@@ -131,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         {
             player.backpack.SwitchNextWeapon();
         }
-        
+
         if (_shootHeld)
         {
             var attacked = player.HandleAttack(_pointerLocation, _holdTime);
@@ -146,20 +182,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _holdTime = 0;
         }
-
-        if (_actionDirection.magnitude > 0)
-        {
-            player.animator.SetFloat(Speed, speedFactor/6);
-            var angle = Vector2.SignedAngle(_lookDirection, _actionDirection);
-
-            player.animator.SetFloat(Angle, angle);
-        }
-        else
-        {
-            player.animator.SetFloat(Speed, 0);
-        }
-
-        player.animator.SetBool(Falling, _vSpeed < -0.9f);
     }
 
 
