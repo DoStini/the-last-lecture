@@ -40,9 +40,9 @@ public abstract class Weapon : PickableItem
 
     protected abstract bool _Attack(Vector3 pointerLocation);
 
-    public override void Pick(GameObject parent)
+    public override void Pick(GameObject backpack)
     {
-        base.Pick(parent, false, false);
+        base.Pick(backpack, false, false);
     }
 
     public override void Drop()

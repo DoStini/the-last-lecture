@@ -40,6 +40,17 @@ public class InventoryManager : MonoBehaviour
             {
                 backpack.RemovePickableItem(item);
             }));
+
+        var actionElement = el.Q<VisualElement>("Action");
+        if (item.HasAction())
+        {
+            actionElement.AddManipulator(new Clickable(item.RunAction));
+        }
+        else
+        {
+            actionElement.style.display = DisplayStyle.None;
+        }
+
         el.name = item.GetInstanceID().ToString();
 
         _itemsView.Add(el);

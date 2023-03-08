@@ -17,8 +17,14 @@ public class Character : MonoBehaviour
     public float viewRange;
     
     protected int _currentHealth;
-    private float _currentSpeed;
 
+    public float Speed { get; private set; }
+
+    public bool HasMaxSpeed()
+    {
+        return _currentHealth == maxHealth;
+    }
+    
     public int GetHealth()
     {
         return _currentHealth;
@@ -31,7 +37,7 @@ public class Character : MonoBehaviour
 
     public void ResetSpeed()
     {
-        _currentSpeed = baseSpeed;
+        Speed = baseSpeed;
     }
 
     public void AddHealth(int health)
@@ -56,23 +62,43 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void BoostSpeed(float factor)
+    public float BoostSpeed(float factor)
     {
-        _currentSpeed *= factor;
-        if (_currentSpeed > maxSpeed)
+        float prevSpeed = Speed;
+        Speed *= factor;
+        if (Speed > maxSpeed)
         {
-            _currentSpeed = maxSpeed;
+            Speed = maxSpeed;
         }
 
-        if (_currentSpeed < minSpeed)
+        else if (Speed < minSpeed)
         {
-            _currentSpeed = minSpeed;
+            Speed = minSpeed;
         }
+
+        return Speed / prevSpeed;
     }
 
+    public void DecreaseSpeed(float factor)
+    {
+        Speed /= factor;
+        if (Speed > baseSpeed - 0.1 && Speed < baseSpeed + 0.1)
+        {
+            Speed = baseSpeed;
+        }
+        else if (Speed > maxSpeed)
+        {
+            Speed = maxSpeed;
+        }
+        else if (Speed < minSpeed)
+        {
+            Speed = minSpeed;
+        }
+    }
+    
     protected void Init()
     {
         _currentHealth = baseHealth;
-        _currentSpeed = baseSpeed;
+        Speed = baseSpeed;
     }
 }
