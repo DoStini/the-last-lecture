@@ -23,7 +23,7 @@ public class Player : Character
         
         animator.SetTrigger(Hit);
     }
-    
+
     public void HandleReload()
     {
         if (backpack.weapon is not FiringWeapon firingWeapon)

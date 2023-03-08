@@ -20,7 +20,11 @@ public class Character : MonoBehaviour
 
     public float Speed { get; private set; }
 
-
+    public bool HasMaxSpeed()
+    {
+        return _currentHealth == maxHealth;
+    }
+    
     public int GetHealth()
     {
         return _currentHealth;

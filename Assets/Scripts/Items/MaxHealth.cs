@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : PickableItem
+public class MaxHealth : PickableItem
 {
     public int health;
     private Player _player;
@@ -10,20 +12,16 @@ public class Health : PickableItem
         base.Pick(backpack);
         _player = backpack.GetComponentInParent<Player>();
     }
-    
-    public override void RunAction()
-    {
-        if (_player.HasMaxSpeed())
-        {
-            return;
-        }
-        _player.AddHealth(health);
-        _player.backpack.RemovePickableItem(this, false);
-        Destroy(this);
-    }
 
     public override bool HasAction()
     {
         return true;
+    }
+
+    public override void RunAction()
+    {
+        _player.maxHealth += health;
+        _player.backpack.RemovePickableItem(this, false);
+        Destroy(this);
     }
 }
