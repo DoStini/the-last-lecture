@@ -127,7 +127,7 @@ NavMeshAgent:
   m_Height: 2.6
   m_BaseOffset: 1.23
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &4171958471042868486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4ce9b4d56b9e6d882e2308253d79d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 8
+  attackRange: 11
   waitTime: 0.5
 --- !u!114 &3266470265537788055
 MonoBehaviour:
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7325759534019027576}
   - component: {fileID: 4835945123705565410}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ZombieHitCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9117387340649539323, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
       propertyPath: mask.m_Bits
-      value: 72
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 9117387340649539323, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
       propertyPath: <Ammo>k__BackingField
@@ -674,7 +674,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7688208935261297245}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 520420d0c93a8627a9983cfa17699241, type: 3}
+  m_Avatar: {fileID: 9000000, guid: ef56a1dd6cdbd3a4da43f9b011d06bb5, type: 3}
   m_Controller: {fileID: 9100000, guid: 17204f8dc1ad59c518d186c82894fc78, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

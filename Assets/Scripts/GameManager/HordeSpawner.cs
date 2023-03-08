@@ -1,30 +1,48 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Random = System.Random;
+using URandom = UnityEngine.Random;
+
+[Serializable]
+public struct ZombieSpawnOption
+{
+    public ObjectPool zombiePool;
+    public float zombiePercentage;
+}
 
 public class HordeSpawner : MonoBehaviour
 {
     public new Camera camera;
-    public ObjectPool zombiePool;
+    public List<ZombieSpawnOption> zombieSpawnOptions;
     public LayerMask spawnGround;
-    public List<Zombie> zombiePrefabs;
     public Player player;
     public DamageObserver damageObserver;
+    public ObjectPool impactPool;
+    public ObjectPool trailPool;
     public float hordeTime;
     public float spawnRate;
+    public int initZombiesToSpawn;
+    public int zombieIncreaseRate;
     
     private float _cameraHeight;
     private float _cameraWidth;
     private float _spawnLine;
     private float _lastHorde;
+    private int _currentZombies;
     private bool _hordeInEffect = false;
     private CameraController _cameraController;
+    private readonly Random _random = new Random();
 
     private IEnumerator SpawnZombies()
     {
-        for (int zombies = 0; zombies < 10; zombies++) {
+        List<int> zombiesToSpawn = zombieSpawnOptions
+            .Select(f => Mathf.FloorToInt(f.zombiePercentage * _currentZombies)).ToList();
+        List<ObjectPool> zombiePools = zombieSpawnOptions.Select(f => f.zombiePool).ToList();
+        
+        for (int zombies = 0; zombies < _currentZombies; zombies++) {
             Vector2 position;
             Vector3 centre = camera.transform.position;
             Vector2 origin = new Vector2(
@@ -33,7 +51,7 @@ public class HordeSpawner : MonoBehaviour
             
             do
             {
-                float linePosition = Random.Range(0f, _spawnLine);
+                float linePosition = URandom.Range(0f, _spawnLine);
                 
                 if (linePosition < _cameraHeight)
                 {
@@ -60,8 +78,9 @@ public class HordeSpawner : MonoBehaviour
                          _cameraController.height + 6, 
                          spawnGround));
 
-
-            zombiePool.GetAndActivate(o =>
+            int index = _random.Next(zombiesToSpawn.Count);
+            
+            zombiePools[index].GetAndActivate(o =>
             {
                 Zombie zombie = o.GetComponent<Zombie>();
 
@@ -70,12 +89,27 @@ public class HordeSpawner : MonoBehaviour
                 zombie.damageObservers.Add(damageObserver);
 
                 o.transform.position = new Vector3(position.x, player.transform.position.y + 1, position.y);
-            });
+                Weapon weapon = zombie.weapon;
 
+                if (weapon is not FiringWeapon fw) return;
+                if (fw.shootingRenderer == null) return;
+
+                fw.shootingRenderer.impactPool = impactPool;
+                fw.shootingRenderer.trailPool = trailPool;
+            });
+            zombiesToSpawn[index]--;
+            if (zombiesToSpawn[index] <= 0)
+            {
+                zombiesToSpawn.RemoveAt(index);
+                zombiePools.RemoveAt(index);
+            }
+
+            if (zombiesToSpawn.Count == 0) break;
             yield return new WaitForSeconds(spawnRate);
         }
 
         _lastHorde = Time.time;
+        _currentZombies += zombieIncreaseRate;
         _hordeInEffect = false;
         yield return null;
     }
@@ -88,6 +122,7 @@ public class HordeSpawner : MonoBehaviour
         _cameraWidth = _cameraHeight * camera.aspect * 1.3f;
 
         _spawnLine = 2 * _cameraHeight + 2 * _cameraWidth;
+        _currentZombies = initZombiesToSpawn;
     }
 
     private void Update()
