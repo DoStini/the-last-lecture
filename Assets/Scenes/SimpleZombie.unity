@@ -1966,10 +1966,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
   zombieSpawnOptions:
-  - zombiePool: {fileID: 847792195}
-    zombiePercentage: 0.8
   - zombiePool: {fileID: 1353950152}
     zombiePercentage: 0.2
+  - zombiePool: {fileID: 847792195}
+    zombiePercentage: 0.8
   spawnGround:
     serializedVersion: 2
     m_Bits: 8
@@ -1978,9 +1978,9 @@ MonoBehaviour:
   impactPool: {fileID: 1790734516}
   trailPool: {fileID: 1202505702}
   hordeTime: 10
-  spawnRate: 2
+  spawnRate: 1
   initZombiesToSpawn: 10
-  zombieIncreaseRate: 2
+  zombieIncreaseRate: 4
 --- !u!1 &2107434738
 GameObject:
   m_ObjectHideFlags: 0

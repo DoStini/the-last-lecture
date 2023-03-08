@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 881399948050538405}
   - component: {fileID: 1820337618741183889}
   - component: {fileID: 3266470265537788055}
+  - component: {fileID: 825352646849148543}
   m_Layer: 7
   m_Name: GunnerZombie
   m_TagString: Enemy
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24866715706dcf162a812acd7a27a9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 5
+  minRange: 7
   agent: {fileID: 4171958471042868510}
   interval: 2
   directionScale: 5
@@ -199,11 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143e7f086fa3be7f4b2c249ace327df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 3
+  minRange: 2
   agent: {fileID: 4171958471042868510}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
 --- !u!114 &4171958471042868508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementStrategy: {fileID: 4171958471042868509}
-  attackStrategy: {fileID: 1820337618741183889}
+  attackStrategy: {fileID: 825352646849148543}
 --- !u!114 &881399948050538405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +271,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 3
   variation: 0.5
+--- !u!114 &825352646849148543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171958471042868487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6dfffbb33d47de984f0e5a4784dbde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 7
+  waitTime: 0.1
+  delay: 0.5
 --- !u!1 &4235631445712905208
 GameObject:
   m_ObjectHideFlags: 0
