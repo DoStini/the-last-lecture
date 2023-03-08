@@ -35,13 +35,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Enemy")) return;
         
-        Zombie character = other.gameObject.GetComponent<Zombie>();
+        Zombie character = other.gameObject.GetComponentInParent<Zombie>();
         if (character.touchDamage == null) return;
         
         player.RemoveHealth(character.touchDamage.CalculateDamage());
 
         Vector3 knockbackDirection = new Vector3(-_actionDirection.x, 0, -_actionDirection.y);
-        knockbackDirection += other.gameObject.GetComponent<NavMeshAgent>().velocity;
+        knockbackDirection += other.gameObject.GetComponentInParent<NavMeshAgent>().velocity;
         
         _impactHandler.AddImpact(knockbackDirection, character.touchKnockback);
     }

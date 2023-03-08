@@ -52,6 +52,8 @@ public class HordeSpawner : MonoBehaviour
                     position = origin + new Vector2(linePosition - _cameraHeight - _cameraWidth - _cameraHeight,
                         0f);
                 }
+
+                yield return new WaitForSecondsRealtime(0.05f);
             } while (!Physics.Raycast(
                          new Vector3(position.x, centre.y, position.y), 
                          Vector3.down,
@@ -82,7 +84,7 @@ public class HordeSpawner : MonoBehaviour
     {
         _cameraController = camera.GetComponent<CameraController>();
         
-        _cameraHeight = 2f * _cameraController.height * Mathf.Tan(camera.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.3f;
+        _cameraHeight = 2f * _cameraController.height * Mathf.Tan(camera.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.5f;
         _cameraWidth = _cameraHeight * camera.aspect * 1.3f;
 
         _spawnLine = 2 * _cameraHeight + 2 * _cameraWidth;
