@@ -130,7 +130,7 @@ public class Backpack : MonoBehaviour
 
     private void RemoveWeapon(Weapon pickedWeapon)
     {
-        int index = Array.FindIndex(_weapons, w => pickedWeapon);
+        int index = Array.FindIndex(_weapons, w => pickedWeapon == w);
         _weapons[index] = null;
         _numWeapons--;
 
@@ -149,8 +149,13 @@ public class Backpack : MonoBehaviour
     public void SwitchNextWeapon()
     {
         int lastWeapon = activeWeapon;
-        activeWeapon ++;
-        if (activeWeapon >= _numWeapons) activeWeapon = -1;
+
+        while (true)
+        {
+            activeWeapon ++;
+            if (activeWeapon >= maxWeapons || _weapons[activeWeapon] is not null) break;
+        }
+        if (activeWeapon >= maxWeapons) activeWeapon = -1;
 
         SwitchWeapon(lastWeapon);
     }
@@ -158,8 +163,17 @@ public class Backpack : MonoBehaviour
     public void SwitchPreviousWeapon()
     {
         int lastWeapon = activeWeapon;
-        activeWeapon--;
-        if (activeWeapon < -1) activeWeapon = _numWeapons - 1;
+
+        if (activeWeapon == -1)
+        {
+            activeWeapon = maxWeapons;
+        }
+
+        while (true)
+        {
+            activeWeapon --;
+            if (activeWeapon == -1 || _weapons[activeWeapon] is not null) break;
+        }
 
         SwitchWeapon(lastWeapon);
     }

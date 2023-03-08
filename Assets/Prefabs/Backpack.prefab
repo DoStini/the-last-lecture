@@ -3629,7 +3629,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  animationSwapEvent:
+    m_PersistentCalls:
+      m_Calls: []
   maxWeight: 100
+  items: []
+  inventoryManager: {fileID: 0}
   maxWeapons: 3
   weaponSlotPositions:
   - position: {x: 0.45, y: 0.45, z: -0.2}
