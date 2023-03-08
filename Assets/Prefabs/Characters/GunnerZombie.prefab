@@ -139,13 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd6d31ef5a67c3f79fb5b161fd5c31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 25
   maxSpeed: 0
   minSpeed: 0
-  baseHealth: 500
+  baseHealth: 25
   baseSpeed: 0
-  damageObservers:
-  - {fileID: 0}
+  damageObservers: []
   radius: 0.54
   height: 2.6
   viewRange: 10

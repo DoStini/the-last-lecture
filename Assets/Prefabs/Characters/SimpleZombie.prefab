@@ -52,7 +52,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6
+  m_Radius: 0.8
   m_Height: 3.4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -90,14 +90,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd6d31ef5a67c3f79fb5b161fd5c31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 35
   maxSpeed: 0
   minSpeed: 0
-  baseHealth: 500
+  baseHealth: 35
   baseSpeed: 0
-  damageObservers:
-  - {fileID: 0}
-  radius: 0.6
+  damageObservers: []
+  radius: 0.8
   height: 3.4
   viewRange: 10
   zombieStrategy: {fileID: 267603624097719681}
