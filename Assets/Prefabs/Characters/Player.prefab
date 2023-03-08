@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 4717864186231171157}
-  speedFactor: 6
   gravityFactor: 11
   player: {fileID: 5656559098108250750}
+  inventoryManager: {fileID: 0}
 --- !u!114 &3271688355983825195
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Player : Character
 {
@@ -10,6 +8,7 @@ public class Player : Character
     public Backpack backpack;
     private static readonly int Hit = Animator.StringToHash("Hit");
     public float pickRange;
+
     private void Start()
     {
         Init();
@@ -24,7 +23,7 @@ public class Player : Character
         
         animator.SetTrigger(Hit);
     }
-    
+
     public void HandleReload()
     {
         if (backpack.weapon is not FiringWeapon firingWeapon)
@@ -82,6 +81,7 @@ public class Player : Character
             return;
         }
         var pickableItem = closestPickableItem.GetComponent<PickableItem>();
+        Debug.Log(closestPickableItem);
         
         if (!backpack.AddPickableItem(pickableItem))
         {
