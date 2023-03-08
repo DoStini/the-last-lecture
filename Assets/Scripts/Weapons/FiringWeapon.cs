@@ -13,7 +13,7 @@ public abstract class FiringWeapon : Weapon
     [SerializeField] private bool bulletSpread = true;
     [SerializeField] private Vector3 bulletSpreadVariance = new (0.1f, 0.1f, 0.1f);
     [SerializeField] private float bulletSpeed = 100;
-    [SerializeField] private ShootingRenderer shootingRenderer;
+    [SerializeField] public ShootingRenderer shootingRenderer;
     [SerializeField] private PositionAndRotation stockPosition;
 
     public void Reload(Stock stock)

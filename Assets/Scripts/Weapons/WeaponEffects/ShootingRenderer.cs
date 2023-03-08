@@ -7,8 +7,8 @@ public class ShootingRenderer : MonoBehaviour
     public Transform bulletSpawnPoint;
     public LayerMask impactLayers;
 
-    [SerializeField] private ObjectPool impactPool;
-    [SerializeField] private ObjectPool trailPool;
+    [SerializeField] public ObjectPool impactPool;
+    [SerializeField] public ObjectPool trailPool;
     [SerializeField] private ParticleSystem shootingParticleSystem;
     
     public void Render(Action callback, Vector3 direction, bool madeImpact, RaycastHit hit, float bulletSpeed)

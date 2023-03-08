@@ -61,18 +61,28 @@ public class Player : Character
     public void HandleInteract(Vector3 pointerLocation)
     {
         Collider[] hitColliders = Physics.OverlapSphere(pointerLocation, 0.5f);
-        Collider closestPickableItem = hitColliders.AsQueryable().OfType<Collider>()
-            .Where(item => item.GetComponent<PickableItem>())
-            .Where(item => Vector3.Distance(item.transform.position, transform.position) < pickRange)
-            .OrderBy(item => Vector3.Distance(item.transform.position, pointerLocation)).FirstOrDefault();
+        float closest = float.MaxValue;
+        Collider closestPickableItem = null;
 
-        if (closestPickableItem is null)
+        foreach (var hitCollider in hitColliders)
+        {
+            if (!hitCollider.CompareTag("Pickable")) continue;
+            if (Vector3.Distance(hitCollider.transform.position, transform.position) >= pickRange) continue;
+
+            float distance = Vector3.Distance(hitCollider.transform.position, pointerLocation);
+            if (distance >= closest) continue;
+
+            closest = distance;
+            closestPickableItem = hitCollider;
+        }
+
+        if (closestPickableItem == null)
         {
             return;
         }
-
         var pickableItem = closestPickableItem.GetComponent<PickableItem>();
-
+        Debug.Log(closestPickableItem);
+        
         if (!backpack.AddPickableItem(pickableItem))
         {
             Debug.Log("Backpack max capacity");

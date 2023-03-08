@@ -54,18 +54,34 @@ public class Backpack : MonoBehaviour
 
     public Stock FindStock(Stock.Type type)
     {
-        var stocks = items.AsQueryable();
+        foreach (var pickableItem in items)
+        {
+            if (pickableItem is not Stock stock) continue;
 
-        Stock stock = stocks.OfType<Stock>().FirstOrDefault(stock => stock.type == type);
+            if (stock.type == type)
+            {
+                return stock;
+            }
+        }
 
-        return default(Stock) ? null : stock;
+        return null;
     }
 
     public int StockAmount(Stock.Type type)
     {
-        var stocks = items.AsQueryable();
+        int count = 0;
+        
+        foreach (var pickableItem in items)
+        {
+            if (pickableItem is not Stock stock) continue;
 
-        return stocks.OfType<Stock>().Count(stock => stock.type == type);
+            if (stock.type == type)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public bool AddPickableItem(PickableItem item)
