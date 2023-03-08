@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8217238988350969703}
   - component: {fileID: 8217238988350969702}
   - component: {fileID: 8217238988350969700}
+  - component: {fileID: 4253969184699980749}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -63,3 +64,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   maxHealth: 50
+--- !u!114 &4253969184699980749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217238988350969705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272358d2128aba172af5e046eb178cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

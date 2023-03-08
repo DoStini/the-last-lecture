@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
     [SerializeField] public InventoryManager inventoryManager;
-    private float speedFactor = 6f;
 
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
@@ -208,7 +207,7 @@ public class PlayerMovement : MonoBehaviour
             Time.fixedDeltaTime *
             new Vector3(
                 player.Speed * _actionDirection.x, _vSpeed, player.Speed * _actionDirection.y);
-        
+
         controller.Move(moveDirection);
     }
 }

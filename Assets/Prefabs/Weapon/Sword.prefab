@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afaf338ed12498b942fbd161c2c52c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 5
-  variation: 0.6
+  baseDamage: 8
+  variation: 0.2
 --- !u!114 &2106440037536741637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   weight: 5
   icon: {fileID: 0}
   model: {fileID: 4892081661843319905}
+  rigidbody: {fileID: 0}
   isPicked: 0
   damageStrategy: {fileID: 2106440037536741636}
   attackInterval: 0.5

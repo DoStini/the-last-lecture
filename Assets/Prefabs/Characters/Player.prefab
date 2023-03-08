@@ -210,10 +210,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30
-  maxSpeed: 0
-  minSpeed: 0
+  maxSpeed: 15
+  minSpeed: 2
   baseHealth: 30
-  baseSpeed: 0
+  baseSpeed: 6
   damageObservers: []
   radius: 0.35
   height: 2.4

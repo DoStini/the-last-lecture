@@ -528,6 +528,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 9117387340649539323, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
+      propertyPath: infiniteAmmo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117387340649539323, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
       propertyPath: <Ammo>k__BackingField
       value: 1000
       objectReference: {fileID: 0}
