@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -30,7 +31,23 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int Angle = Animator.StringToHash("Angle");
     private static readonly int Falling = Animator.StringToHash("Falling");
     private static readonly int Shoot = Animator.StringToHash("Shoot");
+    private ImpactHandler _impactHandler;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Enemy")) return;
+        
+        Zombie character = other.gameObject.GetComponentInParent<Zombie>();
+        if (character.touchDamage == null) return;
+        
+        player.RemoveHealth(character.touchDamage.CalculateDamage());
+
+        Vector3 knockbackDirection = new Vector3(-_actionDirection.x, 0, -_actionDirection.y);
+        knockbackDirection += other.gameObject.GetComponentInParent<NavMeshAgent>().velocity;
+        
+        _impactHandler.AddImpact(knockbackDirection, character.touchKnockback);
+    }
+    
     public void UpdateLookAngle(Vector3 pointerLocation)
     {
         if (inventoryManager.Active) return;
@@ -44,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _playerActions = new PlayerInputActions();
+        _impactHandler = GetComponent<ImpactHandler>();
     }
 
     private void OnEnable()

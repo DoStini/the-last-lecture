@@ -13,7 +13,8 @@ public class PlayerImpactHandler : ImpactHandler
     {
         if (_impulse.magnitude > 0.2f)
         {
-            _controller.Move(_impulse * Time.deltaTime);
+            Vector3 movement = new Vector3(_impulse.x, -0.8f, _impulse.z);
+            _controller.Move(movement * Time.deltaTime);
         }
         
         _impulse = Vector3.Lerp(_impulse, Vector3.zero, 5*Time.deltaTime);
