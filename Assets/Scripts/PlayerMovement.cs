@@ -123,13 +123,21 @@ public class PlayerMovement : MonoBehaviour
         player.animator.SetBool(Falling, _vSpeed < -0.9f);
         
         
-        
-        
         if (inventoryManager.Active)
         {
             _holdTime = 0;
+            if (player.backpack.weapon != null && player.backpack.weapon.weaponHoldStyle.lookAtConstraint != null)
+            {
+                player.backpack.weapon.weaponHoldStyle.lookAtConstraint.constraintActive = false;
+            }
             return;
         }
+
+        if (player.backpack.weapon != null && player.backpack.weapon.weaponHoldStyle.lookAtConstraint != null)
+        {
+            player.backpack.weapon.weaponHoldStyle.lookAtConstraint.constraintActive = true;
+        }
+
  
         if (_dropAction.WasPerformedThisFrame())
         {
