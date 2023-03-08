@@ -137,9 +137,10 @@ public class Backpack : MonoBehaviour
             inventoryManager.RemoveItem(item);
         }
 
-        if (drop) item.Drop();
-
         Weight -= item.weight;
+        if (drop) item.Drop();
+        // else Destroy(item);
+
         playerBackpackUpdate.Invoke();
         return true;
     }

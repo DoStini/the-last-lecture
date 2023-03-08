@@ -16,7 +16,6 @@ public class Speed : PickableItem
     private void UndoAction(float actualBoost)
     {
         _player.DecreaseSpeed(actualBoost);
-        Destroy(this);
     }
     
     public override void RunAction()
@@ -24,6 +23,7 @@ public class Speed : PickableItem
         float actualBoost = _player.BoostSpeed(boost);
         _player.backpack.RemovePickableItem(this, false);
         Task.Delay(duration * 1000).ContinueWith((t) => UndoAction(actualBoost));
+        Destroy(this.gameObject);
     }
 
     public override bool HasAction()

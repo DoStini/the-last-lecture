@@ -19,7 +19,7 @@ public class Health : PickableItem
         }
         _player.AddHealth(health);
         _player.backpack.RemovePickableItem(this, false);
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 
     public override bool HasAction()

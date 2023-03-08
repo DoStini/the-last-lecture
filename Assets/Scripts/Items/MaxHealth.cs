@@ -22,6 +22,6 @@ public class MaxHealth : PickableItem
     {
         _player.maxHealth += health;
         _player.backpack.RemovePickableItem(this, false);
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
