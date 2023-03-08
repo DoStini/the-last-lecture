@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +12,8 @@ public class HUDManager : MonoBehaviour
     private Label _currentAmmo;
     private Label _stock;
     private VisualElement _ammoCounter;
+    private Label _currentSpeed;
+    private VisualElement _speedCounter;
 
     // Start is called before the first frame update
     private void Start()
@@ -18,8 +22,10 @@ public class HUDManager : MonoBehaviour
         
         _healthBar = root.Q<ProgressBar>("HealthProgress");
         _currentAmmo = root.Q<Label>("CurrentAmmo");
+        _currentSpeed = root.Q<Label>("CurrentSpeed");
         _stock = root.Q<Label>("Stock");
         _ammoCounter = root.Q<VisualElement>("AmmoCounter");
+        _speedCounter = root.Q<VisualElement>("SpeedCounter");
 
         UpdateStock();
     }
@@ -36,6 +42,12 @@ public class HUDManager : MonoBehaviour
             new StyleEnum<DisplayStyle>(DisplayStyle.Flex) : new StyleEnum<DisplayStyle>(DisplayStyle.None);
     }
 
+    private void ToggleSpeed(bool active)
+    {
+        _speedCounter.style.display = active ? 
+            new StyleEnum<DisplayStyle>(DisplayStyle.Flex) : new StyleEnum<DisplayStyle>(DisplayStyle.None);
+    }
+    
     private void Update()
     {
         _healthBar.value = player.GetHealth();
@@ -45,10 +57,22 @@ public class HUDManager : MonoBehaviour
         if (player.backpack.weapon is not FiringWeapon fw)
         {
             ToggleAmmo(false);
-            return;
         }
-        ToggleAmmo(true);
+        else
+        {
+            ToggleAmmo(true);
+            _currentAmmo.text = fw.Ammo.ToString();
+        }
 
-        _currentAmmo.text = fw.Ammo.ToString();
+        if (player.Speed < player.baseSpeed - 0.1 || player.Speed > player.baseSpeed + 0.1)
+        {
+            ToggleSpeed(true);
+            _currentSpeed.text = Math.Round(player.Speed / player.baseSpeed, 2).ToString(CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            ToggleSpeed(false);
+        }
+        
     }
 }

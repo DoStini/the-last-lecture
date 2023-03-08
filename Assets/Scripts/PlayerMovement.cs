@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public CharacterController controller;
-    [SerializeField] public float speedFactor = 6f;
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
     [SerializeField] public InventoryManager inventoryManager;
+    private float speedFactor = 6f;
 
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_actionDirection.magnitude > 0)
         {
-            player.animator.SetFloat(Speed, speedFactor/6);
+            player.animator.SetFloat(Speed, player.Speed/6);
             var angle = Vector2.SignedAngle(_lookDirection, _actionDirection);
 
             player.animator.SetFloat(Angle, angle);
@@ -181,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         var moveDirection =
             Time.fixedDeltaTime *
             new Vector3(
-                speedFactor * _actionDirection.x, _vSpeed, speedFactor * _actionDirection.y);
+                player.Speed * _actionDirection.x, _vSpeed, player.Speed * _actionDirection.y);
         
         controller.Move(moveDirection);
     }

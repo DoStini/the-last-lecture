@@ -17,11 +17,11 @@ public abstract class PickableItem : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void Pick(GameObject parent, bool deactivateModel, bool resetPosition)
+    public void Pick(GameObject backpack, bool deactivateModel, bool resetPosition)
     {
         isPicked = true;
         _rigidbody.isKinematic = true;
-        transform.SetParent(parent.transform);
+        transform.SetParent(backpack.transform);
         model.SetActive(!deactivateModel);
         if (resetPosition) transform.SetLocalPositionAndRotation(Vector3.zero, transform.rotation);
     }
@@ -34,9 +34,9 @@ public abstract class PickableItem : MonoBehaviour
         isPicked = false;
     }
 
-    public virtual void Pick(GameObject parent)
+    public virtual void Pick(GameObject backpack)
     {
-        Pick(parent, true, true);
+        Pick(backpack, true, true);
     }
 
     public virtual void RunAction()

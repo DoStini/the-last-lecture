@@ -10,6 +10,7 @@ public class Player : Character
     public Backpack backpack;
     private static readonly int Hit = Animator.StringToHash("Hit");
     public float pickRange;
+
     private void Start()
     {
         Init();

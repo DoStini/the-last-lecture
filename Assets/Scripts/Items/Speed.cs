@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class Health : PickableItem
+public class Speed : PickableItem
 {
-    public int health;
+    public float boost;
+    public int duration;
     private Player _player;
 
     public override void Pick(GameObject backpack)
@@ -10,12 +12,18 @@ public class Health : PickableItem
         base.Pick(backpack);
         _player = backpack.GetComponentInParent<Player>();
     }
+
+    private void UndoAction(float actualBoost)
+    {
+        _player.DecreaseSpeed(actualBoost);
+        Destroy(this);
+    }
     
     public override void RunAction()
     {
-        _player.AddHealth(health);
+        float actualBoost = _player.BoostSpeed(boost);
         _player.backpack.RemovePickableItem(this, false);
-        Destroy(this);
+        Task.Delay(duration * 1000).ContinueWith((t) => UndoAction(actualBoost));
     }
 
     public override bool HasAction()
