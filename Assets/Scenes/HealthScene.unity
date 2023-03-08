@@ -1296,7 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bd5e660bdd4552baa6631eec4c0bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorThresholds: fafffffffcffffff
+  colorThresholds: fafffffffcffffff000000000400000006000000
   colors:
   - serializedVersion: 2
     rgba: 4278192639
@@ -1304,6 +1304,12 @@ MonoBehaviour:
     rgba: 4278254591
   - serializedVersion: 2
     rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4279794970
+  - serializedVersion: 2
+    rgba: 4284131420
+  - serializedVersion: 2
+    rgba: 4280876800
   damagePopupPool: {fileID: 2107434740}
 --- !u!1001 &786749068
 PrefabInstance:
