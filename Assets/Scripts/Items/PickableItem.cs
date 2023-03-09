@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class PickableItem : MonoBehaviour
 {
@@ -6,6 +7,10 @@ public abstract class PickableItem : MonoBehaviour
     [SerializeField] public Sprite icon;
     [SerializeField] public GameObject model;
     [SerializeField] public new Rigidbody rigidbody;
+
+    public AudioSource dropAudioSource;
+    public AudioSource pickAudioSource;
+    
     private Collider _collider;
 
     public bool isPicked;
@@ -27,6 +32,7 @@ public abstract class PickableItem : MonoBehaviour
         transform.SetParent(backpack.transform);
         model.SetActive(!deactivateModel);
         if (resetPosition) transform.SetLocalPositionAndRotation(Vector3.zero, transform.rotation);
+        pickAudioSource.PlayOneShot(pickAudioSource.clip);
     }
 
     public virtual void Drop()
@@ -36,6 +42,7 @@ public abstract class PickableItem : MonoBehaviour
         transform.SetParent(null);
         model.SetActive(true);
         isPicked = false;
+        dropAudioSource.PlayOneShot(dropAudioSource.clip);
     }
 
     public virtual void Pick(GameObject backpack)

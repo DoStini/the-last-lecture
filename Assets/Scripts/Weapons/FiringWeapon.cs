@@ -8,6 +8,8 @@ public abstract class FiringWeapon : Weapon
     public Stock.Type stockType;
     public Transform bulletSpawnPoint;
     public bool infiniteAmmo = false;
+
+    public AudioSource reloadAudioSource;
     
     public uint Ammo => Stock != null ? Stock.Ammo : 0;
     [CanBeNull] public Stock Stock { get; private set; }
@@ -23,6 +25,8 @@ public abstract class FiringWeapon : Weapon
         Stock = stock;
         stock.transform.SetParent(transform);
         stock.transform.SetLocalPositionAndRotation(stockPosition.position, stockPosition.rotation);
+        
+        reloadAudioSource.PlayOneShot(reloadAudioSource.clip);
     }
 
     private Vector3 GetDirection(Vector3 pointerLocation)
