@@ -37,5 +37,17 @@
         <ui:VisualElement name="Skull" picking-mode="Ignore" style="position: absolute; background-image: none; width: 100%; flex-grow: 0; height: 100%; left: 0; top: 0; right: 0; align-items: center; justify-content: center;">
             <ui:VisualElement name="SkullHead" class="skull-normal" style="background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/skull.png?fileID=2800000&amp;guid=0519b84ac13d06879babef43deaf83a0&amp;type=3#skull&apos;); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
         </ui:VisualElement>
+        <ui:VisualElement name="GameOverMenu" picking-mode="Ignore" class="death-normal" style="position: absolute; width: 100%; height: 100%; align-items: center; justify-content: center;">
+            <ui:VisualElement picking-mode="Ignore" style="width: 500px; height: 400px; margin-top: 320px; flex-direction: column; align-items: center; justify-content: flex-start;">
+                <ui:VisualElement picking-mode="Ignore" style="width: 100%; flex-direction: row; justify-content: center;">
+                    <ui:Label text="YOU DIED" display-tooltip-when-elided="true" name="DeathText" style="-unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/SpaceMono-Bold.ttf?fileID=12800000&amp;guid=9919cea770493f451b5616803544c4b8&amp;type=3#SpaceMono-Bold&apos;); font-size: 75px; -unity-font-style: bold; color: rgb(250, 249, 249); -unity-text-outline-width: 3px; -unity-text-outline-color: rgb(226, 22, 22); text-shadow: 0 0 0 rgb(0, 0, 0); letter-spacing: 15px; word-spacing: 20px;" />
+                </ui:VisualElement>
+                <ui:VisualElement class="button" style="margin-top: 50px; width: 100%; flex-direction: row; align-items: center; justify-content: center; transition-duration: 0.2s; transition-timing-function: ease;">
+                    <ui:VisualElement style="position: absolute; width: 350px; height: 80px; margin-left: 75px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75; rotate: 3deg;" />
+                    <ui:VisualElement style="position: absolute; width: 350px; height: 80px; margin-left: 75px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75; rotate: -8deg;" />
+                    <ui:Label text="TRY AGAIN" display-tooltip-when-elided="true" style="-unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/SpaceMono-Bold.ttf?fileID=12800000&amp;guid=9919cea770493f451b5616803544c4b8&amp;type=3#SpaceMono-Bold&apos;); color: rgb(233, 233, 233); font-size: 38px; letter-spacing: 6px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

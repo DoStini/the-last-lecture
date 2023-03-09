@@ -90,4 +90,20 @@
     bottom: 0;
     margin-bottom: 0;
     rotate: -10deg;
+    left: -5px;
+}
+
+.death-normal {
+    transition-delay: 6s;
+    visibility: hidden;
+    transition-property: visibility;
+}
+
+.death-hidden {
+    visibility: visible;
+}
+
+.button:hover {
+    rotate: 1deg;
+    scale: 1.1 1.1;
 }

@@ -16,6 +16,7 @@ public class HUDManager : MonoBehaviour
     private VisualElement _speedCounter;
     private VisualElement _botBar;
     private VisualElement _skullHead;
+    private VisualElement _deathMenu;
     private Label _currentHealth;
     private Label _maxHealth;
 
@@ -34,6 +35,7 @@ public class HUDManager : MonoBehaviour
         _speedCounter = root.Q<VisualElement>("SpeedCounter");
         _botBar = root.Q<VisualElement>("BotBar");
         _skullHead = root.Q<VisualElement>("SkullHead");
+        _deathMenu = root.Q<VisualElement>("GameOverMenu");
 
         UpdateStock();
     }
@@ -43,6 +45,7 @@ public class HUDManager : MonoBehaviour
     {
         _botBar.ToggleInClassList("bottom-hidden");
         _skullHead.ToggleInClassList("skull-hidden");
+        _deathMenu.ToggleInClassList("death-hidden");
     }
 
     public void UpdateStock()
