@@ -164,6 +164,7 @@ MonoBehaviour:
     rightGrip: {fileID: 0}
     parent: {fileID: 0}
     lookAtConstraint: {fileID: 0}
+  durability: 100
   playerCenter: {fileID: 0}
   boxSize: {x: 1.2, y: 0.3, z: 1.2}
   knockbackFactor: 15

@@ -67,7 +67,19 @@ public class Player : Character
 
     public bool HandleAttack(Vector3 pointerLocation, int holdTime)
     {
-        return !ReferenceEquals(backpack.weapon, null) && backpack.weapon.Attack(pointerLocation, holdTime);
+        if (ReferenceEquals(backpack.weapon, null)) return false;
+
+        bool attacked = backpack.weapon.Attack(pointerLocation, holdTime);
+        if (!attacked) return false;
+
+        if (backpack.weapon.durability <= 0)
+        {
+            var reference = backpack.weapon;
+            backpack.RemovePickableItem(backpack.weapon, false);
+            Destroy(reference.gameObject);
+        }
+
+        return true;
     }
 
     public void HandleDrop()

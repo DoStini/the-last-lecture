@@ -23,7 +23,9 @@ public abstract class Weapon : PickableItem
     public RuntimeAnimatorController playerAnimator;
     public WeaponHoldStyle weaponHoldStyle;
     [NonSerialized] public Transform lastParent;
-    
+
+    public int durability = 100;
+
     private float _lastAttack;
 
     public bool Attack(Vector3 pointerLocation, int holdTime)
@@ -34,8 +36,8 @@ public abstract class Weapon : PickableItem
         if (!_Attack(pointerLocation)) return false;
         
         _lastAttack = Time.time;
+        durability--;
         return true;
-
     }
 
     protected abstract bool _Attack(Vector3 pointerLocation);
