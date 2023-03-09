@@ -1,9 +1,19 @@
+using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+
+[Serializable]
+public class PlayerDeathEvent : UnityEvent
+{
+    
+} 
 
 public class Player : Character
 {
+    [SerializeField] private PlayerDeathEvent _playerDeathEvent;
     [SerializeField] public Animator animator;
+    public RuntimeAnimatorController deathAnimator;
 
     public Backpack backpack;
     private static readonly int Hit = Animator.StringToHash("Hit");
@@ -20,6 +30,15 @@ public class Player : Character
     public override void RemoveHealth(int health)
     {
         base.RemoveHealth(health);
+        if (_currentHealth == 0)
+        {
+            _playerDeathEvent.Invoke();
+
+            animator.runtimeAnimatorController = deathAnimator;
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            Time.timeScale = 0;
+            return;
+        }
         
         animator.SetTrigger(Hit);
     }

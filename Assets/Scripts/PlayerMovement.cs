@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
     [SerializeField] public InventoryManager inventoryManager;
-    private float speedFactor = 6f;
 
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
@@ -35,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (player.IsDead()) return;
         if (!other.gameObject.CompareTag("Enemy")) return;
         
         Zombie character = other.gameObject.GetComponentInParent<Zombie>();
@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     public void UpdateLookAngle(Vector3 pointerLocation)
     {
         if (inventoryManager.Active) return;
+        if (player.IsDead()) return;
 
         var position = transform.position;
         _lookDirection = new Vector2(pointerLocation.x - position.x, pointerLocation.z - position.z);
@@ -113,6 +114,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (player.IsDead())
+        {
+            return;
+        }
+
         if (_inventoryAction.WasPerformedThisFrame())
         {
             inventoryManager.Toggle();
@@ -208,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
             Time.fixedDeltaTime *
             new Vector3(
                 player.Speed * _actionDirection.x, _vSpeed, player.Speed * _actionDirection.y);
-        
+
         controller.Move(moveDirection);
     }
 }

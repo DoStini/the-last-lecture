@@ -219,7 +219,11 @@ MonoBehaviour:
   radius: 0.35
   height: 2.4
   viewRange: 0
+  _playerDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   animator: {fileID: 6810613341425473370}
+  deathAnimator: {fileID: 9100000, guid: 67a110e1f6375a82c92592b8b7875339, type: 2}
   backpack: {fileID: 2993373254857201058}
   pickRange: 2.5
 --- !u!114 &1220911774714257585
