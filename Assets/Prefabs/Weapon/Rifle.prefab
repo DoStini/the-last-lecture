@@ -10168,7 +10168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afaf338ed12498b942fbd161c2c52c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 7
+  baseDamage: 5
   variation: 0.6
 --- !u!65 &8430926332431130813
 BoxCollider:
@@ -10198,7 +10198,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1183024399 &6857523872482438448
 LookAtConstraint:
   m_ObjectHideFlags: 0

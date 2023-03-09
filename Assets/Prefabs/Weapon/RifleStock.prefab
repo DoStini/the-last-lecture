@@ -104,7 +104,7 @@ MonoBehaviour:
   isPicked: 0
   type: 1
   pistolBaseCapacity: 12
-  rifleBaseCapacity: 31
+  rifleBaseCapacity: 41
 --- !u!54 &793446868438806976
 Rigidbody:
   m_ObjectHideFlags: 0
