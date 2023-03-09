@@ -10117,10 +10117,14 @@ MonoBehaviour:
     lookAtConstraint: {fileID: 6857523872482438448}
   stockType: 1
   bulletSpawnPoint: {fileID: 5975521017800697014}
+  infiniteAmmo: 0
   bulletSpread: 1
   bulletSpreadVariance: {x: 0.5, y: 0.5, z: 0.5}
   bulletSpeed: 100
   shootingRenderer: {fileID: 8430926332431130803}
+  stockPosition:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &8430926332431130803
 MonoBehaviour:
   m_ObjectHideFlags: 0
