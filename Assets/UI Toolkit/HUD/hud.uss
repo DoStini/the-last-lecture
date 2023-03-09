@@ -61,3 +61,13 @@
 .unity-progress-bar__title-container {
     background-image: none;
 }
+
+.bottom-hidden {
+    translate: 0 200px;
+}
+
+.bottom-normal {
+    transition-property: translate;
+    transition-duration: 3s;
+    transition-timing-function: ease-in;
+}

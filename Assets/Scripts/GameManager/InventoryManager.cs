@@ -73,4 +73,10 @@ public class InventoryManager : MonoBehaviour
         root.style.display = Active ? DisplayStyle.None : DisplayStyle.Flex;
         Active = !Active;
     }
+
+    public void Disable()
+    {
+        root.style.display = DisplayStyle.None;
+        Active = false;
+    }
 }
