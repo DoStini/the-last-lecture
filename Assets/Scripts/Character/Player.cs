@@ -81,7 +81,6 @@ public class Player : Character
             return;
         }
         var pickableItem = closestPickableItem.GetComponent<PickableItem>();
-        Debug.Log(closestPickableItem);
         
         if (!backpack.AddPickableItem(pickableItem))
         {

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Pickable
   - Enemy
+  - PlayerCenter
+  - ImpactPool
+  - TrailPool
   layers:
   - Default
   - TransparentFX

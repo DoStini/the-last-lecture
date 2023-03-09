@@ -1,5 +1,7 @@
+using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class FiringWeapon : Weapon
 {

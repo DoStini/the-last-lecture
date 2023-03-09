@@ -14,6 +14,7 @@ public class MeleeWeapon : Weapon
     {
         _colliders = new Collider[80];
         _mStart = true;
+        playerCenter = GameObject.FindWithTag("PlayerCenter").transform;
     }
 
     protected override bool _Attack(Vector3 pointerLocation)

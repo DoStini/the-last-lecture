@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 267603624097719681}
   - component: {fileID: 1502771185782622461}
   - component: {fileID: 7789253877922932067}
+  - component: {fileID: 7788777463171371289}
   m_Layer: 7
   m_Name: SimpleZombie
   m_TagString: Enemy
@@ -149,6 +150,7 @@ MonoBehaviour:
   zombieStrategy: {fileID: 267603624097719681}
   weapon: {fileID: 0}
   target: {fileID: 0}
+  dropper: {fileID: 7788777463171371289}
   zombieAnimator: {fileID: 4829813825757891575}
   touchDamage: {fileID: 7789253877922932067}
   touchKnockback: 12
@@ -255,6 +257,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 7
   variation: 0.2
+--- !u!114 &7788777463171371289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171958471042868487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacbb982f6869ef8097bdf9bd8f85480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 2106440037536741639, guid: 5a0aaf3fa65b028d89c5396699c7a1b7, type: 3}
+  - {fileID: 8430926332431130815, guid: d2aafd2a2fd59c9598cb8ccb6e861565, type: 3}
+  - {fileID: 6042168849317048078, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
+  - {fileID: 793446868438806983, guid: 589337528393df0ebb102ae2321d00f1, type: 3}
+  - {fileID: 7929251512449416713, guid: ebb2011cea1c5260a8b0389ea7b9efb7, type: 3}
+  - {fileID: 4195233703396607396, guid: 9ec6089580eef9f8a92f2f84c752c675, type: 3}
+  - {fileID: 7729937306265952835, guid: 5bbde4e5dc2dac682b60998e5d839e30, type: 3}
+  min: 1
+  max: 3
+  chances:
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.4
+  - 0.65
+  - 0.9
+  - 1
+  chance: 1
 --- !u!1001 &1327550048330937958
 PrefabInstance:
   m_ObjectHideFlags: 0

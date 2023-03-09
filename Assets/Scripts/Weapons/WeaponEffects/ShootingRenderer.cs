@@ -10,7 +10,13 @@ public class ShootingRenderer : MonoBehaviour
     [SerializeField] public ObjectPool impactPool;
     [SerializeField] public ObjectPool trailPool;
     [SerializeField] private ParticleSystem shootingParticleSystem;
-    
+
+    private void Start()
+    {
+        impactPool = GameObject.FindWithTag("ImpactPool").GetComponent<ObjectPool>();
+        trailPool = GameObject.FindWithTag("TrailPool").GetComponent<ObjectPool>();
+    }
+
     public void Render(Action callback, Vector3 direction, bool madeImpact, RaycastHit hit, float bulletSpeed)
     {
         shootingParticleSystem.Play();
