@@ -15,6 +15,7 @@ public class MeleeWeapon : Weapon
         _colliders = new Collider[80];
         _mStart = true;
         playerCenter = GameObject.FindWithTag("PlayerCenter").transform;
+        weaponHoldStyle.parent = GameObject.FindWithTag("MeleeParent").transform;
     }
 
     protected override bool _Attack(Vector3 pointerLocation)
@@ -67,5 +68,9 @@ public class MeleeWeapon : Weapon
             Gizmos.color = prevColor;
             Gizmos.matrix = prevMatrix;
         }
+    }
+
+    public override void Randomize()
+    {
     }
 }

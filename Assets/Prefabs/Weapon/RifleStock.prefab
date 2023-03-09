@@ -98,7 +98,8 @@ MonoBehaviour:
   rigidbody: {fileID: 793446868438806976}
   isPicked: 0
   type: 1
-  baseCapacity: 30
+  pistolBaseCapacity: 12
+  rifleBaseCapacity: 31
 --- !u!54 &793446868438806976
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class MaxHealth : PickableItem
 {
     public int health;
-    private Player _player;
+    public int minHealth;
+    public int maxHealth;    private Player _player;
 
     public override void Pick(GameObject backpack)
     {
@@ -23,5 +25,10 @@ public class MaxHealth : PickableItem
         _player.maxHealth += health;
         _player.backpack.RemovePickableItem(this, false);
         Destroy(this.gameObject);
+    }
+    
+    public override void Randomize()
+    {
+        health = new Random().Next(minHealth, maxHealth);
     }
 }

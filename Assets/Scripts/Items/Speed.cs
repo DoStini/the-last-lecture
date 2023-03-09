@@ -1,9 +1,16 @@
+using Random = System.Random;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public class Speed : PickableItem
 {
     public float boost;
+    public float minBoost;
+    public float maxBoost;
+
+    public int minDuration;
+    public int maxDuration;
+
     public int duration;
     private Player _player;
 
@@ -29,5 +36,11 @@ public class Speed : PickableItem
     public override bool HasAction()
     {
         return true;
+    }
+
+    public override void Randomize()
+    {
+        boost = (float)(new Random().NextDouble() * (maxBoost - minBoost) + minBoost);
+        duration = new Random().Next(minDuration, maxDuration);
     }
 }

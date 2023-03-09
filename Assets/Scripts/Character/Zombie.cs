@@ -51,6 +51,7 @@ public class Zombie : Character
             if (item is null) continue;
 
             drop.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            item.Randomize();
         }
     }
 }

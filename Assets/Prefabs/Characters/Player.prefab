@@ -703,6 +703,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8084205915095907887, guid: 520420d0c93a8627a9983cfa17699241, type: 3}
+      propertyPath: m_TagString
+      value: MeleeParent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 520420d0c93a8627a9983cfa17699241, type: 3}
 --- !u!1 &229636061108508570 stripped
