@@ -305,6 +305,7 @@ MonoBehaviour:
   - {fileID: 8430926332431130815, guid: d2aafd2a2fd59c9598cb8ccb6e861565, type: 3}
   - {fileID: 6042168849317048078, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
   - {fileID: 793446868438806983, guid: 589337528393df0ebb102ae2321d00f1, type: 3}
+  - {fileID: 5950421914359599237, guid: 7f4c5422dd0c43dfa86d84cb08e74481, type: 3}
   - {fileID: 7929251512449416713, guid: ebb2011cea1c5260a8b0389ea7b9efb7, type: 3}
   - {fileID: 4195233703396607396, guid: 9ec6089580eef9f8a92f2f84c752c675, type: 3}
   - {fileID: 7729937306265952835, guid: 5bbde4e5dc2dac682b60998e5d839e30, type: 3}
@@ -314,8 +315,9 @@ MonoBehaviour:
   - 0.05
   - 0.1
   - 0.15
-  - 0.4
-  - 0.65
+  - 0.3
+  - 0.45
+  - 0.7
   - 0.9
   - 1
   chance: 0.5
