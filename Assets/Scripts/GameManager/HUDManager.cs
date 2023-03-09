@@ -1,10 +1,18 @@
 using System;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
+
+[Serializable]
+public class RetryEvent : UnityEvent
+{
+    
+}
 
 public class HUDManager : MonoBehaviour
 {
+    [SerializeField] private RetryEvent retryEvent;
     [SerializeField] private Player player;
     public int maxHealth = 50;
 
@@ -17,6 +25,7 @@ public class HUDManager : MonoBehaviour
     private VisualElement _botBar;
     private VisualElement _skullHead;
     private VisualElement _deathMenu;
+    private VisualElement _retryButton;
     private Label _currentHealth;
     private Label _maxHealth;
 
@@ -36,16 +45,22 @@ public class HUDManager : MonoBehaviour
         _botBar = root.Q<VisualElement>("BotBar");
         _skullHead = root.Q<VisualElement>("SkullHead");
         _deathMenu = root.Q<VisualElement>("GameOverMenu");
+        _retryButton = root.Q<VisualElement>("RetryButton");
 
         UpdateStock();
     }
-   
+
+    private void RetryGame(ClickEvent evt)
+    {
+        retryEvent.Invoke();
+    }
 
     public void HideBotBar()
     {
         _botBar.ToggleInClassList("bottom-hidden");
         _skullHead.ToggleInClassList("skull-hidden");
         _deathMenu.ToggleInClassList("death-hidden");
+        _retryButton.RegisterCallback<ClickEvent>(RetryGame);
     }
 
     public void UpdateStock()
