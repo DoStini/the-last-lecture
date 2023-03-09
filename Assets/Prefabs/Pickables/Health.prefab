@@ -112,6 +112,8 @@ MonoBehaviour:
   rigidbody: {fileID: 4195233703396607398}
   isPicked: 0
   health: 10
+  minHealth: 5
+  maxHealth: 30
 --- !u!54 &4195233703396607398
 Rigidbody:
   m_ObjectHideFlags: 0

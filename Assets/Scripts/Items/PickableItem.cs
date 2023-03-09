@@ -52,4 +52,6 @@ public abstract class PickableItem : MonoBehaviour
     {
         return false;
     }
+
+    public abstract void Randomize();
 }

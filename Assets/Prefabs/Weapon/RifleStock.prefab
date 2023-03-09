@@ -93,12 +93,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  icon: {fileID: 21300000, guid: 3168140d6f409d0448447f18568d9482, type: 3}
+  icon: {fileID: 21300000, guid: a1872dcefc75fc8f5846894c6f91bb3c, type: 3}
   model: {fileID: 8780449567372325146}
   rigidbody: {fileID: 793446868438806976}
   isPicked: 0
   type: 1
-  baseCapacity: 30
+  pistolBaseCapacity: 12
+  rifleBaseCapacity: 31
 --- !u!54 &793446868438806976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,8 +156,8 @@ Transform:
   m_GameObject: {fileID: 8780449567372325146}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: -0.058000028, z: 0.060000025}
-  m_LocalScale: {x: 0.33333334, y: 0.4, z: 0.33333334}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.24, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 793446868238565783}
   m_Father: {fileID: 793446868438806978}

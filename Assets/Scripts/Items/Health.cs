@@ -1,8 +1,12 @@
+using Random = System.Random;
 using UnityEngine;
 
 public class Health : PickableItem
 {
     public int health;
+    public int minHealth;
+    public int maxHealth;
+
     private Player _player;
 
     public override void Pick(GameObject backpack)
@@ -25,5 +29,10 @@ public class Health : PickableItem
     public override bool HasAction()
     {
         return true;
+    }
+
+    public override void Randomize()
+    {
+        health = new Random().Next(minHealth, maxHealth);
     }
 }

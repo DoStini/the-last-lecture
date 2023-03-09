@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Zombie : Character
@@ -5,6 +6,8 @@ public class Zombie : Character
     [SerializeField] private ZombieStrategy zombieStrategy;
     [SerializeField] public Weapon weapon;
     [SerializeField] public Player target;
+    [SerializeField] public Dropper dropper;
+    
     public Animator zombieAnimator;
     public DamageStrategy touchDamage;
     public float touchKnockback;
@@ -33,7 +36,22 @@ public class Zombie : Character
 
         if (_currentHealth == 0)
         {
-            gameObject.SetActive(false);
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        gameObject.SetActive(false);
+        List<GameObject> gameObjects = dropper.GetDrops();
+
+        foreach (var drop in gameObjects)
+        {
+            PickableItem item = drop.GetComponent<PickableItem>();
+            if (item is null) continue;
+
+            drop.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            item.Randomize();
         }
     }
 }

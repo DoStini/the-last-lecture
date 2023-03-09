@@ -152,6 +152,10 @@ MonoBehaviour:
   rigidbody: {fileID: 7929251512449416715}
   isPicked: 0
   boost: 2
+  minBoost: 1.5
+  maxBoost: 2
+  minDuration: 1
+  maxDuration: 5
   duration: 5
 --- !u!54 &7929251512449416715
 Rigidbody:

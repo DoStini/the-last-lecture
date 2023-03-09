@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class Stock : PickableItem
 {
     [SerializeField] public Type type;
 
-    [SerializeField] public uint baseCapacity;
+    [SerializeField] public uint pistolBaseCapacity;
+    [SerializeField] public uint rifleBaseCapacity;
 
     public enum Type
     {
@@ -25,8 +27,21 @@ public class Stock : PickableItem
         }
     }
 
+    public override void Randomize()
+    {
+        switch (type)
+        {
+            case Type.Pistol:
+                Ammo = pistolBaseCapacity;
+                break;
+            case Type.Rifle: 
+                Ammo = rifleBaseCapacity;
+                break;
+        }
+    }
+
     public void Start()
     {
-        Ammo = baseCapacity;
+        Randomize();
     }
 }
