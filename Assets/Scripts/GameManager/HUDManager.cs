@@ -28,6 +28,8 @@ public class HUDManager : MonoBehaviour
     private VisualElement _retryButton;
     private Label _currentHealth;
     private Label _maxHealth;
+    private Label _counterLabel;
+    private int _counter;
 
     // Start is called before the first frame update
     private void Start()
@@ -46,10 +48,18 @@ public class HUDManager : MonoBehaviour
         _skullHead = root.Q<VisualElement>("SkullHead");
         _deathMenu = root.Q<VisualElement>("GameOverMenu");
         _retryButton = root.Q<VisualElement>("RetryButton");
+        _counterLabel = root.Q<Label>("CounterText");
+        _counterLabel.text = "0";
 
         UpdateStock();
     }
 
+    public void AddToCounter()
+    {
+        _counter++;
+        _counterLabel.text = _counter.ToString();
+    }
+    
     private void RetryGame(ClickEvent evt)
     {
         retryEvent.Invoke();

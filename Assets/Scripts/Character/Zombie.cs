@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Zombie : Character
 {
@@ -7,11 +9,12 @@ public class Zombie : Character
     [SerializeField] public Weapon weapon;
     [SerializeField] public Player target;
     [SerializeField] public Dropper dropper;
-    
+
     public Animator zombieAnimator;
     public DamageStrategy touchDamage;
     public float touchKnockback;
     private static readonly int Hit = Animator.StringToHash("Hit");
+    private HUDManager _hudManager;
 
     public override void RemoveHealth(int health)
     {
@@ -28,6 +31,8 @@ public class Zombie : Character
             
         capsuleCollider.radius = radius;
         capsuleCollider.height = height;
+
+        _hudManager = GameObject.FindWithTag("HUD").GetComponent<HUDManager>();
     }
 
     private void Update()
@@ -42,6 +47,7 @@ public class Zombie : Character
 
     private void Die()
     {
+        _hudManager.AddToCounter();
         gameObject.SetActive(false);
         List<GameObject> gameObjects = dropper.GetDrops();
 

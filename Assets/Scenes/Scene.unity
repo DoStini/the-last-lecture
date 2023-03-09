@@ -1247,10 +1247,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bd5e660bdd4552baa6631eec4c0bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorThresholds: fafffffffcffffff0000000006000000
+  colorThresholds: f6fffffff8fffffffafffffffcffffff0000000006000000
   colors:
   - serializedVersion: 2
+    rgba: 4284023039
+  - serializedVersion: 2
     rgba: 4278192639
+  - serializedVersion: 2
+    rgba: 4278221055
   - serializedVersion: 2
     rgba: 4278254591
   - serializedVersion: 2
@@ -1379,7 +1383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847792193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 155.57, y: -129.702, z: -185.953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1872,7 +1876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353950150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 155.57, y: -129.702, z: -185.953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2122,7 +2126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2106440037536741638, guid: 5a0aaf3fa65b028d89c5396699c7a1b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 167.09743
+      value: 185.38
       objectReference: {fileID: 0}
     - target: {fileID: 2106440037536741638, guid: 5a0aaf3fa65b028d89c5396699c7a1b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2130,7 +2134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2106440037536741638, guid: 5a0aaf3fa65b028d89c5396699c7a1b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -186.50504
+      value: -175.13
       objectReference: {fileID: 0}
     - target: {fileID: 2106440037536741638, guid: 5a0aaf3fa65b028d89c5396699c7a1b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2240,11 +2244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5303556422437047855, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 181.1102
+      value: 179.484
       objectReference: {fileID: 0}
     - target: {fileID: 5303556422437047855, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -128.4438
+      value: -128.182
       objectReference: {fileID: 0}
     - target: {fileID: 5303556422437047855, guid: 76b49ff30336e4ec8a4c11d78e9de19d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2334,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8430926332431130812, guid: d2aafd2a2fd59c9598cb8ccb6e861565, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 166.03
+      value: 168.22
       objectReference: {fileID: 0}
     - target: {fileID: 8430926332431130812, guid: d2aafd2a2fd59c9598cb8ccb6e861565, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2673,6 +2677,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8217238988350969705, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
+      propertyPath: m_TagString
+      value: HUD
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
 --- !u!1 &1944940331
@@ -2685,6 +2693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944940332}
   - component: {fileID: 1944940333}
+  - component: {fileID: 1944940334}
   m_Layer: 0
   m_Name: HordeManager
   m_TagString: Untagged
@@ -2735,7 +2744,105 @@ MonoBehaviour:
   hordeTime: 35
   spawnRate: 1
   initZombiesToSpawn: 20
-  zombieIncreaseRate: 4
+  zombieIncreaseRate: 5
+  debugMode: 0
+  siren: {fileID: 1944940334}
+--- !u!82 &1944940334
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944940331}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b61dfdb6fc7a682cc892288175004189, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1951614149 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 603324604532797462, guid: fd9de6f03bf4e27e88b46b3e083cd20b, type: 3}

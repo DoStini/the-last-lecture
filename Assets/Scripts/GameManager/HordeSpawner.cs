@@ -26,6 +26,8 @@ public class HordeSpawner : MonoBehaviour
     public float spawnRate;
     public int initZombiesToSpawn;
     public int zombieIncreaseRate;
+    public bool debugMode;
+    public AudioSource siren;
     
     private float _cameraHeight;
     private float _cameraWidth;
@@ -123,6 +125,8 @@ public class HordeSpawner : MonoBehaviour
 
         _spawnLine = 2 * _cameraHeight + 2 * _cameraWidth;
         _currentZombies = initZombiesToSpawn;
+        _lastHorde = debugMode ? Time.time + hordeTime : Time.time;
+        _hordeInEffect = false;
     }
 
     private void Update()
@@ -130,6 +134,7 @@ public class HordeSpawner : MonoBehaviour
         if (_lastHorde + hordeTime > Time.time || _hordeInEffect) return;
 
         _hordeInEffect = true;
+        siren.Play();
         StartCoroutine(SpawnZombies());
     }
 }
