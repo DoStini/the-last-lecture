@@ -1125,10 +1125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bd5e660bdd4552baa6631eec4c0bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorThresholds: fafffffffcffffff0000000006000000
+  colorThresholds: f4fffffff8fffffffafffffffcffffff0000000006000000
   colors:
   - serializedVersion: 2
+    rgba: 4284023039
+  - serializedVersion: 2
     rgba: 4278192639
+  - serializedVersion: 2
+    rgba: 4278221055
   - serializedVersion: 2
     rgba: 4278254591
   - serializedVersion: 2
@@ -2493,6 +2497,10 @@ PrefabInstance:
     - target: {fileID: 8217238988350969705, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217238988350969705, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
+      propertyPath: m_TagString
+      value: HUD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669ee4b977c1b5991b2a4c738a15d20a, type: 3}
