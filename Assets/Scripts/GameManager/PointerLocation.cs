@@ -21,10 +21,11 @@ public class PointerLocation : MonoBehaviour
     [SerializeField] public LayerMask pointerLayers;
     [SerializeField] public Camera cam;
     [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private Player player;
 
     private void LateUpdate()
     {
-        if (inventoryManager.Active)
+        if (inventoryManager.Active || player.IsDead())
         {
             pointerHideEvent.Invoke();
             return;

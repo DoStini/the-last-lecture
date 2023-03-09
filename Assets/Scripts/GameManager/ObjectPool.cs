@@ -21,6 +21,14 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
+    public void ReleaseAll()
+    {
+        for (var node = _pooledObjects.First; node != null; node = node.Next)
+        {
+            node.Value.SetActive(false);
+        }
+    }
+
     /**
      * Always returns an object, even if it is in use. No new objects created
      */

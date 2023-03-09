@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class giitCharacter : MonoBehaviour
+public class Character : MonoBehaviour
 {
     public int maxHealth;
     public float maxSpeed;
@@ -19,6 +19,11 @@ public class giitCharacter : MonoBehaviour
     protected int _currentHealth;
 
     public float Speed { get; private set; }
+
+    public bool IsDead()
+    {
+        return _currentHealth == 0;
+    }
 
     public bool HasMaxSpeed()
     {

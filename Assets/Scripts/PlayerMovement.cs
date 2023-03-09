@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (player.IsDead()) return;
         if (!other.gameObject.CompareTag("Enemy")) return;
         
         Zombie character = other.gameObject.GetComponentInParent<Zombie>();
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     public void UpdateLookAngle(Vector3 pointerLocation)
     {
         if (inventoryManager.Active) return;
+        if (player.IsDead()) return;
 
         var position = transform.position;
         _lookDirection = new Vector2(pointerLocation.x - position.x, pointerLocation.z - position.z);
@@ -112,6 +114,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (player.IsDead())
+        {
+            return;
+        }
+
         if (_inventoryAction.WasPerformedThisFrame())
         {
             inventoryManager.Toggle();

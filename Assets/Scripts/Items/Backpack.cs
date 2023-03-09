@@ -162,6 +162,14 @@ public class Backpack : MonoBehaviour
         VisuallyStoreWeaponInBackpack(lastWeapon);
         playerBackpackUpdate.Invoke();
     }
+    
+    public void SwitchNoWeapon()
+    {
+        int lastWeapon = activeWeapon;
+        activeWeapon = -1;
+
+        SwitchWeapon(lastWeapon);
+    }
 
     public void SwitchNextWeapon()
     {

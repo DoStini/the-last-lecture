@@ -61,3 +61,49 @@
 .unity-progress-bar__title-container {
     background-image: none;
 }
+
+.bottom-hidden {
+    translate: 0 200px;
+}
+
+.bottom-normal {
+    transition-property: translate;
+    transition-duration: 3s;
+    transition-timing-function: ease-in;
+}
+
+.skull-normal {
+    transition-duration: 4s;
+    transition-timing-function: ease-out;
+    top: 70%;
+    width: 10px;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+    transition-delay: 0.5s;
+}
+
+.skull-hidden {
+    width: 230px;
+    height: 278px;
+    top: -20%;
+    bottom: 0;
+    margin-bottom: 0;
+    rotate: -10deg;
+    left: -5px;
+}
+
+.death-normal {
+    transition-delay: 6s;
+    visibility: hidden;
+    transition-property: visibility;
+}
+
+.death-hidden {
+    visibility: visible;
+}
+
+.button:hover {
+    rotate: 1deg;
+    scale: 1.1 1.1;
+}
