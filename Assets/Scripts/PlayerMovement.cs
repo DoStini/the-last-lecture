@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
             player.animator.SetFloat(Speed, player.Speed/6);
             var angle = Vector2.SignedAngle(_lookDirection, _actionDirection);
     
-            player.walkAudioSource.pitch = player.Speed/3;
+            player.walkAudioSource.pitch = player.Speed/4;
 
             if (!player.walkAudioSource.isPlaying)
             {

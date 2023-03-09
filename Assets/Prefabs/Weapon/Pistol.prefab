@@ -637,6 +637,7 @@ GameObject:
   - component: {fileID: 8360387018366280958}
   - component: {fileID: 209404544636236820}
   - component: {fileID: -4191826415446428913}
+  - component: {fileID: 4477590250913294608}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Pickable
@@ -679,7 +680,7 @@ MonoBehaviour:
   weight: 5
   icon: {fileID: 0}
   model: {fileID: 4177827618152628569}
-  rigidbody: {fileID: 0}
+  rigidbody: {fileID: 1629734792243554025}
   dropAudioSource: {fileID: 209404544636236820}
   pickAudioSource: {fileID: 8360387018366280958}
   isPicked: 0
@@ -698,7 +699,7 @@ MonoBehaviour:
     rightGrip: {fileID: 7910452997836172243}
     parent: {fileID: 0}
     lookAtConstraint: {fileID: 0}
-  durability: 100
+  durability: 50
   stockType: 0
   bulletSpawnPoint: {fileID: 2585223761365576311}
   infiniteAmmo: 0
@@ -1253,6 +1254,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4477590250913294608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042168849317048078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.9551738, b: 0.0047169924, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6163587681659855707
 GameObject:
   m_ObjectHideFlags: 0

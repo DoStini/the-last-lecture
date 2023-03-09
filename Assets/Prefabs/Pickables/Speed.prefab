@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 7929251512449416757}
   - component: {fileID: 5902537501886935083}
   - component: {fileID: 8144133655726283708}
+  - component: {fileID: 2059275382434425082}
   m_Layer: 0
   m_Name: Speed
   m_TagString: Pickable
@@ -382,3 +383,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2059275382434425082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929251512449416713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.9551738, b: 0.0047169924, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

@@ -10,6 +10,8 @@ public abstract class PickableItem : MonoBehaviour
 
     public AudioSource dropAudioSource;
     public AudioSource pickAudioSource;
+
+    private Outline _outline;
     
     private Collider _collider;
 
@@ -22,11 +24,15 @@ public abstract class PickableItem : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        _outline = GetComponent<Outline>();
+
+        if (isPicked) _outline.enabled = false;
     }
 
     public void Pick(GameObject backpack, bool deactivateModel, bool resetPosition)
     {
         isPicked = true;
+        _outline.enabled = false;
         _rigidbody.isKinematic = true;
         _collider.enabled = false;
         transform.SetParent(backpack.transform);
@@ -38,6 +44,7 @@ public abstract class PickableItem : MonoBehaviour
     public virtual void Drop()
     {
         _rigidbody.isKinematic = false;
+        _outline.enabled = true;
         _collider.enabled = true;
         transform.SetParent(null);
         model.SetActive(true);
