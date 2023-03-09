@@ -10,6 +10,7 @@ TagManager:
   - ImpactPool
   - TrailPool
   - MeleeParent
+  - Pointer
   layers:
   - Default
   - TransparentFX

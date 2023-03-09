@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
     [SerializeField] public InventoryManager inventoryManager;
-    
+
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
     private InputAction _reloadAction;
@@ -136,11 +136,19 @@ public class PlayerMovement : MonoBehaviour
         {
             player.animator.SetFloat(Speed, player.Speed/6);
             var angle = Vector2.SignedAngle(_lookDirection, _actionDirection);
+    
+            player.walkAudioSource.pitch = player.Speed/3;
+
+            if (!player.walkAudioSource.isPlaying)
+            {
+                player.walkAudioSource.Play();
+            }
 
             player.animator.SetFloat(Angle, angle);
         }
         else
         {
+            player.walkAudioSource.Stop();
             player.animator.SetFloat(Speed, 0);
         }
 
