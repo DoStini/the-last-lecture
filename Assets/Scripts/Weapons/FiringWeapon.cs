@@ -1,6 +1,7 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Animations;
 using Random = UnityEngine.Random;
 
 public abstract class FiringWeapon : Weapon
@@ -10,6 +11,7 @@ public abstract class FiringWeapon : Weapon
     public bool infiniteAmmo = false;
 
     public AudioSource reloadAudioSource;
+    public AudioSource gunClickAudioSource;
     
     public uint Ammo => Stock != null ? Stock.Ammo : 0;
     [CanBeNull] public Stock Stock { get; private set; }
@@ -19,6 +21,21 @@ public abstract class FiringWeapon : Weapon
     [SerializeField] private float bulletSpeed = 100;
     [SerializeField] public ShootingRenderer shootingRenderer;
     [SerializeField] private PositionAndRotation stockPosition;
+
+    private void Start()
+    {
+        if (weaponHoldStyle.lookAtConstraint != null)
+        {
+            ConstraintSource source = new ConstraintSource
+            {
+                sourceTransform = GameObject.FindWithTag("Pointer").transform,
+                weight = 1
+            };
+
+            weaponHoldStyle.lookAtConstraint.AddSource(source);
+        }
+        
+    }
 
     public void Reload(Stock stock)
     {
@@ -49,6 +66,10 @@ public abstract class FiringWeapon : Weapon
     {
         if (!infiniteAmmo && (Stock is null || Stock.Ammo == 0))
         {
+            if (!gunClickAudioSource.isPlaying)
+            {
+                gunClickAudioSource.Play();
+            }
             return false;
         }
 
@@ -60,6 +81,8 @@ public abstract class FiringWeapon : Weapon
         bool madeImpact = Physics.Raycast(
             position, direction,
             out RaycastHit hit, float.MaxValue, mask);
+
+        audioSource.PlayOneShot(audioSource.clip);
 
         shootingRenderer.Render(() =>
             {

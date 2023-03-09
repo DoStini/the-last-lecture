@@ -36,9 +36,7 @@ public abstract class Weapon : PickableItem
         if (!automatic && holdTime > 0) return false;
 
         if (!_Attack(pointerLocation)) return false;
-
-        audioSource.PlayOneShot(audioSource.clip);
-
+        
         _lastAttack = Time.time;
         durability--;
         return true;

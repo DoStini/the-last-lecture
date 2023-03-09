@@ -15,6 +15,9 @@ public class Player : Character
     [SerializeField] public Animator animator;
     public RuntimeAnimatorController deathAnimator;
 
+    public AudioSource walkAudioSource;
+    public AudioSource dieAudioSource;
+    
     public Backpack backpack;
     private static readonly int Hit = Animator.StringToHash("Hit");
     public float pickRange;
@@ -34,12 +37,13 @@ public class Player : Character
         {
             _playerDeathEvent.Invoke();
 
+            dieAudioSource.Play();
             animator.runtimeAnimatorController = deathAnimator;
             animator.updateMode = AnimatorUpdateMode.UnscaledTime;
             Time.timeScale = 0;
             return;
         }
-        
+
         animator.SetTrigger(Hit);
     }
 

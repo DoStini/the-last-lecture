@@ -31,6 +31,8 @@ public class MeleeWeapon : Weapon
         _boxCenter = playerCenter.position + rotation * Vector3.forward * boxSize.z;
         int numColliders = Physics.OverlapBoxNonAlloc(_boxCenter, boxSize, _colliders, rotation, mask);
 
+        audioSource.PlayOneShot(audioSource.clip);
+
         for (int i = 0; i < numColliders; i++)
         {
             Collider hitCollider = _colliders[i];

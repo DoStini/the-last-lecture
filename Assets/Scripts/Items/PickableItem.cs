@@ -42,6 +42,7 @@ public abstract class PickableItem : MonoBehaviour
         transform.SetParent(null);
         model.SetActive(true);
         isPicked = false;
+        rigidbody.AddTorque(15, 15, 15);
         dropAudioSource.PlayOneShot(dropAudioSource.clip);
     }
 
