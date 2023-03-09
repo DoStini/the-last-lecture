@@ -15,6 +15,7 @@ public class HUDManager : MonoBehaviour
     private Label _currentSpeed;
     private VisualElement _speedCounter;
     private VisualElement _botBar;
+    private VisualElement _skullHead;
     private Label _currentHealth;
     private Label _maxHealth;
 
@@ -32,25 +33,16 @@ public class HUDManager : MonoBehaviour
         _ammoCounter = root.Q<VisualElement>("AmmoCounter");
         _speedCounter = root.Q<VisualElement>("SpeedCounter");
         _botBar = root.Q<VisualElement>("BotBar");
+        _skullHead = root.Q<VisualElement>("SkullHead");
 
         UpdateStock();
     }
-
-    private void OnGeometryChanged(GeometryChangedEvent evt)
-    {
-        Debug.Log("test2");g
-
-        _botBar.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged);
-        _botBar.ToggleInClassList("bottom-hidden");
-        // _botBar.style.translate =
-        //     new StyleTranslate(new Translate(new Length(0, LengthUnit.Percent), new Length(100f, LengthUnit.Percent)));
-    }
+   
 
     public void HideBotBar()
     {
-        Debug.Log("test");
         _botBar.ToggleInClassList("bottom-hidden");
-        _botBar.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+        _skullHead.ToggleInClassList("skull-hidden");
     }
 
     public void UpdateStock()
