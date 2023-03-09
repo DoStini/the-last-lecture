@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float gravityFactor = 9.8f;
     [SerializeField] public Player player;
     [SerializeField] public InventoryManager inventoryManager;
-
+    
     private PlayerInputActions _playerActions;
     private InputAction _moveAction;
     private InputAction _reloadAction;
@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         _scrollNegativeAction.Disable();
         _scrollPositiveAction.Disable();
     }
-    
+
     // Update is called once per frame
     private void Update()
     {
