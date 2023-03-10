@@ -56,7 +56,7 @@ public class Zombie : Character
             PickableItem item = drop.GetComponent<PickableItem>();
             if (item is null) continue;
 
-            drop.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            drop.transform.SetPositionAndRotation(transform.position + transform.up, transform.rotation);
             item.Randomize();
         }
     }

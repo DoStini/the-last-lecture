@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class InventoryManager : MonoBehaviour
     {
         root.style.display = Active ? DisplayStyle.None : DisplayStyle.Flex;
         Active = !Active;
+        Cursor.visible = Active;
     }
 
     public void Disable()
