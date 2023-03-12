@@ -83,15 +83,21 @@ public class InventoryManager : MonoBehaviour
 
         // if (!_infoToggled) return;
         Vector2 mousePos = Mouse.current.position.ReadValue();
-        Debug.Log("---,..-----");
-        Debug.Log(mousePos);
         mousePos = RuntimePanelUtils.ScreenToPanel(_itemInfo.panel, mousePos);
-        Debug.Log(mousePos);
 
+        if (mousePos.y - _itemInfo.resolvedStyle.height < 0)
+        {
+            _itemInfo.style.bottom = mousePos.y;
+            _itemInfo.style.top = new StyleLength(StyleKeyword.Auto);
+        }
+        else
+        {        
+            _itemInfo.style.top = root.resolvedStyle.height - mousePos.y;
+            _itemInfo.style.bottom = new StyleLength(StyleKeyword.Auto);
+        }
+        
         _itemInfo.style.left = mousePos.x;
-        _itemInfo.style.bottom = mousePos.y;
         _itemInfo.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-       
     }
 
     public void Toggle()
