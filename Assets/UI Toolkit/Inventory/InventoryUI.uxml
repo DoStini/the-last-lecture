@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/Inventory/inventory.uss?fileID=7433441132597879392&amp;guid=e7cd52c15947b7027b78554db821bae6&amp;type=3#inventory" />
     <ui:VisualElement name="Root" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
-        <ui:VisualElement name="ItemsRoot" style="flex-grow: 2; background-color: rgba(52, 52, 52, 0.94); margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%; padding-left: 2%; padding-right: 2%; padding-top: 2%; padding-bottom: 2%;">
+        <ui:VisualElement name="ItemsRoot" style="flex-grow: 2; background-color: rgba(52, 52, 52, 0.94); margin-left: 80px; margin-right: 80px; margin-top: 80px; margin-bottom: 80px; padding-left: 2%; padding-right: 2%; padding-top: 2%; padding-bottom: 2%; width: 100%;">
             <ui:VisualElement name="InfoRoot" style="flex-direction: row; justify-content: space-around; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold.otf?fileID=12800000&amp;guid=eaa591ef89bae860b962657036b1d8e7&amp;type=3#Lunatix Bold&apos;); -unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;); font-size: 100px; -unity-font-style: normal; -unity-text-outline-color: rgb(210, 210, 210); -unity-text-outline-width: 0; color: rgb(210, 210, 210);">
                 <ui:Label text="5 Items" display-tooltip-when-elided="true" name="Count" />
                 <ui:Label text="5 / 10 KG" display-tooltip-when-elided="true" name="Weight" />
@@ -10,6 +10,13 @@
                 <ui:ScrollView name="ItemsView" mode="Horizontal" style="flex-grow: 1; flex-direction: row;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="ItemInfo" style="flex-grow: 1; flex-direction: row;" />
+        <ui:VisualElement name="ItemInfo" style="flex-grow: 1; flex-direction: row; position: absolute; left: 100px; top: 100px; min-width: 250px; max-width: 250px; width: 250px;">
+            <ui:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75;" />
+            <ui:VisualElement name="InfoContainer" style="width: 100%; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; display: none;">
+                <ui:Label text="Baguette" display-tooltip-when-elided="true" name="InfoTitle" class="title" style="color: rgb(229, 219, 219);" />
+                <ui:VisualElement style="height: 1px; width: 100%; border-left-color: rgba(185, 185, 185, 255); border-right-color: rgba(185, 185, 185, 255); border-top-color: rgba(185, 185, 185, 255); border-bottom-color: rgba(185, 185, 185, 255); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; margin-bottom: 15px;" />
+                <ui:VisualElement name="InfoContent" style="width: 100%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

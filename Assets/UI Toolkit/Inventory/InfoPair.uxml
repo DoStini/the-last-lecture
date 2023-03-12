@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="InfoPair" style="width: 100%; flex-direction: row; align-items: center; justify-content: space-between;">
+        <ui:Label text="Value:" display-tooltip-when-elided="true" name="InfoLabel" style="color: rgba(255, 255, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;); font-size: 25px;" />
+        <ui:Label text="15" display-tooltip-when-elided="true" name="InfoValue" style="-unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;); color: rgba(255, 255, 255, 255); font-size: 25px;" />
+    </ui:VisualElement>
+</ui:UXML>

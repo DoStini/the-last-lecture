@@ -19,3 +19,9 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+
+.title {
+    -unity-font-definition: url('project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&guid=0f9b8ec7c29043e03906a2c871498de5&type=2#Lunatix Bold SDF');
+    font-size: 35px;
+    margin-bottom: 15px;
+}
