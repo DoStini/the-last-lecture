@@ -125,7 +125,7 @@ public class HordeSpawner : MonoBehaviour
 
         _spawnLine = 2 * _cameraHeight + 2 * _cameraWidth;
         _currentZombies = initZombiesToSpawn;
-        _lastHorde = debugMode ? Time.time + hordeTime : Time.time;
+        _lastHorde = debugMode ? Time.time - hordeTime : Time.time;
         _hordeInEffect = false;
     }
 

@@ -41,6 +41,7 @@ public class Player : Character
             animator.runtimeAnimatorController = deathAnimator;
             animator.updateMode = AnimatorUpdateMode.UnscaledTime;
             Time.timeScale = 0;
+            Cursor.visible = true;
             return;
         }
 

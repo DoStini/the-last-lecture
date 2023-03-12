@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -15,6 +16,14 @@ public class DamageObserver : MonoBehaviour
      */
     public List<Color32> colors;
     public ObjectPool damagePopupPool;
+    public float size = 1;
+
+    private Vector3 _scale;
+
+    private void Start()
+    {
+        _scale = new Vector3(size, 1, size);
+    }
 
     private Color32 GetColor(int damage)
     {
@@ -34,6 +43,7 @@ public class DamageObserver : MonoBehaviour
         damagePopupPool.GetAndActivate((o =>
         {
             o.transform.position = characterPosition;
+            o.transform.localScale = _scale;
             ReleaseDamagePopup releaseDamagePopup = o.transform.GetChild(0).GetOrAddComponent<ReleaseDamagePopup>();
             releaseDamagePopup.damagePopupPool = damagePopupPool;
             
