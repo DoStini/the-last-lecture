@@ -63,7 +63,7 @@
 }
 
 .bottom-hidden {
-    translate: 0 200px;
+    translate: 0 350px;
 }
 
 .bottom-normal {

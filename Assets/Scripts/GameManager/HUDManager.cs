@@ -26,6 +26,8 @@ public class HUDManager : MonoBehaviour
     private VisualElement _skullHead;
     private VisualElement _deathMenu;
     private VisualElement _retryButton;
+    private VisualElement _weaponIcon;
+
     private Label _currentHealth;
     private Label _maxHealth;
     private Label _counterLabel;
@@ -48,7 +50,10 @@ public class HUDManager : MonoBehaviour
         _skullHead = root.Q<VisualElement>("SkullHead");
         _deathMenu = root.Q<VisualElement>("GameOverMenu");
         _retryButton = root.Q<VisualElement>("RetryButton");
+        _weaponIcon = root.Q<VisualElement>("WeaponDisplay");
+
         _counterLabel = root.Q<Label>("CounterText");
+        
         _counterLabel.text = "0";
 
         UpdateStock();
@@ -71,6 +76,20 @@ public class HUDManager : MonoBehaviour
         _skullHead.ToggleInClassList("skull-hidden");
         _deathMenu.ToggleInClassList("death-hidden");
         _retryButton.RegisterCallback<ClickEvent>(RetryGame);
+    }
+
+    public void UpdateWeapon(Weapon weapon)
+    {
+        if (weapon == null)
+        {
+            StyleBackground noBackground = new StyleBackground();
+
+            _weaponIcon.style.backgroundImage = noBackground;
+            return;
+        }
+        
+        StyleBackground background = new StyleBackground(weapon.icon);
+        _weaponIcon.style.backgroundImage = background;
     }
 
     public void UpdateStock()

@@ -10103,7 +10103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 5
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: eff2d8b25c9bb4f87b9a258b762536c6, type: 3}
   model: {fileID: 233282686626591108}
   rigidbody: {fileID: 8430926332431130810}
   dropAudioSource: {fileID: 7532499336545854434}

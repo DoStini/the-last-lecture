@@ -12,6 +12,7 @@ public class PlayerAnimationSwap : MonoBehaviour
     public ParentConstraint rightConstraint;
     public TwoBoneIKConstraint leftIKConstraint;
     public TwoBoneIKConstraint rightIKConstraint;
+    public HUDManager hudManager;
 
     private RuntimeAnimatorController _initController;
     private ConstraintSource _constraintSourceLeft;
@@ -46,6 +47,7 @@ public class PlayerAnimationSwap : MonoBehaviour
     public void SwapAnimation(Weapon weapon)
     {
         SwapOld();
+        hudManager.UpdateWeapon(weapon);
         _lastWeapon = weapon;
         if (weapon == null)
         {

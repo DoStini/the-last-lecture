@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 5
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ac273de2443648cf2b074b1d900f237a, type: 3}
   model: {fileID: 4892081661843319905}
   rigidbody: {fileID: 0}
   dropAudioSource: {fileID: 1507910827269934067}
