@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [Serializable]
@@ -26,6 +27,7 @@ public class HUDManager : MonoBehaviour
     private VisualElement _skullHead;
     private VisualElement _deathMenu;
     private VisualElement _retryButton;
+    private VisualElement _exitButton;
     private VisualElement _weaponIcon;
 
     private Label _currentHealth;
@@ -50,6 +52,7 @@ public class HUDManager : MonoBehaviour
         _skullHead = root.Q<VisualElement>("SkullHead");
         _deathMenu = root.Q<VisualElement>("GameOverMenu");
         _retryButton = root.Q<VisualElement>("RetryButton");
+        _exitButton = root.Q<VisualElement>("ExitButton");
         _weaponIcon = root.Q<VisualElement>("WeaponDisplay");
 
         _counterLabel = root.Q<Label>("CounterText");
@@ -76,6 +79,13 @@ public class HUDManager : MonoBehaviour
         _skullHead.ToggleInClassList("skull-hidden");
         _deathMenu.ToggleInClassList("death-hidden");
         _retryButton.RegisterCallback<ClickEvent>(RetryGame);
+        _exitButton.RegisterCallback<ClickEvent>(ExitToMenu);
+    }
+
+    private static void ExitToMenu(ClickEvent evt)
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void UpdateWeapon(Weapon weapon)

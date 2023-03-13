@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/HUD/hud.uss?fileID=7433441132597879392&amp;guid=2fe38655919426f038cb045a81949c25&amp;type=3#hud" />
+    <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; justify-content: center; background-color: rgba(0, 0, 0, 0); border-left-color: rgb(81, 81, 81); align-items: center;">
+        <ui:VisualElement style="width: auto; align-items: center; justify-content: flex-start;">
+            <ui:Label text="The Last Lecture" display-tooltip-when-elided="true" style="-unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;); font-size: 200px; color: rgb(248, 248, 248); -unity-text-outline-width: 4px; -unity-text-outline-color: rgb(0, 0, 0);" />
+            <ui:VisualElement name="Button" style="margin-top: 140px; scale: 1.4 1.4;">
+                <ui:VisualElement name="PlayButton" class="button" style="margin-top: 50px; width: 100%; flex-direction: row; align-items: center; justify-content: center; transition-duration: 0.2s; transition-timing-function: ease;">
+                    <ui:VisualElement style="position: absolute; width: 350px; height: 80px; margin-left: 75px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75; rotate: 3deg;" />
+                    <ui:VisualElement style="position: absolute; width: 350px; height: 80px; margin-left: 75px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75; rotate: -8deg;" />
+                    <ui:Label text="PLAY" display-tooltip-when-elided="true" style="-unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/SpaceMono-Bold.ttf?fileID=12800000&amp;guid=9919cea770493f451b5616803544c4b8&amp;type=3#SpaceMono-Bold&apos;); color: rgb(233, 233, 233); font-size: 38px; letter-spacing: 6px; -unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Button" style="margin-top: 80px; scale: 1.4 1.4;">
+                <ui:VisualElement name="ExitButton" class="button" style="margin-top: 50px; width: 100%; flex-direction: row; align-items: center; justify-content: center; transition-duration: 0.2s; transition-timing-function: ease;">
+                    <ui:VisualElement style="position: absolute; width: 350px; height: 80px; margin-left: 75px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75; rotate: 3deg;" />
+                    <ui:VisualElement style="position: absolute; width: 350px; height: 80px; margin-left: 75px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75; rotate: -8deg;" />
+                    <ui:Label text="EXIT" display-tooltip-when-elided="true" style="-unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/SpaceMono-Bold.ttf?fileID=12800000&amp;guid=9919cea770493f451b5616803544c4b8&amp;type=3#SpaceMono-Bold&apos;); color: rgb(233, 233, 233); font-size: 38px; letter-spacing: 6px; -unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
