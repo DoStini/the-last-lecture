@@ -63,3 +63,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backpack: {fileID: 0}
   itemPrefab: {fileID: 9197481963319205126, guid: 311adb52b2ee28cc18562b4a02f2b725, type: 3}
+  infoPairPrefab: {fileID: 9197481963319205126, guid: 596067caa1eeb96d890d451970617b73, type: 3}
