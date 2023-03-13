@@ -37,9 +37,8 @@ public class Dropper : MonoBehaviour
             {
                 index = ~index;
             }
-
-            GameObject gameObject = Instantiate(prefabs[index]);
-            Debug.Log(gameObject);
+            
+            GameObject gameObject = Instantiate(prefabs[index],transform.position + transform.up * 2.5f, transform.rotation);
             gameObjects.Add(gameObject);
         }
 

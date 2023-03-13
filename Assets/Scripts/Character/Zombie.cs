@@ -54,9 +54,8 @@ public class Zombie : Character
         foreach (var drop in gameObjects)
         {
             PickableItem item = drop.GetComponent<PickableItem>();
-            if (item is null) continue;
+            if (item == null) continue;
 
-            drop.transform.SetPositionAndRotation(transform.position + transform.up, transform.rotation);
             item.Randomize();
         }
     }

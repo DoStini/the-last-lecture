@@ -10,13 +10,13 @@
                 <ui:ScrollView name="ItemsView" mode="Horizontal" style="flex-grow: 1; flex-direction: row;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="ItemInfo" style="flex-grow: 1; flex-direction: row; position: absolute; min-width: 450px; max-width: 450px; width: 450px; display: none; left: 0;">
-            <ui:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75;" />
-            <ui:VisualElement name="InfoContainer" style="width: 100%; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px; display: flex;">
-                <ui:Label text="Baguette" display-tooltip-when-elided="true" name="InfoTitle" class="title" style="color: rgb(229, 219, 219); font-size: 48px;" />
-                <ui:Label text="Heals you for a certain amount." display-tooltip-when-elided="true" name="InfoDescription" style="color: rgb(178, 178, 178); -unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;); margin-left: 3px; font-size: 30px; flex-wrap: nowrap; white-space: normal; -unity-paragraph-spacing: 0; margin-bottom: 16px;" />
-                <ui:VisualElement name="InfoSep" style="height: 1px; width: 100%; border-left-color: rgb(185, 185, 185); border-right-color: rgb(185, 185, 185); border-top-color: rgb(185, 185, 185); border-bottom-color: rgb(185, 185, 185); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; margin-bottom: 15px; display: flex;" />
-                <ui:VisualElement name="InfoContent" style="width: 100%;" />
+        <ui:VisualElement name="ItemInfo" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; position: absolute; min-width: 450px; max-width: 450px; width: 450px; display: none; left: 0;">
+            <ui:VisualElement picking-mode="Ignore" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75;" />
+            <ui:VisualElement name="InfoContainer" picking-mode="Ignore" style="width: 100%; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px; display: flex;">
+                <ui:Label text="Baguette" display-tooltip-when-elided="true" name="InfoTitle" picking-mode="Ignore" class="title" style="color: rgb(229, 219, 219); font-size: 48px;" />
+                <ui:Label text="Heals you for a certain amount." display-tooltip-when-elided="true" name="InfoDescription" picking-mode="Ignore" style="color: rgb(178, 178, 178); -unity-font-definition: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/Lunatix%20Bold%20SDF.asset?fileID=11400000&amp;guid=0f9b8ec7c29043e03906a2c871498de5&amp;type=2#Lunatix Bold SDF&apos;); margin-left: 3px; font-size: 30px; flex-wrap: nowrap; white-space: normal; -unity-paragraph-spacing: 0; margin-bottom: 16px;" />
+                <ui:VisualElement name="InfoSep" picking-mode="Ignore" style="height: 1px; width: 100%; border-left-color: rgb(185, 185, 185); border-right-color: rgb(185, 185, 185); border-top-color: rgb(185, 185, 185); border-bottom-color: rgb(185, 185, 185); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; margin-bottom: 15px; display: flex;" />
+                <ui:VisualElement name="InfoContent" picking-mode="Ignore" style="width: 100%;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
