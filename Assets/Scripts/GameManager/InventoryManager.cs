@@ -65,13 +65,22 @@ public class InventoryManager : MonoBehaviour
         el.Q<VisualElement>("Drop").AddManipulator(new Clickable(
             () =>
             {
+                _infoToggled = false;
+                _itemInfo.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+
                 backpack.RemovePickableItem(item);
             }));
 
         var actionElement = el.Q<VisualElement>("Action");
         if (item.HasAction())
         {
-            actionElement.AddManipulator(new Clickable(item.RunAction));
+            actionElement.AddManipulator(new Clickable( () =>
+            {
+                _infoToggled = false;
+                _itemInfo.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+
+                item.RunAction();
+            }));
         }
         else
         {
@@ -89,8 +98,27 @@ public class InventoryManager : MonoBehaviour
         el.RemoveFromHierarchy();
     }
 
+    private void ClearInfo()
+    {
+        _infoContent.Clear();
+    }
+
+    private void AddInfoPair(string label, string value)
+    {
+        VisualElement infoPair = infoPairPrefab.Instantiate();
+
+        Label infoLabel = infoPair.Q<Label>("InfoLabel");
+        Label infoValue = infoPair.Q<Label>("InfoValue");
+
+        infoLabel.text = label;
+        infoValue.text = value;
+        
+        _infoContent.Add(infoPair);
+    }
+
     private void UpdateItemInfo(PickableItem item)
     {
+        ClearInfo();
         switch (item)
         {
             case Health health:
@@ -123,24 +151,32 @@ public class InventoryManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        AddInfoPair("Bullets", stock.Ammo.ToString());
     }
 
     private void UpdateSpeed(Speed speed)
     {
         _itemInfoTitle.text = "Mountain Dew";
-        _itemInfoDescription.text = "Increases your speed for a short time";
+        _itemInfoDescription.text = "Multiplies your speed for a short time";
+        
+        AddInfoPair("Multiplier", $"{speed.boost:F}x");
+        AddInfoPair("Duration", $"{speed.duration}s");
     }
 
     private void UpdateMaxHealth(MaxHealth maxHealth)
     {
         _itemInfoTitle.text = "Zombie Vaccine";
         _itemInfoDescription.text = "Increases your max health";
+        
+        AddInfoPair("Amount", maxHealth.health.ToString());
     }
 
     private void UpdateHealth(Health health)
     {
         _itemInfoTitle.text = "Baguette";
         _itemInfoDescription.text = "Heals you for a certain amount";
+        
+        AddInfoPair("Amount", health.health.ToString());
     }
 
     private void Update()
@@ -154,7 +190,7 @@ public class InventoryManager : MonoBehaviour
 
         if (mousePos.y - _itemInfo.resolvedStyle.height < 0)
         {
-            _itemInfo.style.bottom = mousePos.y + 3;
+            _itemInfo.style.bottom = mousePos.y - 3;
             _itemInfo.style.top = new StyleLength(StyleKeyword.Auto);
         }
         else
@@ -162,8 +198,18 @@ public class InventoryManager : MonoBehaviour
             _itemInfo.style.top = root.resolvedStyle.height - mousePos.y + 3;
             _itemInfo.style.bottom = new StyleLength(StyleKeyword.Auto);
         }
+
+        if (mousePos.x + _itemInfo.resolvedStyle.width > root.resolvedStyle.width)
+        {
+            _itemInfo.style.right = root.resolvedStyle.width - mousePos.x - 3;
+            _itemInfo.style.left = new StyleLength(StyleKeyword.Auto);
+        }
+        else
+        {
+            _itemInfo.style.left = mousePos.x + 3;
+            _itemInfo.style.right = new StyleLength(StyleKeyword.Auto);
+        }
         
-        _itemInfo.style.left = mousePos.x + 3;
         _itemInfo.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
     }
 

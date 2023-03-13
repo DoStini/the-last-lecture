@@ -10,7 +10,7 @@
                 <ui:ScrollView name="ItemsView" mode="Horizontal" style="flex-grow: 1; flex-direction: row;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="ItemInfo" style="flex-grow: 1; flex-direction: row; position: absolute; min-width: 350px; max-width: 350px; width: 350px; display: none; left: 0;">
+        <ui:VisualElement name="ItemInfo" style="flex-grow: 1; flex-direction: row; position: absolute; min-width: 450px; max-width: 450px; width: 450px; display: none; left: 0;">
             <ui:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI%20Toolkit/HUD/ammo.png?fileID=2800000&amp;guid=820851a1b7908755783f3deb13b288da&amp;type=3#ammo&apos;); opacity: 0.75;" />
             <ui:VisualElement name="InfoContainer" style="width: 100%; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px; display: flex;">
                 <ui:Label text="Baguette" display-tooltip-when-elided="true" name="InfoTitle" class="title" style="color: rgb(229, 219, 219); font-size: 48px;" />
