@@ -119,6 +119,8 @@ public class InventoryManager : MonoBehaviour
     private void UpdateItemInfo(PickableItem item)
     {
         ClearInfo();
+        AddInfoPair("Weight", item.weight.ToString());
+
         switch (item)
         {
             case Health health:

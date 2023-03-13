@@ -10102,7 +10102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c785edd23764f87b96d54e35f84351b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 5
+  weight: 15
   icon: {fileID: 21300000, guid: eff2d8b25c9bb4f87b9a258b762536c6, type: 3}
   model: {fileID: 233282686626591108}
   rigidbody: {fileID: 8430926332431130810}

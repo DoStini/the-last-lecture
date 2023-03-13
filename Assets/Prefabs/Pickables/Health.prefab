@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2bcdebba557dc95a2f109e17b6fdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
+  weight: 10
   icon: {fileID: 21300000, guid: 7a150274798dc57ff918113abcf5c926, type: 3}
   model: {fileID: 8545369861193293205}
   rigidbody: {fileID: 4195233703396607398}
