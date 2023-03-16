@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 209404544636236820}
   - component: {fileID: -4191826415446428913}
   - component: {fileID: 4477590250913294608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pistol
   m_TagString: Pickable
   m_Icon: {fileID: 0}

@@ -295,6 +295,7 @@ MonoBehaviour:
   rightConstraint: {fileID: 4061275082444509159}
   leftIKConstraint: {fileID: 3701319016345400112}
   rightIKConstraint: {fileID: 4759254738894288856}
+  hudManager: {fileID: 0}
 --- !u!81 &2731249957522744053
 AudioListener:
   m_ObjectHideFlags: 0
@@ -937,7 +938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RigLayers:
   - m_Rig: {fileID: 1937206851978652032}
-    m_Active: 1
+    m_Active: 0
   m_Effectors: []
 --- !u!4 &604613109517012256 stripped
 Transform:
